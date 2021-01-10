@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
+    <classes>
+      <class name="crmframework.crmAutomation.HomePageTest">
+        <methods>
+          <include name="AddMarketingRelationshipOwner"/>
+          <include name="addIncentiveDetails"/>
+          <include name="crmhomepage"/>
+          <include name="relatedTab"/>
+          <include name="AddIncentive"/>
+          <include name="initialize"/>
+        </methods>
+      </class> <!-- crmframework.crmAutomation.HomePageTest -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
