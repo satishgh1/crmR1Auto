@@ -21,7 +21,7 @@ import pageObjects.CRMLandingPage;
 import pageObjects.CRMLoginPage;
 import resources.base;
 
-public class HomePageTest extends base {
+public class AccountPageTest extends base {
 
 	public WebDriverWait wait;
 	public String accnameText;
@@ -34,11 +34,11 @@ public class HomePageTest extends base {
 	}
 
 	@Test(priority=1)
-	public void crmhomepage() throws IOException, InterruptedException {
+	public void verifyCrmHomePage() throws IOException, InterruptedException {
 
-		//this test case will validate the Login to CRM Application
-		//verify Select Demand Driver App from Published page 
-		//verify CRM Home page launched
+		//The purpose of this test case to verify:-
+		//TS1- Login to CRM Application and  Select published Apps (Demand Driver Management)
+
 		driver.get(prop.getProperty("url")); //CRM App
 		driver.manage().window().maximize();
 		CRMLandingPage lap = new CRMLandingPage(driver);
@@ -67,8 +67,11 @@ public class HomePageTest extends base {
 	}
 
 	@Test(priority=2)
-	public void verifyCreateAccount() throws InterruptedException
+	public void verifyCreateNewAccount() throws InterruptedException
 	{
+		//The purpose of this test case to verify:-
+		//TS2- Create New Account
+		
 		//Select Accounts menu from left navigation bar
 		CRMHomePage hp = new CRMHomePage(driver);
 		hp.getAccountTab().click();
@@ -150,8 +153,11 @@ public class HomePageTest extends base {
 	}
 
 	@Test(priority=3)
-	public void addTimeline() throws InterruptedException
+	public void verifyAddTimelineToAccount() throws InterruptedException
 	{
+		//The purpose of this test case to verify:-
+		//TS7- Select any account and add Timeline
+		
 		CRMHomePage hp10 = new CRMHomePage(driver);
 		hp10.getAccountTab().click();
 		//Wait till Active Accounts page is displayed
@@ -195,8 +201,11 @@ public class HomePageTest extends base {
 	}
 
 	@Test(priority=4)
-	public void AddIncentive() throws InterruptedException {
+	public void verifyAddIncentiveToAccount() throws InterruptedException {
 
+		//The purpose of this test case to verify:-
+		//TS4-Select any existing Account and add Incentive
+		
 		CRMHomePage hp2 = new CRMHomePage(driver);
 		hp2.getAccountTab().click();
 
@@ -261,8 +270,11 @@ public class HomePageTest extends base {
 	}
 
 	@Test(priority=5)
-	public void addIncentiveDetails() throws InterruptedException
+	public void verifyAddIncentiveDetailsToAccount() throws InterruptedException
 	{
+		//The purpose of this test case to verify :-
+		//TS5- Select any existing Account and add Incentive Details
+
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
 		CRMHomePage hp11 = new CRMHomePage(driver);
 		hp11.getAccountTab().click();
@@ -320,7 +332,10 @@ public class HomePageTest extends base {
 	}
 
 	@Test(priority=6)
-	public void relatedTab() throws InterruptedException {
+	public void verifyRelatedTabOnAccount() throws InterruptedException {
+
+		//The purpose of this test case to verify :-
+		//Select any existing account and Verify Related Tab Functionality 
 
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
 
@@ -347,7 +362,10 @@ public class HomePageTest extends base {
 	}
 
 	@Test(priority=7)
-	public void AddMarketingRelationshipOwner() throws InterruptedException {
+	public void verifyAddMarketingRelationshipOwnerToAccount() throws InterruptedException {
+		
+		//The purpose of this test case to verify:-
+		//TS8- Add relationship manager to account
 
 		CRMHomePage hp3 = new CRMHomePage(driver);
 		hp3.getAccountTab().click();
@@ -388,9 +406,32 @@ public class HomePageTest extends base {
 			System.out.println("Marketing Relationship Owner not added successfully");
 		}
 	}
-
+	
+	@Test(priority=8)
+	public void verifySearchAccount() throws InterruptedException
+	{
+		//The purpose of this test case to verify:-
+		//TS3- Search any existing Account by Account DBA Name
+		
+		CRMHomePage hp8 = new CRMHomePage(driver);
+		hp8.getAccountTab().click();
+		//Wait till Active Accounts page is displayed
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+		hp8.getSearchAccountField().click();
+		hp8.getSearchAccountField().sendKeys(accnameText);
+		hp8.getstartsearch().click();
+		Thread.sleep(10000);
+		WebElement validateAccName = driver.findElement(By.xpath("//a[contains(text(),'"+accnameText+"')]"));
+		Boolean checkvalidateAccName = validateAccName.isDisplayed();
+	       
+		Assert.assertTrue(checkvalidateAccName);
+		System.out.println("New Account searched");
+		//Clear the search term to navigate to active accounts page
+		hp8.getClearSearch().click();
+	}
+		
 	@AfterTest
-	public void teardown()
+	public void closeDriver()
 	{
 		driver.close();
 	}
