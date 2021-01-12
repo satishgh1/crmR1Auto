@@ -174,6 +174,8 @@ public class CRMAccountsPage {
 	}
 	
 	public WebElement getAllFilterLink() {
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(allfilterlink));
 		return driver.findElement(allfilterlink);
 	}
 }

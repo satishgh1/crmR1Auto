@@ -5,12 +5,10 @@
     <classes>
       <class name="crmframework.crmAutomation.HomePageTest">
         <methods>
-          <include name="AddMarketingRelationshipOwner"/>
-          <include name="addIncentiveDetails"/>
-          <include name="crmhomepage"/>
-          <include name="relatedTab"/>
-          <include name="AddIncentive"/>
+          <include name="addTimeline"/>
           <include name="initialize"/>
+          <include name="teardown"/>
+          <include name="verifyCreateAccount"/>
         </methods>
       </class> <!-- crmframework.crmAutomation.HomePageTest -->
     </classes>
