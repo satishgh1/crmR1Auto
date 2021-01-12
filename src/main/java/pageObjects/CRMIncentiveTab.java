@@ -40,8 +40,8 @@ public class CRMIncentiveTab {
 	By incsave = By.xpath("//button[@aria-label = 'Save & Close']");
 
 	// Verification
-	By incacc = By.xpath("//div[@title = 'Cyb_QA123']");
-	By inccon = By.xpath("//div[@title = 'Cyb_Test Contact']");
+	By incacc = By.xpath("//div[@title = 'Cyb_Acc_6Jan']");
+	By inccon = By.xpath("//div[@title = 'First Test Contact']");
 	By incmar = By.xpath("//div[@title = '2010 January 1 Daily']");
 
 	//New Incentive Details
@@ -125,6 +125,8 @@ public class CRMIncentiveTab {
 	}
 	
 	public WebElement getincsave() {
+		wait = new WebDriverWait (driver,30);
+		wait.until(ExpectedConditions.elementToBeClickable(incsave));
 		return driver.findElement(incsave);
 	}
 	

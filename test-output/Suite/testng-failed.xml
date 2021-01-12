@@ -6,9 +6,7 @@
       <class name="crmframework.crmAutomation.AccountPageTest">
         <methods>
           <include name="initialize"/>
-          <include name="verifyCreateNewAccount"/>
           <include name="verifyAddIncentiveToAccount"/>
-          <include name="verifyAddMarketingRelationshipOwnerToAccount"/>
           <include name="closeDriver"/>
         </methods>
       </class> <!-- crmframework.crmAutomation.AccountPageTest -->

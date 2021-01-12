@@ -38,6 +38,13 @@ public class CRMAccountsPage {
 	By activitiesRelatedTab = By.xpath("//span[@id='navActivities_Related']"); // added xpath for activities option at Related Dropdown list
 	By activityTab = By.xpath("//li[@title='Activities']");  // added xpath for activity tab
 	By allfilterlink = By.xpath("//a[@id='All_link']");
+	By deactivateaccname = By.xpath("//div[@data-id='cell-1-2']");
+	By deactivatebtn = By.xpath("//button[@aria-label='Deactivate']");
+	By deactivateokbtn = By.xpath("//button[@data-id='ok_id']");
+	By activatebtn = By.xpath("//button[@aria-label='Activate']");
+	By accdropdownbtn = By.xpath("//span[@class='symbolFont ChevronDownMed-symbol  ']");
+	By inactiveacctsoptn = By.xpath("//*[text()='Inactive Accounts']");
+	By validateInactiveAcc = By.xpath("//div[@data-id='cell-0-2']");
 	
 	public CRMAccountsPage(WebDriver driver) {
 
@@ -121,6 +128,8 @@ public class CRMAccountsPage {
 	
 	public WebElement getALetterFilterLink()
 	{
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.elementToBeClickable(aletterfilterlink));
 		return driver.findElement(aletterfilterlink);
 	}
 	
@@ -178,4 +187,35 @@ public class CRMAccountsPage {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(allfilterlink));
 		return driver.findElement(allfilterlink);
 	}
+	
+	public WebElement getDeactivateBtn() {
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(deactivatebtn));
+		return driver.findElement(deactivatebtn);
+	}
+	
+	public WebElement getDeactivateOkBtn() {
+		return driver.findElement(deactivateokbtn);
+	}
+	public WebElement getActivateBtn() {
+		return driver.findElement(activatebtn);
+	}
+	
+	public WebElement getDeactivateAccName() {
+		return driver.findElement(deactivateaccname);
+	}
+	
+	public WebElement getActiveAccDropDownBtn() {
+		return driver.findElement(accdropdownbtn);
+	}
+	
+	public WebElement getInactiveAccOptn() {
+		return driver.findElement(inactiveacctsoptn);
+	}
+	
+	public WebElement getValidateInactiveAccName() {
+		return driver.findElement(validateInactiveAcc);
+	}
+	
+	
 }

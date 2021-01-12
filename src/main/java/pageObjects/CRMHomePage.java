@@ -33,6 +33,8 @@ public class CRMHomePage {
 	}
 	public WebElement getSearchAccountField() {
 		//web element for the search account field
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(searchaccount));
 		return driver.findElement(searchaccount);	
 	}
 	

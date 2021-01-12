@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -71,7 +72,7 @@ public class AccountPageTest extends base {
 	{
 		//The purpose of this test case to verify:-
 		//TS2- Create New Account
-		
+
 		//Select Accounts menu from left navigation bar
 		CRMHomePage hp = new CRMHomePage(driver);
 		hp.getAccountTab().click();
@@ -88,7 +89,7 @@ public class AccountPageTest extends base {
 		//Enter Account Name
 		WebElement accountName = driver.findElement(By.xpath("//input[@id='id-276390f9-8bbf-4452-8f24-636b0ccaee2c-1-name8-name.fieldControl-text-box-text']"));
 		accountName.click();
-		accnameText = "Cyb_AccTest12";
+		accnameText = "Cyb_AccNew12";
 		accountName.sendKeys(accnameText);
 
 		//Enter Phone no.
@@ -157,7 +158,7 @@ public class AccountPageTest extends base {
 	{
 		//The purpose of this test case to verify:-
 		//TS7- Select any account and add Timeline
-		
+
 		CRMHomePage hp10 = new CRMHomePage(driver);
 		hp10.getAccountTab().click();
 		//Wait till Active Accounts page is displayed
@@ -205,7 +206,7 @@ public class AccountPageTest extends base {
 
 		//The purpose of this test case to verify:-
 		//TS4-Select any existing Account and add Incentive
-		
+
 		CRMHomePage hp2 = new CRMHomePage(driver);
 		hp2.getAccountTab().click();
 
@@ -214,14 +215,14 @@ public class AccountPageTest extends base {
 		Thread.sleep(3000);
 
 		// Search Account Name
-		hp2.getSearchAccountField().sendKeys("Cyb");
+		hp2.getSearchAccountField().sendKeys("Cyb_Acc_6Jan");
 		hp2.getstartsearch().click();
 		Thread.sleep(10000);
 
 		CRMIncentiveTab inc = new CRMIncentiveTab(driver);
 		// Open Account
 		inc.accname().click();
-		Thread.sleep(30000);
+		Thread.sleep(10000);
 
 		// Click Incentives tab at existing account
 		inc.getinctab().click();
@@ -250,7 +251,7 @@ public class AccountPageTest extends base {
 
 		// Save and Close Incentive
 		inc.getincsave().click();
-
+		Thread.sleep(15000);
 		// Incentive Verification
 		if (inc.accname().getText().contains("Cyb") && inc.conname().getText().contains("Test") && inc.marname().getText().contains("Jan"))
 		{
@@ -263,7 +264,7 @@ public class AccountPageTest extends base {
 
 		//Navigate back to Active accounts list
 		ap4.getAccPageBackBtn().click();
-		Thread.sleep(3000);	
+		Thread.sleep(3000);
 
 		//Clear the search term
 		hp2.getClearSearch().click();
@@ -363,7 +364,7 @@ public class AccountPageTest extends base {
 
 	@Test(priority=7)
 	public void verifyAddMarketingRelationshipOwnerToAccount() throws InterruptedException {
-		
+
 		//The purpose of this test case to verify:-
 		//TS8- Add relationship manager to account
 
@@ -396,8 +397,9 @@ public class AccountPageTest extends base {
 		// Save selected marketing relationship owner
 		amro.getmarownersave().click();	
 
+		WebElement verifyOwner = amro.getmarownerverify();
 		// Verify selected marketing relationship owner
-		if (amro.getmarownerverify().getText().contains("Bhavesh"))
+		if (verifyOwner.getText().contains("Bhavesh"))
 		{
 			System.out.println("Marketing Relationship Owner added successfully");
 		}
@@ -406,13 +408,13 @@ public class AccountPageTest extends base {
 			System.out.println("Marketing Relationship Owner not added successfully");
 		}
 	}
-	
+
 	@Test(priority=8)
 	public void verifySearchAccount() throws InterruptedException
 	{
 		//The purpose of this test case to verify:-
 		//TS3- Search any existing Account by Account DBA Name
-		
+
 		CRMHomePage hp8 = new CRMHomePage(driver);
 		hp8.getAccountTab().click();
 		//Wait till Active Accounts page is displayed
@@ -423,13 +425,78 @@ public class AccountPageTest extends base {
 		Thread.sleep(10000);
 		WebElement validateAccName = driver.findElement(By.xpath("//a[contains(text(),'"+accnameText+"')]"));
 		Boolean checkvalidateAccName = validateAccName.isDisplayed();
-	       
+
 		Assert.assertTrue(checkvalidateAccName);
 		System.out.println("New Account searched");
 		//Clear the search term to navigate to active accounts page
 		hp8.getClearSearch().click();
 	}
-		
+
+	@Test(priority=9)
+	public void verifyDeactivateAccount() throws InterruptedException
+	{
+		//The purpose of this test case to verify:-
+		//TS9- Select any existing Account and deactivate it
+
+		WebElement accName = null;
+		CharSequence accNameTitle = null;
+		CRMHomePage hp20 = new CRMHomePage(driver);
+		hp20.getAccountTab().click();
+
+		CRMAccountsPage ap5 = new CRMAccountsPage(driver);
+		//Click on 'A' link to sort accounts starts with 'A'
+		ap5.getALetterFilterLink().click();
+		Thread.sleep(4000);	
+		try {
+			Thread.sleep(4000);	
+			//Select 2nd account name in list
+			accName = ap5.getDeactivateAccName();
+			accName.click();
+			accNameTitle = accName.getText();
+		}
+		catch(StaleElementReferenceException e) {
+			System.out.println(e.getMessage());
+		}
+
+		//Click on Deactivate button
+		ap5.getDeactivateBtn().click();
+
+		//Click on 'Deactivate button of confirmation pop-up
+		ap5.getDeactivateOkBtn().click();
+
+		Assert.assertTrue(ap5.getActivateBtn().isDisplayed());
+
+		//Navigate back to Active accounts page
+		ap5.getAccPageBackBtn().click();
+
+		//Click on 'Active Accounts' drop-down view button
+		ap5.getActiveAccDropDownBtn().click();
+
+		//Select 'Inactive Accounts' option
+		ap5.getInactiveAccOptn().click();
+
+		Thread.sleep(6000);
+		//Click on 'A' link to sort accounts starts with 'A'
+		try {
+			ap5.getALetterFilterLink().click();
+			Thread.sleep(3000);
+
+			//Validate deactivated account
+			hp20.getSearchAccountField().click();
+			hp20.getSearchAccountField().sendKeys(accNameTitle);
+			hp20.getstartsearch().click();
+			Thread.sleep(10000);
+			Assert.assertTrue(ap5.getValidateInactiveAccName().isDisplayed());
+		}
+		catch (StaleElementReferenceException exe) {
+			System.out.println(exe.getMessage());
+		}
+		catch (IllegalArgumentException ex)
+		{
+			System.out.println(ex.getMessage());
+		}
+	}
+
 	@AfterTest
 	public void closeDriver()
 	{

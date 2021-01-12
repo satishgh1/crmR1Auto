@@ -3,10 +3,9 @@
 <suite name="Suite">
 	<test name="Test">
 		<classes>
-			<class name="crmframework.crmAutomation.HomePageTest" />
+			<class name="crmframework.crmAutomation.AccountPageTest" />
 			<methods>
-				<exclude name="AddIncentive" />
-				<exclude name="AddMarketingRelationshipOwner" />
+				<exclude name="verifyAddMarketingRelationshipOwnerToAccount" />
 			</methods>
 		</classes>
 	</test>
