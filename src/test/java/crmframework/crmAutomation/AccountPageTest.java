@@ -14,7 +14,6 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import pageObjects.AppLandingPage;
 import pageObjects.CRMAccountsPage;
 import pageObjects.CRMAddMarketingRelationshipOwner;
@@ -34,7 +33,6 @@ public class AccountPageTest extends base {
 	public void initialize() throws IOException
 	{
 		driver = initializeDriver();
-		//extent report
 	}
 
 	@Test(priority=1)
@@ -59,7 +57,7 @@ public class AccountPageTest extends base {
 		lp.getdontshowcheckbox().click();
 		lp.getsigninYes().click();
 		//to wait on Published App Landing page
-		Thread.sleep(30000);
+		Thread.sleep(20000);
 		driver.switchTo().frame("AppLandingPage");
 		AppLandingPage alp = new AppLandingPage(driver);
 		//select Demand Driver application on Landing Page
@@ -80,7 +78,7 @@ public class AccountPageTest extends base {
 		CRMHomePage hp = new CRMHomePage(driver);
 		hp.getAccountTab().click();
 		//Wait till Active Accounts page is displayed
-		new WebDriverWait (driver,20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'New')]")));
+		new WebDriverWait (driver,30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'New')]")));
 
 		CRMAccountsPage ap = new CRMAccountsPage(driver);
 		//Click on 'New' button
@@ -92,7 +90,7 @@ public class AccountPageTest extends base {
 		//Enter Account Name
 		WebElement accountName = driver.findElement(By.xpath("//input[@id='id-276390f9-8bbf-4452-8f24-636b0ccaee2c-1-name8-name.fieldControl-text-box-text']"));
 		accountName.click();
-		accnameText = "Cyb_AccNewX105";
+		accnameText = "Cyb_AccNewX1020";
 		accountName.sendKeys(accnameText);
 
 		//Enter Phone no.
@@ -171,7 +169,7 @@ public class AccountPageTest extends base {
 
 		CRMAccountsPage ap1 = new CRMAccountsPage(driver);
 		//Click on 'A' link to sort accounts starts with 'A'
-		ap1.getALetterFilterLink().click();
+		ap1.getCLetterFilterLink().click();
 		Thread.sleep(4000);	
 
 		//Select the account name in list
@@ -185,7 +183,7 @@ public class AccountPageTest extends base {
 		Thread.sleep(3000);
 
 		ap1.getTimelineSujecttxbx().click();
-		String subtext = "Cyb_AccNewX104";
+		String subtext = "Cyb_AccNewX1010";
 		ap1.getTimelineSujecttxbx().sendKeys(subtext);
 
 		ap1.getTimelineSavenClosebtn().click();
@@ -218,7 +216,7 @@ public class AccountPageTest extends base {
 		Thread.sleep(3000);
 
 		// Search Account Name
-		hp2.getSearchAccountField().sendKeys("Cyb_AccNewX104");
+		hp2.getSearchAccountField().sendKeys("Cyb_Acc1017 Test");
 		hp2.getstartsearch().click();
 		Thread.sleep(10000);
 
@@ -285,7 +283,7 @@ public class AccountPageTest extends base {
 
 		CRMAccountsPage ap2 = new CRMAccountsPage(driver);
 		//Click on 'A' link to sort accounts starts with 'A'
-		ap2.getALetterFilterLink().click();
+		ap2.getCLetterFilterLink().click();
 		Thread.sleep(4000);	
 
 		//Select the account name in list
@@ -348,7 +346,7 @@ public class AccountPageTest extends base {
 
 		CRMAccountsPage ap1 = new CRMAccountsPage(driver);
 		//Click on 'A' link to sort accounts starts with 'A'
-		ap1.getALetterFilterLink().click();
+		ap1.getCLetterFilterLink().click();
 		Thread.sleep(4000);	
 
 		//Select the account name in list
@@ -441,35 +439,24 @@ public class AccountPageTest extends base {
 	{
 		//The purpose of this test case to verify:-
 		//TS9- Select any existing Account and deactivate it
-		WebElement accName = null;
-		CharSequence accNameTitle = null;
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
-
+		//WebElement accName = null;
 		CRMHomePage hp20 = new CRMHomePage(driver);
 		hp20.getAccountTab().click();
-
+		//Wait till Active Accounts page is displayed
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+		hp20.getSearchAccountField().click();
+		hp20.getSearchAccountField().sendKeys(accnameText);
+		hp20.getstartsearch().click();
+		Thread.sleep(10000);
 		CRMAccountsPage ap5 = new CRMAccountsPage(driver);
-		//Click on 'A' link to sort accounts starts with 'A'
-		ap5.getALetterFilterLink().click();
-		Thread.sleep(4000);	
-		try {
-			Thread.sleep(4000);	
-			//Select 2nd account name in list
-			accName = ap5.getDeactivateAccName();
-			accName.click();
-			accNameTitle = accName.getText();
-			System.out.println(accNameTitle);
-		}
-		catch(StaleElementReferenceException e) {
-			System.out.println(e.getMessage());
-		}
-
+		WebElement validateAccName = driver.findElement(By.xpath("//a[contains(text(),'"+accnameText+"')]"));
+		validateAccName.click();
+		Thread.sleep(10000);
 		//Click on Deactivate button
 		ap5.getDeactivateBtn().click();
 
 		//Click on 'Deactivate button of confirmation pop-up
 		ap5.getDeactivateOkBtn().click();
-
 		Assert.assertTrue(ap5.getActivateBtn().isDisplayed());
 
 		//Navigate back to Active accounts page
@@ -484,12 +471,12 @@ public class AccountPageTest extends base {
 		Thread.sleep(6000);
 		//Click on 'A' link to sort accounts starts with 'A'
 		try {
-			ap5.getALetterFilterLink().click();
+			ap5.getCLetterFilterLink().click();
 			Thread.sleep(3000);
 
 			//Validate deactivated account
 			hp20.getSearchAccountField().click();
-			hp20.getSearchAccountField().sendKeys(accNameTitle);
+			hp20.getSearchAccountField().sendKeys(accnameText);
 			hp20.getstartsearch().click();
 			Thread.sleep(10000);
 			Assert.assertTrue(ap5.getValidateInactiveAccName().isDisplayed());
@@ -502,7 +489,7 @@ public class AccountPageTest extends base {
 			System.out.println(ex.getMessage());
 		}
 	}
-
+	
 	@AfterTest
 	public void closeDriver()
 	{

@@ -40,8 +40,8 @@ public class CRMIncentiveTab {
 	By incsave = By.xpath("//button[@aria-label = 'Save & Close']");
 
 	// Verification
-	By incacc = By.xpath("//div[@title = 'Cyb_AccNewX104']");
-	By inccon = By.xpath("//div[@title = 'Sat Test1']");
+	By incacc = By.xpath("//div[@title = 'Cyb_Acc1018 Test']");
+	By inccon = By.xpath("//div[@title = 'CybCont1018 Test']");
 	By incmar = By.xpath("//div[@title = '2010 January 1 Daily']");
 
 	//New Incentive Details
@@ -54,7 +54,7 @@ public class CRMIncentiveTab {
 	By activeincs = By.xpath("//li[@aria-label='Active Incentives']");
 	
 	//Incentive name
-	By incname = By.xpath("//span[@data-id='xxc_incentiveid.fieldControl-xxc_accountid0_0_3']");
+	By incname = By.xpath("//span[@data-id='xxc_incentiveid.fieldControl-xxc_accountid0_0_18']");
 	
 	//Incentive Category text field
 	By inccattxtbox = By.xpath("//input[@aria-label='Incentive Category, Lookup']");

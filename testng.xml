@@ -8,7 +8,7 @@
     <classes>
       <class name="crmframework.crmAutomation.AccountPageTest"/>
       	<methods>
-      		<exclude name="verifyAddMarketingRelationshipOwnerToAccount"/> 		
+			<exclude name="verifyAddMarketingRelationshipOwnerToAccount"/>
     	</methods>
     </classes>
   </test> <!-- Test -->

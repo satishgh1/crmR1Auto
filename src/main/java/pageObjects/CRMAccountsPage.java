@@ -26,7 +26,7 @@ public class CRMAccountsPage {
 	By cntryexpandbtn = By.xpath("//button[@aria-label='Toggle Dropdown']");
 	By countryname = By.xpath("//body/div[@id='_dropdown']/div[3]");
 	By accsavenclosebtn = By.xpath("//button[@aria-label='Save & Close']");
-	By aletterfilterlink = By.xpath("//a[@id='A_link']");
+	By cletterfilterlink = By.xpath("//a[@id='C_link']");
 	By accountname = By.xpath("//div[@data-id='cell-2-2']");
 	By addtimelinebtn = By.xpath("//button[@aria-label='Create a timeline record.']");
 	By appointmentactivityoptn = By.xpath("//li[@aria-label='Appointment Activity']");
@@ -126,12 +126,6 @@ public class CRMAccountsPage {
 		return driver.findElement(accsavenclosebtn);
 	}
 	
-	public WebElement getALetterFilterLink()
-	{
-		wait = new WebDriverWait (driver,20);
-		wait.until(ExpectedConditions.elementToBeClickable(aletterfilterlink));
-		return driver.findElement(aletterfilterlink);
-	}
 	
 	public WebElement getAccountName()
 	{
@@ -216,6 +210,15 @@ public class CRMAccountsPage {
 	public WebElement getValidateInactiveAccName() {
 		return driver.findElement(validateInactiveAcc);
 	}
+
+	public WebElement getCLetterFilterLink() {
+		// TODO Auto-generated method stub
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.elementToBeClickable(cletterfilterlink));
+		return driver.findElement(cletterfilterlink);
+	}
+
+	
 	
 	
 }
