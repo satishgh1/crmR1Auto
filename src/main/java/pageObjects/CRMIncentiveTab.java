@@ -40,8 +40,8 @@ public class CRMIncentiveTab {
 	By incsave = By.xpath("//button[@aria-label = 'Save & Close']");
 
 	// Verification
-	By incacc = By.xpath("//div[@title = 'Cyb_Acc_6Jan']");
-	By inccon = By.xpath("//div[@title = 'First Test Contact']");
+	By incacc = By.xpath("//div[@title = 'Cyb_AccNewX104']");
+	By inccon = By.xpath("//div[@title = 'Sat Test1']");
 	By incmar = By.xpath("//div[@title = '2010 January 1 Daily']");
 
 	//New Incentive Details

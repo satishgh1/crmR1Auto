@@ -12,7 +12,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import pageObjects.AppLandingPage;
 import pageObjects.CRMAccountsPage;
 import pageObjects.CRMAddMarketingRelationshipOwner;
@@ -22,16 +24,17 @@ import pageObjects.CRMLandingPage;
 import pageObjects.CRMLoginPage;
 import resources.base;
 
+ @Listeners({TestListeners.class})
 public class AccountPageTest extends base {
 
 	public WebDriverWait wait;
 	public String accnameText;
 
-
 	@BeforeTest
 	public void initialize() throws IOException
 	{
-		driver = initializeDriver();		
+		driver = initializeDriver();
+		//extent report
 	}
 
 	@Test(priority=1)
@@ -89,7 +92,7 @@ public class AccountPageTest extends base {
 		//Enter Account Name
 		WebElement accountName = driver.findElement(By.xpath("//input[@id='id-276390f9-8bbf-4452-8f24-636b0ccaee2c-1-name8-name.fieldControl-text-box-text']"));
 		accountName.click();
-		accnameText = "Cyb_AccNew12";
+		accnameText = "Cyb_AccNewX105";
 		accountName.sendKeys(accnameText);
 
 		//Enter Phone no.
@@ -182,7 +185,7 @@ public class AccountPageTest extends base {
 		Thread.sleep(3000);
 
 		ap1.getTimelineSujecttxbx().click();
-		String subtext = "Cyb_Appt21";
+		String subtext = "Cyb_AccNewX104";
 		ap1.getTimelineSujecttxbx().sendKeys(subtext);
 
 		ap1.getTimelineSavenClosebtn().click();
@@ -215,7 +218,7 @@ public class AccountPageTest extends base {
 		Thread.sleep(3000);
 
 		// Search Account Name
-		hp2.getSearchAccountField().sendKeys("Cyb_Acc_6Jan");
+		hp2.getSearchAccountField().sendKeys("Cyb_AccNewX104");
 		hp2.getstartsearch().click();
 		Thread.sleep(10000);
 
@@ -354,6 +357,7 @@ public class AccountPageTest extends base {
 		//click on Related Tab and select Activities option from list. 
 		ap1.getRelatedTab().click();
 		ap1.getSelectActivitiesRelated().click();
+		Thread.sleep(5000);
 		Boolean displayActivityTab = ap1.getActivityTab().isDisplayed();
 		System.out.println("Activities Tab Opened successfully:"+displayActivityTab);
 
@@ -437,9 +441,10 @@ public class AccountPageTest extends base {
 	{
 		//The purpose of this test case to verify:-
 		//TS9- Select any existing Account and deactivate it
-
 		WebElement accName = null;
 		CharSequence accNameTitle = null;
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+
 		CRMHomePage hp20 = new CRMHomePage(driver);
 		hp20.getAccountTab().click();
 
@@ -453,6 +458,7 @@ public class AccountPageTest extends base {
 			accName = ap5.getDeactivateAccName();
 			accName.click();
 			accNameTitle = accName.getText();
+			System.out.println(accNameTitle);
 		}
 		catch(StaleElementReferenceException e) {
 			System.out.println(e.getMessage());

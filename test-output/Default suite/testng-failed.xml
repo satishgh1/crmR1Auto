@@ -3,14 +3,19 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="crmframework.crmAutomation.HomePageTest">
+      <class name="crmframework.crmAutomation.AccountPageTest">
         <methods>
-          <include name="addTimeline"/>
           <include name="initialize"/>
-          <include name="teardown"/>
-          <include name="verifyCreateAccount"/>
+          <include name="verifyAddTimelineToAccount"/>
+          <include name="verifyCreateNewAccount"/>
+          <include name="verifyAddIncentiveToAccount"/>
+          <include name="verifyAddMarketingRelationshipOwnerToAccount"/>
+          <include name="verifyDeactivateAccount"/>
+          <include name="closeDriver"/>
+          <include name="verifyAddIncentiveDetailsToAccount"/>
+          <include name="verifyRelatedTabOnAccount"/>
         </methods>
-      </class> <!-- crmframework.crmAutomation.HomePageTest -->
+      </class> <!-- crmframework.crmAutomation.AccountPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -5,7 +5,9 @@
     <classes>
       <class name="crmframework.crmAutomation.AccountPageTest">
         <methods>
+          <include name="verifySearchAccount"/>
           <include name="initialize"/>
+          <include name="verifyCreateNewAccount"/>
           <include name="verifyAddIncentiveToAccount"/>
           <include name="closeDriver"/>
         </methods>

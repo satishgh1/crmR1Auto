@@ -31,16 +31,106 @@ div.shootout {padding:2em;border:3px #4854A8 solid}
 <body>
 <table cellspacing="0" cellpadding="0" class="result">
 <tr><th>Test</th><th class="numi">Methods<br/>Passed</th><th class="numi">Scenarios<br/>Passed</th><th class="numi"># skipped</th><th class="numi"># failed</th><th class="numi">Total<br/>Time</th><th class="numi">Included<br/>Groups</th><th class="numi">Excluded<br/>Groups</th></tr>
-<tr><td style="text-align:left;padding-right:2em">Test</td><td class="numi">2</td><td class="numi">2</td><td class="numi">0</td><td class="numi">0</td><td class="numi">212.7 seconds</td><td class="numi"></td><td class="numi"></td></tr>
+<tr><td style="text-align:left;padding-right:2em">Test</td><td class="numi">5</td><td class="numi">5</td><td class="numi">0</td><td class="numi_attn">3</td><td class="numi">415.4 seconds</td><td class="numi"></td><td class="numi"></td></tr>
 </table>
 <table cellspacing="0" cellpadding="0" class="passed" id="summary">
 <tr><th>Class</th><th>Method</th><th># of<br/>Scenarios</th><th>Start</th><th>Time<br/>(ms)</th></tr>
+<tr><th colspan="4">Test &#8212; failed</th></tr>
+<tr class="failedodd"><td rowspan="3">crmframework.crmAutomation.AccountPageTest</td><td><a href="#m1"><b>verifyCreateNewAccount</b>  </a></td><td class="numi">1</td><td>1610522867558</td><td class="numi">29598</td></tr><tr class="failedodd"><td><a href="#m2"><b>verifyAddIncentiveToAccount</b>  </a></td><td class="numi">1</td><td>1610522931195</td><td class="numi">83679</td></tr><tr class="failedodd"><td><a href="#m3"><b>verifySearchAccount</b>  </a></td><td class="numi">1</td><td>1610523066312</td><td class="numi">41931</td></tr>
 <tr><th colspan="4">Test &#8212; passed</th></tr>
-<tr class="passedodd"><td rowspan="2">crmframework.crmAutomation.AccountPageTest</td><td><a href="#m1"><b>verifyAddIncentiveToAccount</b>  </a></td><td class="numi">1</td><td>1610458315198</td><td class="numi">96961</td></tr><tr class="passedodd"><td><a href="#m2"><b>verifyCrmHomePage</b>  </a></td><td class="numi">1</td><td>1610458206709</td><td class="numi">108487</td></tr>
+<tr class="passedodd"><td rowspan="5">crmframework.crmAutomation.AccountPageTest</td><td><a href="#m4"><b>verifyCrmHomePage</b>  </a></td><td class="numi">1</td><td>1610522752704</td><td class="numi">114808</td></tr><tr class="passedodd"><td><a href="#m5"><b>verifyAddTimelineToAccount</b>  </a></td><td class="numi">1</td><td>1610522897243</td><td class="numi">33949</td></tr><tr class="passedodd"><td><a href="#m6"><b>verifyAddIncentiveDetailsToAccount</b>  </a></td><td class="numi">1</td><td>1610523014881</td><td class="numi">31528</td></tr><tr class="passedodd"><td><a href="#m7"><b>verifyRelatedTabOnAccount</b>  </a></td><td class="numi">1</td><td>1610523046420</td><td class="numi">19868</td></tr><tr class="passedodd"><td><a href="#m8"><b>verifyDeactivateAccount</b>  </a></td><td class="numi">1</td><td>1610523108408</td><td class="numi">45641</td></tr>
 </table>
 <h1>Test</h1>
 <h2 id="m1">crmframework.crmAutomation.AccountPageTest:verifyAddIncentiveToAccount</h2>
+<div style="padding-left:3em">
+<p>no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[@title = &apos;Sat Test1&apos;]&quot;}
+  (Session info: chrome=87.0.4280.88)
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
+System info: host: &apos;SATISHG-W10&apos;, ip: &apos;172.27.182.57&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_271&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}), userDataDir=C:\Users\satishg\AppData\Local\Temp\scoped_dir32732_230852724}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:50365}, acceptInsecureCerts=false, browserVersion=87.0.4280.88, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:virtualAuthenticators=true}]
+Session ID: 6a5ccfb7d5081140fa9ab346ac413a03
+*** Element info: {Using=xpath, value=//div[@title = &apos;Sat Test1&apos;]}</p>
+sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+<br/>at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+<br/>at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+<br/>at java.lang.reflect.Constructor.newInstance(Unknown Source)
+<br/>at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:150)
+<br/>at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:115)
+<br/>at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:45)
+<br/>at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
+<br/>at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:637)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:410)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:509)
+<br/>at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:402)
+<br/>at pageObjects.CRMIncentiveTab.conname(CRMIncentiveTab.java:140)
+<br/>at crmframework.crmAutomation.AccountPageTest.verifyAddIncentiveToAccount(AccountPageTest.java:260)
+<br/>25 lines not shown
+</div>
 <p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m2">crmframework.crmAutomation.AccountPageTest:verifyCrmHomePage</h2>
+<h2 id="m2">crmframework.crmAutomation.AccountPageTest:verifySearchAccount</h2>
+<div style="padding-left:3em">
+<p>no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//a[contains(text(),&apos;null&apos;)]&quot;}
+  (Session info: chrome=87.0.4280.88)
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
+System info: host: &apos;SATISHG-W10&apos;, ip: &apos;172.27.182.57&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_271&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}), userDataDir=C:\Users\satishg\AppData\Local\Temp\scoped_dir32732_230852724}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:50365}, acceptInsecureCerts=false, browserVersion=87.0.4280.88, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:virtualAuthenticators=true}]
+Session ID: 6a5ccfb7d5081140fa9ab346ac413a03
+*** Element info: {Using=xpath, value=//a[contains(text(),&apos;null&apos;)]}</p>
+sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+<br/>at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+<br/>at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+<br/>at java.lang.reflect.Constructor.newInstance(Unknown Source)
+<br/>at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:150)
+<br/>at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:115)
+<br/>at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:45)
+<br/>at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
+<br/>at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:637)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:410)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:509)
+<br/>at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:402)
+<br/>at crmframework.crmAutomation.AccountPageTest.verifySearchAccount(AccountPageTest.java:431)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m3">crmframework.crmAutomation.AccountPageTest:verifyCreateNewAccount</h2>
+<div style="padding-left:3em">
+<p>Expected condition failed: waiting for visibility of element located by By.xpath: //h1[@title=&apos;New Account&apos;] (tried for 20 second(s) with 500 MILLISECONDS interval)</p>
+org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:80)
+<br/>at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:232)
+<br/>at crmframework.crmAutomation.AccountPageTest.verifyCreateNewAccount(AccountPageTest.java:90)
+<br/>25 lines not shown
+<p>Caused by Cannot locate an element using By.xpath: //h1[@title=&apos;New Account&apos;]
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
+System info: host: &apos;SATISHG-W10&apos;, ip: &apos;172.27.182.57&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_271&apos;
+Driver info: driver.version: unknown</p>
+org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:883)
+<br/>at java.util.Optional.orElseThrow(Unknown Source)
+<br/>at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:882)
+<br/>at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)
+<br/>at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:206)
+<br/>at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:202)
+<br/>at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:209)
+<br/>at crmframework.crmAutomation.AccountPageTest.verifyCreateNewAccount(AccountPageTest.java:90)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m4">crmframework.crmAutomation.AccountPageTest:verifyAddTimelineToAccount</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m5">crmframework.crmAutomation.AccountPageTest:verifyDeactivateAccount</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m6">crmframework.crmAutomation.AccountPageTest:verifyRelatedTabOnAccount</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m7">crmframework.crmAutomation.AccountPageTest:verifyCrmHomePage</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m8">crmframework.crmAutomation.AccountPageTest:verifyAddIncentiveDetailsToAccount</h2>
 <p class="totop"><a href="#summary">back to summary</a></p>
 </body></html>
