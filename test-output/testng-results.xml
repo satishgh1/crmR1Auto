@@ -1,161 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="2" total="8" passed="6">
+<testng-results skipped="0" failed="0" total="8" passed="8">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="356574" started-at="2021-01-13T14:08:59Z" finished-at="2021-01-13T14:14:55Z">
+  <suite name="Suite" duration-ms="376622" started-at="2021-01-14T09:25:42Z" finished-at="2021-01-14T09:31:58Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="356574" started-at="2021-01-13T14:08:59Z" finished-at="2021-01-13T14:14:55Z">
+    <test name="Test" duration-ms="376622" started-at="2021-01-14T09:25:42Z" finished-at="2021-01-14T09:31:58Z">
       <class name="crmframework.crmAutomation.AccountPageTest">
-        <test-method status="PASS" signature="initialize()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="initialize" is-config="true" duration-ms="6757" started-at="2021-01-13T19:38:59Z" finished-at="2021-01-13T19:39:05Z">
+        <test-method status="PASS" signature="initialize()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="initialize" is-config="true" duration-ms="6893" started-at="2021-01-14T14:55:42Z" finished-at="2021-01-14T14:55:49Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initialize -->
-        <test-method status="PASS" signature="verifyCrmHomePage()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifyCrmHomePage" duration-ms="109848" started-at="2021-01-13T19:39:05Z" finished-at="2021-01-13T19:40:55Z">
+        <test-method status="PASS" signature="verifyCrmHomePage()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifyCrmHomePage" duration-ms="107271" started-at="2021-01-14T14:55:49Z" finished-at="2021-01-14T14:57:36Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyCrmHomePage -->
-        <test-method status="FAIL" signature="verifyCreateNewAccount()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifyCreateNewAccount" duration-ms="41403" started-at="2021-01-13T19:40:55Z" finished-at="2021-01-13T19:41:37Z">
-          <exception class="org.openqa.selenium.NoSuchElementException">
-            <message>
-              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//body/div[@id='_dropdown']/div[3]"}
-  (Session info: chrome=87.0.4280.88)
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
-System info: host: 'SATISHG-W10', ip: '172.27.182.57', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_271'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}), userDataDir=C:\Users\satishg\AppData\Local\Temp\scoped_dir1552_510992959}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:60441}, acceptInsecureCerts=false, browserVersion=87.0.4280.88, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:virtualAuthenticators=true}]
-Session ID: cbca73fffb9b63ddb6879f9760996cfb
-*** Element info: {Using=xpath, value=//body/div[@id='_dropdown']/div[3]}]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//body/div[@id='_dropdown']/div[3]"}
-  (Session info: chrome=87.0.4280.88)
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
-System info: host: 'SATISHG-W10', ip: '172.27.182.57', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_271'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}), userDataDir=C:\Users\satishg\AppData\Local\Temp\scoped_dir1552_510992959}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:60441}, acceptInsecureCerts=false, browserVersion=87.0.4280.88, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:virtualAuthenticators=true}]
-Session ID: cbca73fffb9b63ddb6879f9760996cfb
-*** Element info: {Using=xpath, value=//body/div[@id='_dropdown']/div[3]}
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:150)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:115)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:45)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:637)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:410)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:509)
-	at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:402)
-	at pageObjects.CRMAccountsPage.getCountryName(CRMAccountsPage.java:121)
-	at crmframework.crmAutomation.AccountPageTest.verifyCreateNewAccount(AccountPageTest.java:134)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
-	at org.testng.TestRunner.privateRun(TestRunner.java:767)
-	at org.testng.TestRunner.run(TestRunner.java:617)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1198)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1123)
-	at org.testng.TestNG.run(TestNG.java:1031)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+        <test-method status="PASS" signature="verifyCreateNewAccount()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifyCreateNewAccount" duration-ms="60844" started-at="2021-01-14T14:57:36Z" finished-at="2021-01-14T14:58:37Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyCreateNewAccount -->
-        <test-method status="FAIL" signature="verifyAddTimelineToAccount()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifyAddTimelineToAccount" duration-ms="26692" started-at="2021-01-13T19:41:37Z" finished-at="2021-01-13T19:42:03Z">
-          <exception class="org.openqa.selenium.TimeoutException">
-            <message>
-              <![CDATA[Expected condition failed: waiting for element to be clickable: By.xpath: //a[@id='C_link'] (tried for 20 second(s) with 500 MILLISECONDS interval)
-Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
-System info: host: 'SATISHG-W10', ip: '172.27.182.57', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_271'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}), userDataDir=C:\Users\satishg\AppData\Local\Temp\scoped_dir1552_510992959}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:60441}, acceptInsecureCerts=false, browserVersion=87.0.4280.88, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:virtualAuthenticators=true}]
-Session ID: cbca73fffb9b63ddb6879f9760996cfb]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //a[@id='C_link'] (tried for 20 second(s) with 500 MILLISECONDS interval)
-Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
-System info: host: 'SATISHG-W10', ip: '172.27.182.57', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_271'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}), userDataDir=C:\Users\satishg\AppData\Local\Temp\scoped_dir1552_510992959}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:60441}, acceptInsecureCerts=false, browserVersion=87.0.4280.88, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:virtualAuthenticators=true}]
-Session ID: cbca73fffb9b63ddb6879f9760996cfb
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:80)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:232)
-	at pageObjects.CRMAccountsPage.getCLetterFilterLink(CRMAccountsPage.java:217)
-	at crmframework.crmAutomation.AccountPageTest.verifyAddTimelineToAccount(AccountPageTest.java:172)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
-	at org.testng.TestRunner.privateRun(TestRunner.java:767)
-	at org.testng.TestRunner.run(TestRunner.java:617)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1198)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1123)
-	at org.testng.TestNG.run(TestNG.java:1031)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
+        <test-method status="PASS" signature="verifyAddTimelineToAccount()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifyAddTimelineToAccount" duration-ms="29066" started-at="2021-01-14T14:58:37Z" finished-at="2021-01-14T14:59:06Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyAddTimelineToAccount -->
-        <test-method status="PASS" signature="verifyAddIncentiveToAccount()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifyAddIncentiveToAccount" duration-ms="57312" started-at="2021-01-13T19:42:03Z" finished-at="2021-01-13T19:43:01Z">
+        <test-method status="PASS" signature="verifyAddIncentiveToAccount()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifyAddIncentiveToAccount" duration-ms="57601" started-at="2021-01-14T14:59:06Z" finished-at="2021-01-14T15:00:03Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyAddIncentiveToAccount -->
-        <test-method status="PASS" signature="verifyAddIncentiveDetailsToAccount()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifyAddIncentiveDetailsToAccount" duration-ms="32551" started-at="2021-01-13T19:43:01Z" finished-at="2021-01-13T19:43:33Z">
+        <test-method status="PASS" signature="verifyAddIncentiveDetailsToAccount()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifyAddIncentiveDetailsToAccount" duration-ms="31507" started-at="2021-01-14T15:00:03Z" finished-at="2021-01-14T15:00:35Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyAddIncentiveDetailsToAccount -->
-        <test-method status="PASS" signature="verifyRelatedTabOnAccount()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifyRelatedTabOnAccount" duration-ms="19629" started-at="2021-01-13T19:43:33Z" finished-at="2021-01-13T19:43:53Z">
+        <test-method status="PASS" signature="verifyRelatedTabOnAccount()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifyRelatedTabOnAccount" duration-ms="19581" started-at="2021-01-14T15:00:35Z" finished-at="2021-01-14T15:00:54Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyRelatedTabOnAccount -->
-        <test-method status="PASS" signature="verifySearchAccount()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifySearchAccount" duration-ms="11961" started-at="2021-01-13T19:43:53Z" finished-at="2021-01-13T19:44:05Z">
+        <test-method status="PASS" signature="verifySearchAccount()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifySearchAccount" duration-ms="11967" started-at="2021-01-14T15:00:54Z" finished-at="2021-01-14T15:01:06Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifySearchAccount -->
-        <test-method status="PASS" signature="verifyDeactivateAccount()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifyDeactivateAccount" duration-ms="49261" started-at="2021-01-13T19:44:05Z" finished-at="2021-01-13T19:44:54Z">
+        <test-method status="PASS" signature="verifyDeactivateAccount()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifyDeactivateAccount" duration-ms="50874" started-at="2021-01-14T15:01:06Z" finished-at="2021-01-14T15:01:57Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyDeactivateAccount -->
-        <test-method status="PASS" signature="closeDriver()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="closeDriver" is-config="true" duration-ms="1081" started-at="2021-01-13T19:44:54Z" finished-at="2021-01-13T19:44:55Z">
+        <test-method status="PASS" signature="closeDriver()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="closeDriver" is-config="true" duration-ms="920" started-at="2021-01-14T15:01:57Z" finished-at="2021-01-14T15:01:58Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeDriver -->

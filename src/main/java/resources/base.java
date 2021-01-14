@@ -12,6 +12,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 public class base {	
 	
 	// this is base class page where driver is initialized and data.properties mentioned. 
+	// this class holds all the functions that commonly used by other pages.
 	public WebDriver driver;
 	public Properties prop;
 	

@@ -57,7 +57,7 @@ public class AccountPageTest extends base {
 		lp.getdontshowcheckbox().click();
 		lp.getsigninYes().click();
 		//to wait on Published App Landing page
-		Thread.sleep(20000);
+		Thread.sleep(15000);
 		driver.switchTo().frame("AppLandingPage");
 		AppLandingPage alp = new AppLandingPage(driver);
 		//select Demand Driver application on Landing Page
@@ -81,6 +81,7 @@ public class AccountPageTest extends base {
 		new WebDriverWait (driver,30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'New')]")));
 
 		CRMAccountsPage ap = new CRMAccountsPage(driver);
+		Thread.sleep(10000);
 		//Click on 'New' button
 		ap.getAccountNewbtn().click();
 		//Wait till new account page is displayed
@@ -90,7 +91,7 @@ public class AccountPageTest extends base {
 		//Enter Account Name
 		WebElement accountName = driver.findElement(By.xpath("//input[@id='id-276390f9-8bbf-4452-8f24-636b0ccaee2c-1-name8-name.fieldControl-text-box-text']"));
 		accountName.click();
-		accnameText = "Cyb_AccNewX1020";
+		accnameText = "Cyb_POC";
 		accountName.sendKeys(accnameText);
 
 		//Enter Phone no.
@@ -178,12 +179,11 @@ public class AccountPageTest extends base {
 
 		//Click on create a timeline button
 		ap1.getAddTimelineBtn().click();
-
 		ap1.getApptmntActivityOptn().click();
 		Thread.sleep(3000);
 
 		ap1.getTimelineSujecttxbx().click();
-		String subtext = "Cyb_AccNewX1010";
+		String subtext = "Cyb_Appointment2";
 		ap1.getTimelineSujecttxbx().sendKeys(subtext);
 
 		ap1.getTimelineSavenClosebtn().click();
@@ -216,7 +216,7 @@ public class AccountPageTest extends base {
 		Thread.sleep(3000);
 
 		// Search Account Name
-		hp2.getSearchAccountField().sendKeys("Cyb_Acc1017 Test");
+		hp2.getSearchAccountField().sendKeys("Cyb_QATest");
 		hp2.getstartsearch().click();
 		Thread.sleep(10000);
 

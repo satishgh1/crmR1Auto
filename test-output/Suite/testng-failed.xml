@@ -5,10 +5,15 @@
     <classes>
       <class name="crmframework.crmAutomation.AccountPageTest">
         <methods>
+          <include name="verifySearchAccount"/>
           <include name="initialize"/>
           <include name="verifyAddTimelineToAccount"/>
           <include name="verifyCreateNewAccount"/>
+          <include name="verifyAddIncentiveToAccount"/>
+          <include name="verifyDeactivateAccount"/>
           <include name="closeDriver"/>
+          <include name="verifyAddIncentiveDetailsToAccount"/>
+          <include name="verifyRelatedTabOnAccount"/>
         </methods>
       </class> <!-- crmframework.crmAutomation.AccountPageTest -->
     </classes>
