@@ -371,44 +371,45 @@ public class AccountPageTest extends base {
 		//TS8- Add relationship manager to account
 
 		CRMHomePage hp3 = new CRMHomePage(driver);
-		hp3.getAccountTab().click();
-		// Search Account Name
-		hp3.getSearchAccountField().sendKeys("Cyb");
-		hp3.getstartsearch().click();
-		Thread.sleep(10000);
+		CRMAccountsPage ap6 = new CRMAccountsPage(driver);
 
-		// Open Account
-		hp3.getSearchResultAcc().click();
-		Thread.sleep(30000);
+		//Navigate to Accounts under Demand Driver in left menu
+		hp3.getAccountTab().click();
+
+		//Select and open an active account on the Accounts grid view
+		ap6.getCLetterFilterLink().click();
+		Thread.sleep(4000);	
+		ap6.getAccountName().click();
+		ap6.getAccNaviagteBtn().click();
+		Thread.sleep(10000);
 
 		CRMAddMarketingRelationshipOwner amro = new CRMAddMarketingRelationshipOwner(driver);
 		// Click arrow to open marketing relationship window
 		amro.gethdbtn().click();
 
-		// Click Marketing Relationship Owner lookup
-		amro.getmarlookupclick().click();
+		//Click on Marketing Relationship Owner field search icon  to select a user from lookup
+		amro.getmarlookupsearch().click();
 
-		// Select Marketing Relationship Owner in lookup
-		WebElement Owner = amro.getmarlookupselect();
+		//Select a user entity from the Marketing Relationship Owner lookup
+		WebElement marowner = amro.getOwner();
+		String ownertxt =marowner.getText();
+		System.out.println(ownertxt);
+		marowner.click();
+		Thread.sleep(10000);
 
-		if (Owner.getText().contains("Bhavesh")) 
-		{
-			amro.getmarlookupselect().click();
-
-		}
 		// Save selected marketing relationship owner
 		amro.getmarownersave().click();	
 
+		//Scroll up the page till Address field
+		Actions act1 = new Actions(driver);
+		act1.moveToElement(ap6.getAddress()).perform();
+
+		//Verify Marketing Relationship Owner lookup value in Account Information section in the Summary tab
 		WebElement verifyOwner = amro.getmarownerverify();
-		// Verify selected marketing relationship owner
-		if (verifyOwner.getText().contains("Bhavesh"))
-		{
-			System.out.println("Marketing Relationship Owner added successfully");
-		}
-		else
-		{
-			System.out.println("Marketing Relationship Owner not added successfully");
-		}
+		Assert.assertTrue(verifyOwner.getText().contains(ownertxt));
+
+		//Navigate back to Active accounts list
+		ap6.getAccPageBackBtn().click();
 	}
 
 	@Test(priority=8)

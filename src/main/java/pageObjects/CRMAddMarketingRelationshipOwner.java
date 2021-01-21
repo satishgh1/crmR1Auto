@@ -12,20 +12,17 @@ public class CRMAddMarketingRelationshipOwner {
 	public WebDriverWait wait;
 	
 	// Select Marketing Relationship Owner
-	
 	By hdbtn = By.xpath("//button[@data-id = 'header_overflowButton']");
-	By marlookupclick = By.xpath("//input[@data-id = 'header_xxc_marketingrelationshipownerid.fieldControl-LookupResultsDropdown_xxc_marketingrelationshipownerid_textInputBox_with_filter_new']");
 	By marlookupsearch = By.xpath("//span[@data-id='header_xxc_marketingrelationshipownerid.fieldControl-Lookup_xxc_marketingrelationshipownerid_microsoftIcon_searchButton']");
-	By marlookupselect = By.xpath("//div[@data-id = 'header_xxc_marketingrelaionshipownerid.fieldControl-LookupResultsDropdown_xxc_marketingrelationshipownerid_infoContainer']");
 	
 	// Save account after selecting marketing relationship owner
-	
 	By marownersave = By.xpath("//button[@data-id = 'account|NoRelationship|Form|Mscrm.Form.account.Save']");
 	
 	// Verify marketing relationship owner added at Summary tab for account
-	
-	By marownerverify = By.xpath("//div[@data-id = 'xxc_marketingrelationshipownerid.fieldControl-LookupResultsDropdown_xxc_marketingrelationshipownerid_selected_tag_text']");
-	
+	By marownerverify = By.xpath("//div[@data-lp-id='MscrmControls.FieldControls.SimpleLookupControl|xxc_marketingrelationshipownerid.fieldControl|account']");
+
+	By owner = By.xpath("//span[@data-id='header_xxc_marketingrelationshipownerid.fieldControl-fullname0_0_1']");
+
 	public CRMAddMarketingRelationshipOwner (WebDriver driver) {
 		
 		this.driver = driver;
@@ -36,23 +33,9 @@ public class CRMAddMarketingRelationshipOwner {
 		return driver.findElement(hdbtn);
 	}
 	
-	public WebElement getmarlookupclick() {
-		
-		wait = new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(marlookupclick));
-		return driver.findElement(marlookupclick);
-	}
-	
 	public WebElement getmarlookupsearch() {
 		
 		return driver.findElement(marlookupsearch);
-	}
-	
-	public WebElement getmarlookupselect() {
-		
-		wait = new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(marlookupselect));
-		return (WebElement) driver.findElements(marlookupselect);
 	}
 	
 	public WebElement getmarownersave() {
@@ -65,6 +48,11 @@ public class CRMAddMarketingRelationshipOwner {
 	public WebElement getmarownerverify() {
 		
 		return driver.findElement(marownerverify);
+	}
+	
+	public WebElement getOwner() {
+
+		return driver.findElement(owner);
 	}
 
 }
