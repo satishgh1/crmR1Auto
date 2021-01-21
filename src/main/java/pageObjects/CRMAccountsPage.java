@@ -45,6 +45,7 @@ public class CRMAccountsPage {
 	By accdropdownbtn = By.xpath("//span[@class='symbolFont ChevronDownMed-symbol  ']");
 	By inactiveacctsoptn = By.xpath("//*[text()='Inactive Accounts']");
 	By validateInactiveAcc = By.xpath("//div[@data-id='cell-0-2']");
+	By accnaviagtebtn = By.xpath("//button[contains(@title, 'Navigate to') and contains(@class ,'cc-ds-rowbtn cc-gridcell-navigable wj-btn wj-btn-default cc-ds-rowbtn-nav')]");
 	
 	public CRMAccountsPage(WebDriver driver) {
 
@@ -218,7 +219,8 @@ public class CRMAccountsPage {
 		return driver.findElement(cletterfilterlink);
 	}
 
-	
-	
+	public WebElement getAccNaviagteBtn() {
+		return driver.findElement(accnaviagtebtn);
+	}
 	
 }
