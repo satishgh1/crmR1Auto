@@ -1,49 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="8" passed="8">
+<testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="376622" started-at="2021-01-14T09:25:42Z" finished-at="2021-01-14T09:31:58Z">
+  <suite name="Suite" duration-ms="193279" started-at="2021-01-22T14:11:28Z" finished-at="2021-01-22T14:14:41Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="376622" started-at="2021-01-14T09:25:42Z" finished-at="2021-01-14T09:31:58Z">
+    <test name="Test" duration-ms="193279" started-at="2021-01-22T14:11:28Z" finished-at="2021-01-22T14:14:41Z">
       <class name="crmframework.crmAutomation.AccountPageTest">
-        <test-method status="PASS" signature="initialize()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="initialize" is-config="true" duration-ms="6893" started-at="2021-01-14T14:55:42Z" finished-at="2021-01-14T14:55:49Z">
+        <test-method status="PASS" signature="initialize()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@61832929]" name="initialize" is-config="true" duration-ms="7270" started-at="2021-01-22T19:41:28Z" finished-at="2021-01-22T19:41:35Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initialize -->
-        <test-method status="PASS" signature="verifyCrmHomePage()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifyCrmHomePage" duration-ms="107271" started-at="2021-01-14T14:55:49Z" finished-at="2021-01-14T14:57:36Z">
+        <test-method status="PASS" signature="verifyCrmHomePage()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@61832929]" name="verifyCrmHomePage" duration-ms="114791" started-at="2021-01-22T19:41:35Z" finished-at="2021-01-22T19:43:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyCrmHomePage -->
-        <test-method status="PASS" signature="verifyCreateNewAccount()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifyCreateNewAccount" duration-ms="60844" started-at="2021-01-14T14:57:36Z" finished-at="2021-01-14T14:58:37Z">
+        <test-method status="PASS" signature="verifyAddMarketingRelationshipOwnerToAccount()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@61832929]" name="verifyAddMarketingRelationshipOwnerToAccount" duration-ms="70112" started-at="2021-01-22T19:43:30Z" finished-at="2021-01-22T19:44:40Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyCreateNewAccount -->
-        <test-method status="PASS" signature="verifyAddTimelineToAccount()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifyAddTimelineToAccount" duration-ms="29066" started-at="2021-01-14T14:58:37Z" finished-at="2021-01-14T14:59:06Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyAddTimelineToAccount -->
-        <test-method status="PASS" signature="verifyAddIncentiveToAccount()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifyAddIncentiveToAccount" duration-ms="57601" started-at="2021-01-14T14:59:06Z" finished-at="2021-01-14T15:00:03Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyAddIncentiveToAccount -->
-        <test-method status="PASS" signature="verifyAddIncentiveDetailsToAccount()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifyAddIncentiveDetailsToAccount" duration-ms="31507" started-at="2021-01-14T15:00:03Z" finished-at="2021-01-14T15:00:35Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyAddIncentiveDetailsToAccount -->
-        <test-method status="PASS" signature="verifyRelatedTabOnAccount()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifyRelatedTabOnAccount" duration-ms="19581" started-at="2021-01-14T15:00:35Z" finished-at="2021-01-14T15:00:54Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyRelatedTabOnAccount -->
-        <test-method status="PASS" signature="verifySearchAccount()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifySearchAccount" duration-ms="11967" started-at="2021-01-14T15:00:54Z" finished-at="2021-01-14T15:01:06Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifySearchAccount -->
-        <test-method status="PASS" signature="verifyDeactivateAccount()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifyDeactivateAccount" duration-ms="50874" started-at="2021-01-14T15:01:06Z" finished-at="2021-01-14T15:01:57Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyDeactivateAccount -->
-        <test-method status="PASS" signature="closeDriver()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="closeDriver" is-config="true" duration-ms="920" started-at="2021-01-14T15:01:57Z" finished-at="2021-01-14T15:01:58Z">
+        </test-method> <!-- verifyAddMarketingRelationshipOwnerToAccount -->
+        <test-method status="PASS" signature="closeDriver()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@61832929]" name="closeDriver" is-config="true" duration-ms="1051" started-at="2021-01-22T19:44:40Z" finished-at="2021-01-22T19:44:41Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeDriver -->

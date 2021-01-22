@@ -59,6 +59,8 @@ public class CRMAccountsPage {
 	
 	public WebElement getAccountNewbtn()
 	{
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(accountnewbtn));
 		return driver.findElement(accountnewbtn);
 	}
 	
@@ -145,6 +147,8 @@ public class CRMAccountsPage {
 	
 	public WebElement getTimelineSujecttxbx()
 	{
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.elementToBeClickable(timelinesubjecttxtbx));
 		return driver.findElement(timelinesubjecttxtbx);
 	}
 	
@@ -213,7 +217,7 @@ public class CRMAccountsPage {
 	}
 
 	public WebElement getCLetterFilterLink() {
-		// TODO Auto-generated method stub
+		
 		wait = new WebDriverWait (driver,20);
 		wait.until(ExpectedConditions.elementToBeClickable(cletterfilterlink));
 		return driver.findElement(cletterfilterlink);

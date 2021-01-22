@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-<listners>
-	<listner class-name="crmframework.crmAutomation.TestListeners"/>
-</listners>
-  <test thread-count="5" name="Test">
-    <classes>
-      <class name="crmframework.crmAutomation.AccountPageTest"/>
-      	<methods>
-			<exclude name="verifyAddMarketingRelationshipOwnerToAccount"/>
-    	</methods>
-    </classes>
-  </test> <!-- Test -->
+	<listners>
+		<listner class-name="crmframework.crmAutomation.TestListeners" />
+	</listners>
+	<test thread-count="5" name="Test">
+		<classes>
+			<class name="crmframework.crmAutomation.AccountPageTest" />
+			<!-- <methods>
+				<exclude name="verifyCreateNewAccount" />
+				<exclude name="verifyAddIncentiveDetailsToAccount" />
+				<exclude name="verifyAddIncentiveToAccount" />
+				<exclude name="verifyDeactivateAccount" />
+				<exclude name="verifyRelatedTabOnAccount" />
+				<exclude name="verifySearchAccount" />
+				<exclude name="verifyAddTimelineToAccount" />
+			</methods> -->
+		</classes>
+	</test> <!-- Test -->
 </suite> <!-- Suite -->

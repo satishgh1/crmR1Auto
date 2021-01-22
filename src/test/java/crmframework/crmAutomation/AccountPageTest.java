@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
@@ -23,11 +22,19 @@ import pageObjects.CRMLandingPage;
 import pageObjects.CRMLoginPage;
 import resources.base;
 
- @Listeners({TestListeners.class})
+@Listeners({TestListeners.class})
 public class AccountPageTest extends base {
 
 	public WebDriverWait wait;
 	public String accnameText;
+	CRMLandingPage lap;
+	CRMLoginPage lp;
+	AppLandingPage alp;
+	CRMHomePage hp;
+	CRMAccountsPage ap;
+	CRMIncentiveTab inc;
+	CRMAddMarketingRelationshipOwner amro;
+	Actions act;
 
 	@BeforeTest
 	public void initialize() throws IOException
@@ -43,11 +50,11 @@ public class AccountPageTest extends base {
 
 		driver.get(prop.getProperty("url")); //CRM App
 		driver.manage().window().maximize();
-		CRMLandingPage lap = new CRMLandingPage(driver);
+		lap = new CRMLandingPage(driver);
 		lap.getLogin().sendKeys(prop.getProperty("username"));
 		lap.getnext().click();
 
-		CRMLoginPage lp= new CRMLoginPage(driver);
+		lp= new CRMLoginPage(driver);
 		lp.getpwd().click();
 		lp.getpwd().sendKeys(prop.getProperty("password"));
 		lp.getsignin().click();
@@ -59,12 +66,12 @@ public class AccountPageTest extends base {
 		//to wait on Published App Landing page
 		Thread.sleep(15000);
 		driver.switchTo().frame("AppLandingPage");
-		AppLandingPage alp = new AppLandingPage(driver);
+		alp = new AppLandingPage(driver);
 		//select Demand Driver application on Landing Page
 		alp.getddm().click();
 
-		CRMHomePage hp1 = new CRMHomePage(driver);
-		hp1.getHometitle().isDisplayed();
+		hp = new CRMHomePage(driver);
+		hp.getHometitle().isDisplayed();
 		System.out.println("Login to CRM successfully");
 	}
 
@@ -74,18 +81,19 @@ public class AccountPageTest extends base {
 		//The purpose of this test case to verify:-
 		//TS2- Create New Account
 
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS) ;
 		//Select Accounts menu from left navigation bar
-		CRMHomePage hp = new CRMHomePage(driver);
+		hp = new CRMHomePage(driver);
 		hp.getAccountTab().click();
 		//Wait till Active Accounts page is displayed
-		new WebDriverWait (driver,30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'New')]")));
+		//new WebDriverWait (driver,30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'New')]")));
 
-		CRMAccountsPage ap = new CRMAccountsPage(driver);
-		Thread.sleep(10000);
+		ap = new CRMAccountsPage(driver);
+		//Thread.sleep(10000);
 		//Click on 'New' button
 		ap.getAccountNewbtn().click();
 		//Wait till new account page is displayed
-		new WebDriverWait (driver,20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[@title='New Account']")));
+		//new WebDriverWait (driver,20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[@title='New Account']")));
 
 		//Fill all the mandatory fields to create new account
 		//Enter Account Name
@@ -97,11 +105,11 @@ public class AccountPageTest extends base {
 		//Enter Phone no.
 		ap.getPhone().click();
 		ap.getPhone().sendKeys(prop.getProperty("phone"));
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 
 		//Scroll up the page till Address field
-		Actions action = new Actions(driver);
-		action.moveToElement(ap.getAddress()).perform();
+		act = new Actions(driver);
+		act.moveToElement(ap.getAddress()).perform();
 
 		//Select account type
 		ap.getAccTypetxtbx().click();
@@ -110,8 +118,8 @@ public class AccountPageTest extends base {
 		ap.getAddress().click();
 
 		//Scroll down on the page
-		action.keyDown(Keys.CONTROL).sendKeys(Keys.DOWN).perform();
-		action.keyDown(Keys.CONTROL).sendKeys(Keys.DOWN).release().perform();
+		act.keyDown(Keys.CONTROL).sendKeys(Keys.DOWN).perform();
+		act.keyDown(Keys.CONTROL).sendKeys(Keys.DOWN).release().perform();
 
 		Thread.sleep(5000);
 		//Enter Street1 address
@@ -137,7 +145,7 @@ public class AccountPageTest extends base {
 		//Click on Save and Close button
 		ap.getAccSaveCloseBtn().click();
 		//Wait till Active Accounts page is displayed
-		new WebDriverWait (driver,20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Active Accounts']")));
+		//new WebDriverWait (driver,20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Active Accounts']")));
 
 		//Verify the newly created account
 		hp.getSearchAccountField().click();
@@ -145,12 +153,12 @@ public class AccountPageTest extends base {
 		hp.getstartsearch().click();
 		Thread.sleep(10000);
 		WebElement validateAccName = driver.findElement(By.xpath("//a[contains(text(),'"+accnameText+"')]"));
-		if (validateAccName.isDisplayed()) {
-			System.out.println("New Account is created successfully");
-		}
-		else {
-			System.out.println("Failed to create a new account");
-		}
+		System.out.println(validateAccName.getText());
+		Assert.assertTrue(validateAccName.isDisplayed());
+		System.out.println("New Account is created successfully");
+		//		else {
+		//			System.out.println("Failed to create a new account");
+		//		}
 		//Clear the search term to navigate to active accounts page
 		hp.getClearSearch().click();
 	}
@@ -161,45 +169,37 @@ public class AccountPageTest extends base {
 		//The purpose of this test case to verify:-
 		//TS7- Select any account and add Timeline
 
-		CRMHomePage hp10 = new CRMHomePage(driver);
-		hp10.getAccountTab().click();
-		//Wait till Active Accounts page is displayed
-		new WebDriverWait (driver,20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'New')]")));
-
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+		hp = new CRMHomePage(driver);
+		hp.getAccountTab().click();
 
-		CRMAccountsPage ap1 = new CRMAccountsPage(driver);
+		ap = new CRMAccountsPage(driver);
 		//Click on 'A' link to sort accounts starts with 'A'
-		ap1.getCLetterFilterLink().click();
-		Thread.sleep(4000);	
+		ap.getCLetterFilterLink().click();	
 
 		//Select the account name in list
-		ap1.getAccountName().click();
-		Thread.sleep(5000);
+		ap.getAccountName().click();
+		ap.getAccNaviagteBtn().click();
 
 		//Click on create a timeline button
-		ap1.getAddTimelineBtn().click();
-		ap1.getApptmntActivityOptn().click();
-		Thread.sleep(3000);
+		ap.getAddTimelineBtn().click();
+		ap.getApptmntActivityOptn().click();
 
-		ap1.getTimelineSujecttxbx().click();
-		String subtext = "Cyb_Appointment2";
-		ap1.getTimelineSujecttxbx().sendKeys(subtext);
+		ap.getTimelineSujecttxbx().click();
+		String subtext = "Cyb_ApptJan";
+		ap.getTimelineSujecttxbx().sendKeys(subtext);
 
-		ap1.getTimelineSavenClosebtn().click();
-		Thread.sleep(5000);
+		ap.getTimelineSavenClosebtn().click();
 
 		//Verify that added Timeline is reflected correctly
 		WebElement timeline = driver.findElement(By.xpath("//*[text()='"+subtext+"']"));
 		Assert.assertEquals(timeline.getText(), subtext);
 
 		//Verify that expected Success message displayed
-		Thread.sleep(3000);
-		Assert.assertEquals("Your changes were saved.", ap1.getSuccessMsg().getText());
+		Assert.assertEquals("Your changes were saved.", ap.getSuccessMsg().getText());
 
 		//Navigate back to Active accounts list
-		ap1.getAccPageBackBtn().click();
-		Thread.sleep(3000);	
+		ap.getAccPageBackBtn().click();
 	}
 
 	@Test(priority=4)
@@ -208,22 +208,24 @@ public class AccountPageTest extends base {
 		//The purpose of this test case to verify:-
 		//TS4-Select any existing Account and add Incentive
 
-		CRMHomePage hp2 = new CRMHomePage(driver);
-		hp2.getAccountTab().click();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+		hp = new CRMHomePage(driver);
+		hp.getAccountTab().click();
 
-		CRMAccountsPage ap4 = new CRMAccountsPage(driver);
-		ap4.getAllFilterLink().click();
-		Thread.sleep(3000);
+		ap = new CRMAccountsPage(driver);
+		ap.getAllFilterLink().click();
+		//Thread.sleep(3000);
 
 		// Search Account Name
-		hp2.getSearchAccountField().sendKeys("Cyb_QATest");
-		hp2.getstartsearch().click();
-		Thread.sleep(10000);
+		hp.getSearchAccountField().sendKeys("Cyb_QATest");
+		hp.getstartsearch().click();
+		//Thread.sleep(10000);
 
-		CRMIncentiveTab inc = new CRMIncentiveTab(driver);
+		inc = new CRMIncentiveTab(driver);
 		// Open Account
 		inc.accname().click();
-		Thread.sleep(10000);
+		ap.getAccNaviagteBtn().click();
+		//Thread.sleep(10000);
 
 		// Click Incentives tab at existing account
 		inc.getinctab().click();
@@ -264,11 +266,11 @@ public class AccountPageTest extends base {
 		}
 
 		//Navigate back to Active accounts list
-		ap4.getAccPageBackBtn().click();
-		Thread.sleep(3000);
+		ap.getAccPageBackBtn().click();
+		//Thread.sleep(3000);
 
 		//Clear the search term
-		hp2.getClearSearch().click();
+		hp.getClearSearch().click();
 	}
 
 	@Test(priority=5)
@@ -278,44 +280,45 @@ public class AccountPageTest extends base {
 		//TS5- Select any existing Account and add Incentive Details
 
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
-		CRMHomePage hp11 = new CRMHomePage(driver);
-		hp11.getAccountTab().click();
+		hp = new CRMHomePage(driver);
+		hp.getAccountTab().click();
 
-		CRMAccountsPage ap2 = new CRMAccountsPage(driver);
+		ap = new CRMAccountsPage(driver);
 		//Click on 'A' link to sort accounts starts with 'A'
-		ap2.getCLetterFilterLink().click();
-		Thread.sleep(4000);	
+		ap.getCLetterFilterLink().click();
+		//Thread.sleep(4000);	
 
 		//Select the account name in list
-		ap2.getAccountName().click();
+		ap.getAccountName().click();
+		ap.getAccNaviagteBtn().click();
 
-		CRMIncentiveTab inc1 = new CRMIncentiveTab(driver);
+		inc = new CRMIncentiveTab(driver);
 		//Select 'Incentives' tab
-		inc1.getinctab().click();
+		inc.getinctab().click();
 
 		//Click on 'New Incentive Details' button
-		inc1.getIncDetaills().click();
+		inc.getIncDetaills().click();
 
 		//Enter the data in Incentive field 
-		inc1.getInctxtbx().click();
-		inc1.getInctxtbx().sendKeys(Keys.ENTER); 
+		inc.getInctxtbx().click();
+		inc.getInctxtbx().sendKeys(Keys.ENTER); 
 
-		inc1.getIncChangeView().click();
-		inc1.getIncActiveIncs().click();
-		Thread.sleep(2000);
-		inc1.getIncName().click();
+		inc.getIncChangeView().click();
+		inc.getIncActiveIncs().click();
+		//Thread.sleep(2000);
+		inc.getIncName().click();
 
 		//Enter the data in Incentive Category field
-		inc1.getIncCattxtbx().click();
-		inc1.getIncCattxtbx().sendKeys(prop.getProperty("incentivecategory"));
-		inc1.getIncCatSearch().click();
-		String IncCatagtitle = inc1.getIncCatName().getText();
-		inc1.getIncCatName().click();
-		inc1.getIncDetailsSavenClose().click();
-		Thread.sleep(5000);
+		inc.getIncCattxtbx().click();
+		inc.getIncCattxtbx().sendKeys(prop.getProperty("incentivecategory"));
+		inc.getIncCatSearch().click();
+		String IncCatagtitle = inc.getIncCatName().getText();
+		inc.getIncCatName().click();
+		inc.getIncDetailsSavenClose().click();
+		//Thread.sleep(5000);
 
 		//Verify that added Incentive details are reflected correctly
-		if ((inc1.getValidateIncName().getText()).contains(IncCatagtitle)) {
+		if ((inc.getValidateIncName().getText()).contains(IncCatagtitle)) {
 			System.out.println("Incentive details get added successfully");
 		}
 		else {
@@ -323,14 +326,14 @@ public class AccountPageTest extends base {
 		}
 
 		//Verify that expected Success message displayed
-		Thread.sleep(3000);
-		System.out.println(inc1.getIncdtlsSuccessMsg().getText());
-		Assert.assertEquals("Your changes were saved.", inc1.getIncdtlsSuccessMsg().getText());
+		//Thread.sleep(3000);
+		System.out.println(inc.getIncdtlsSuccessMsg().getText());
+		Assert.assertEquals("Your changes were saved.", inc.getIncdtlsSuccessMsg().getText());
 
-		CRMAccountsPage ap3 = new CRMAccountsPage(driver);
+		ap = new CRMAccountsPage(driver);
 		//Navigate back to Active accounts list
-		ap3.getAccPageBackBtn().click();
-		Thread.sleep(3000);
+		ap.getAccPageBackBtn().click();
+		//Thread.sleep(3000);
 	}
 
 	@Test(priority=6)
@@ -340,28 +343,28 @@ public class AccountPageTest extends base {
 		//Select any existing account and Verify Related Tab Functionality 
 
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+		hp = new CRMHomePage(driver);
+		hp.getAccountTab().click();
 
-		CRMHomePage hp12 = new CRMHomePage(driver);
-		hp12.getAccountTab().click();
-
-		CRMAccountsPage ap1 = new CRMAccountsPage(driver);
+		ap = new CRMAccountsPage(driver);
 		//Click on 'A' link to sort accounts starts with 'A'
-		ap1.getCLetterFilterLink().click();
-		Thread.sleep(4000);	
+		ap.getCLetterFilterLink().click();
+		//Thread.sleep(4000);	
 
 		//Select the account name in list
-		ap1.getAccountName().click();
-		Thread.sleep(5000);
+		ap.getAccountName().click();
+		ap.getAccNaviagteBtn().click();
+		//Thread.sleep(5000);
 		//click on Related Tab and select Activities option from list. 
-		ap1.getRelatedTab().click();
-		ap1.getSelectActivitiesRelated().click();
-		Thread.sleep(5000);
-		Boolean displayActivityTab = ap1.getActivityTab().isDisplayed();
+		ap.getRelatedTab().click();
+		ap.getSelectActivitiesRelated().click();
+		//Thread.sleep(5000);
+		Boolean displayActivityTab = ap.getActivityTab().isDisplayed();
 		System.out.println("Activities Tab Opened successfully:"+displayActivityTab);
 
 		//Navigate back to Active accounts list
-		ap1.getAccPageBackBtn().click();				
-		Thread.sleep(3000);
+		ap.getAccPageBackBtn().click();				
+		//Thread.sleep(3000);
 	}
 
 	@Test(priority=7)
@@ -370,20 +373,19 @@ public class AccountPageTest extends base {
 		//The purpose of this test case to verify:-
 		//TS8- Add relationship manager to account
 
-		CRMHomePage hp3 = new CRMHomePage(driver);
-		CRMAccountsPage ap6 = new CRMAccountsPage(driver);
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS) ;
+		hp = new CRMHomePage(driver);
+		ap = new CRMAccountsPage(driver);
 
 		//Navigate to Accounts under Demand Driver in left menu
-		hp3.getAccountTab().click();
+		hp.getAccountTab().click();
 
 		//Select and open an active account on the Accounts grid view
-		ap6.getCLetterFilterLink().click();
-		Thread.sleep(4000);	
-		ap6.getAccountName().click();
-		ap6.getAccNaviagteBtn().click();
-		Thread.sleep(10000);
+		ap.getCLetterFilterLink().click();
+		ap.getAccountName().click();
+		ap.getAccNaviagteBtn().click();
 
-		CRMAddMarketingRelationshipOwner amro = new CRMAddMarketingRelationshipOwner(driver);
+		amro = new CRMAddMarketingRelationshipOwner(driver);
 		// Click arrow to open marketing relationship window
 		amro.gethdbtn().click();
 
@@ -395,21 +397,20 @@ public class AccountPageTest extends base {
 		String ownertxt =marowner.getText();
 		System.out.println(ownertxt);
 		marowner.click();
-		Thread.sleep(10000);
 
 		// Save selected marketing relationship owner
 		amro.getmarownersave().click();	
 
 		//Scroll up the page till Address field
-		Actions act1 = new Actions(driver);
-		act1.moveToElement(ap6.getAddress()).perform();
+		act = new Actions(driver);
+		act.moveToElement(ap.getAddress()).perform();
 
 		//Verify Marketing Relationship Owner lookup value in Account Information section in the Summary tab
 		WebElement verifyOwner = amro.getmarownerverify();
 		Assert.assertTrue(verifyOwner.getText().contains(ownertxt));
-
+		System.out.println("Marketing Relationship Owner get added successfully");
 		//Navigate back to Active accounts list
-		ap6.getAccPageBackBtn().click();
+		ap.getAccPageBackBtn().click();
 	}
 
 	@Test(priority=8)
@@ -418,21 +419,21 @@ public class AccountPageTest extends base {
 		//The purpose of this test case to verify:-
 		//TS3- Search any existing Account by Account DBA Name
 
-		CRMHomePage hp8 = new CRMHomePage(driver);
-		hp8.getAccountTab().click();
-		//Wait till Active Accounts page is displayed
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
-		hp8.getSearchAccountField().click();
-		hp8.getSearchAccountField().sendKeys(accnameText);
-		hp8.getstartsearch().click();
-		Thread.sleep(10000);
+		hp = new CRMHomePage(driver);
+
+		hp.getAccountTab().click();	
+		hp.getSearchAccountField().click();
+		hp.getSearchAccountField().sendKeys(accnameText);
+		hp.getstartsearch().click();
+		//Thread.sleep(10000);
 		WebElement validateAccName = driver.findElement(By.xpath("//a[contains(text(),'"+accnameText+"')]"));
 		Boolean checkvalidateAccName = validateAccName.isDisplayed();
 
 		Assert.assertTrue(checkvalidateAccName);
 		System.out.println("New Account searched");
 		//Clear the search term to navigate to active accounts page
-		hp8.getClearSearch().click();
+		hp.getClearSearch().click();
 	}
 
 	@Test(priority=9)
@@ -440,47 +441,49 @@ public class AccountPageTest extends base {
 	{
 		//The purpose of this test case to verify:-
 		//TS9- Select any existing Account and deactivate it
-		//WebElement accName = null;
-		CRMHomePage hp20 = new CRMHomePage(driver);
-		hp20.getAccountTab().click();
-		//Wait till Active Accounts page is displayed
+
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
-		hp20.getSearchAccountField().click();
-		hp20.getSearchAccountField().sendKeys(accnameText);
-		hp20.getstartsearch().click();
-		Thread.sleep(10000);
-		CRMAccountsPage ap5 = new CRMAccountsPage(driver);
+		hp = new CRMHomePage(driver);
+		ap = new CRMAccountsPage(driver);
+
+		hp.getAccountTab().click();
+		hp.getSearchAccountField().click();
+		hp.getSearchAccountField().sendKeys(accnameText);
+		hp.getstartsearch().click();
+		//Thread.sleep(10000);
+
 		WebElement validateAccName = driver.findElement(By.xpath("//a[contains(text(),'"+accnameText+"')]"));
 		validateAccName.click();
-		Thread.sleep(10000);
+		ap.getAccNaviagteBtn().click();
+		//Thread.sleep(10000);
 		//Click on Deactivate button
-		ap5.getDeactivateBtn().click();
+		ap.getDeactivateBtn().click();
 
 		//Click on 'Deactivate button of confirmation pop-up
-		ap5.getDeactivateOkBtn().click();
-		Assert.assertTrue(ap5.getActivateBtn().isDisplayed());
+		ap.getDeactivateOkBtn().click();
+		Assert.assertTrue(ap.getActivateBtn().isDisplayed());
 
 		//Navigate back to Active accounts page
-		ap5.getAccPageBackBtn().click();
+		ap.getAccPageBackBtn().click();
 
 		//Click on 'Active Accounts' drop-down view button
-		ap5.getActiveAccDropDownBtn().click();
+		ap.getActiveAccDropDownBtn().click();
 
 		//Select 'Inactive Accounts' option
-		ap5.getInactiveAccOptn().click();
+		ap.getInactiveAccOptn().click();
 
-		Thread.sleep(6000);
+		//Thread.sleep(6000);
 		//Click on 'A' link to sort accounts starts with 'A'
 		try {
-			ap5.getCLetterFilterLink().click();
-			Thread.sleep(3000);
+			ap.getCLetterFilterLink().click();
+			//Thread.sleep(3000);
 
 			//Validate deactivated account
-			hp20.getSearchAccountField().click();
-			hp20.getSearchAccountField().sendKeys(accnameText);
-			hp20.getstartsearch().click();
-			Thread.sleep(10000);
-			Assert.assertTrue(ap5.getValidateInactiveAccName().isDisplayed());
+			hp.getSearchAccountField().click();
+			hp.getSearchAccountField().sendKeys(accnameText);
+			hp.getstartsearch().click();
+			//Thread.sleep(10000);
+			Assert.assertTrue(ap.getValidateInactiveAccName().isDisplayed());
 		}
 		catch (StaleElementReferenceException exe) {
 			System.out.println(exe.getMessage());
@@ -490,7 +493,7 @@ public class AccountPageTest extends base {
 			System.out.println(ex.getMessage());
 		}
 	}
-	
+
 	@AfterTest
 	public void closeDriver()
 	{

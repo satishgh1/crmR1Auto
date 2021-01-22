@@ -35,6 +35,8 @@ public class CRMAddMarketingRelationshipOwner {
 	
 	public WebElement getmarlookupsearch() {
 		
+		wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(marlookupsearch));
 		return driver.findElement(marlookupsearch);
 	}
 	
