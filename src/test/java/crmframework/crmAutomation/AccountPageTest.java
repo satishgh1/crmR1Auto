@@ -20,6 +20,7 @@ import pageObjects.CRMHomePage;
 import pageObjects.CRMIncentiveTab;
 import pageObjects.CRMLandingPage;
 import pageObjects.CRMLoginPage;
+import resources.GenerateData;
 import resources.base;
 
 @Listeners({TestListeners.class})
@@ -27,6 +28,7 @@ public class AccountPageTest extends base {
 
 	public WebDriverWait wait;
 	public String accnameText;
+	public GenerateData genData;
 	CRMLandingPage lap;
 	CRMLoginPage lp;
 	AppLandingPage alp;
@@ -40,6 +42,7 @@ public class AccountPageTest extends base {
 	public void initialize() throws IOException
 	{
 		driver = initializeDriver();
+		genData=new GenerateData();
 	}
 
 	@Test(priority=1)
@@ -51,12 +54,14 @@ public class AccountPageTest extends base {
 		driver.get(prop.getProperty("url")); //CRM App
 		driver.manage().window().maximize();
 		lap = new CRMLandingPage(driver);
-		lap.getLogin().sendKeys(prop.getProperty("username"));
+		//lap.getLogin().sendKeys(prop.getProperty("username"));
+		lap.getLogin().sendKeys(System.getenv("username"));
 		lap.getnext().click();
 
 		lp= new CRMLoginPage(driver);
 		lp.getpwd().click();
-		lp.getpwd().sendKeys(prop.getProperty("password"));
+		lp.getpwd().sendKeys(System.getenv("password"));
+		//lp.getpwd().sendKeys(prop.getProperty("password"));/
 		lp.getsignin().click();
 		//Wait to enter the verification code from Mobile
 		Thread.sleep(30000);
@@ -89,7 +94,7 @@ public class AccountPageTest extends base {
 		//new WebDriverWait (driver,30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'New')]")));
 
 		ap = new CRMAccountsPage(driver);
-		//Thread.sleep(10000);
+		Thread.sleep(10000);
 		//Click on 'New' button
 		ap.getAccountNewbtn().click();
 		//Wait till new account page is displayed
@@ -99,14 +104,22 @@ public class AccountPageTest extends base {
 		//Enter Account Name
 		WebElement accountName = driver.findElement(By.xpath("//input[@id='id-276390f9-8bbf-4452-8f24-636b0ccaee2c-1-name8-name.fieldControl-text-box-text']"));
 		accountName.click();
-		accnameText = "Cyb_POC";
-		accountName.sendKeys(accnameText);
+/*		accnameText = "Cyb_POC";
+		accountName.sendKeys(accnameText);*/
+		
+		//to create random generated account name
+		accountName.sendKeys(genData.generateRandomAlphaNumeric(10));
+		String accnameText= accountName.getAttribute("Value");
+		System.out.println("Createdd Accoubt"+accnameText);
 
-		//Enter Phone no.
-		ap.getPhone().click();
-		ap.getPhone().sendKeys(prop.getProperty("phone"));
+		//Enter Random generated Phone no.
+/*		ap.getPhone().click();
+		ap.getPhone().sendKeys(prop.getProperty("phone"));*/
 		//Thread.sleep(5000);
-
+		
+		ap.getPhone().click();
+		ap.getPhone().sendKeys(genData.generateRandomNumber(10));
+		
 		//Scroll up the page till Address field
 		act = new Actions(driver);
 		act.moveToElement(ap.getAddress()).perform();
@@ -152,9 +165,13 @@ public class AccountPageTest extends base {
 		hp.getSearchAccountField().sendKeys(accnameText);
 		hp.getstartsearch().click();
 		Thread.sleep(10000);
-		WebElement validateAccName = driver.findElement(By.xpath("//a[contains(text(),'"+accnameText+"')]"));
+		String validateAccName = ap.getAccountNameSearchTable().getText();
+		Assert.assertEquals(validateAccName, accnameText);
+		System.out.println("Searched Account"+ validateAccName);
+		
+		/*WebElement validateAccName = driver.findElement(By.xpath("//a[contains(text(),'"+accnameText+"')]"));
 		System.out.println(validateAccName.getText());
-		Assert.assertTrue(validateAccName.isDisplayed());
+		Assert.assertTrue(validateAccName.isDisplayed());*/
 		System.out.println("New Account is created successfully");
 		//		else {
 		//			System.out.println("Failed to create a new account");

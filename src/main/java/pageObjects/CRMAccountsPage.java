@@ -13,6 +13,7 @@ public class CRMAccountsPage {
 	
 	By accountnewbtn = By.xpath("//span[contains(text(),'New')]");
 	By accountNametxtbx = By.xpath("//input[@id='id-276390f9-8bbf-4452-8f24-636b0ccaee2c-1-name8-name.fieldControl-text-box-text']");
+	By accountnamesearchtable= By.xpath("//div[@data-id='cell-0-2']");
 	By phn = By.xpath("//input[@aria-label='Phone']");		
 	By address = By.xpath("//h2[contains(text(),'Address')]");
 	By acctypetxtbx = By.xpath("//input[@id='xxc_typecode_ledit']");
@@ -63,7 +64,10 @@ public class CRMAccountsPage {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(accountnewbtn));
 		return driver.findElement(accountnewbtn);
 	}
-	
+	public WebElement getAccountNameSearchTable()
+	{
+		return driver.findElement(accountnamesearchtable);
+	}
 	public WebElement getPhone()
 	{
 		return driver.findElement(phn);
