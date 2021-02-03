@@ -7,14 +7,16 @@
 	<test thread-count="5" name="Test">
 		<classes>
 			<class name="crmframework.crmAutomation.AccountPageTest" />
-			<!-- <methods>
+			<methods>
+				<exclude name="verifyCreateNewAccount" />
+				<exclude name="verifyAddMarketingRelationshipOwnerToAccount" />
 				<exclude name="verifyAddIncentiveDetailsToAccount" />
 				<exclude name="verifyAddIncentiveToAccount" />
 				<exclude name="verifyDeactivateAccount" />
 				<exclude name="verifyRelatedTabOnAccount" />
 				<exclude name="verifySearchAccount" />
 				<exclude name="verifyAddTimelineToAccount" />
-			</methods> -->
+			</methods>
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

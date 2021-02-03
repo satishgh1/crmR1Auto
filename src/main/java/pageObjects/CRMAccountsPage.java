@@ -1,15 +1,18 @@
 package pageObjects;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CRMAccountsPage {
 
 	public WebDriver driver;
-	public WebDriverWait wait;
+	public FluentWait<WebDriver> wait;
 	
 	By accountnewbtn = By.xpath("//span[contains(text(),'New')]");
 	By accountNametxtbx = By.xpath("//input[@id='id-276390f9-8bbf-4452-8f24-636b0ccaee2c-1-name8-name.fieldControl-text-box-text']");
@@ -18,7 +21,7 @@ public class CRMAccountsPage {
 	By address = By.xpath("//h2[contains(text(),'Address')]");
 	By acctypetxtbx = By.xpath("//input[@id='xxc_typecode_ledit']");
 	By acctypeexpandbtn = By.xpath("//button[@aria-label='Toggle menu']");
-	By acctype = By.xpath("//div[contains(text(),'Buyer')]");
+	By acctypebuyer = By.xpath("//div[contains(text(),'Buyer')]");
 	By street1 = By.xpath("//input[@aria-label='Street 1']");
 	By state = By.xpath("//input[@aria-label='State/Province']");
 	By countrytxtbx = By.xpath("//input[@aria-label='Country']");
@@ -47,6 +50,35 @@ public class CRMAccountsPage {
 	By inactiveacctsoptn = By.xpath("//*[text()='Inactive Accounts']");
 	By validateInactiveAcc = By.xpath("//div[@data-id='cell-0-2']");
 	By accnaviagtebtn = By.xpath("//button[contains(@title, 'Navigate to') and contains(@class ,'cc-ds-rowbtn cc-gridcell-navigable wj-btn wj-btn-default cc-ds-rowbtn-nav')]");
+	By parentacclabel = By.xpath("//label[contains(text(),'Parent Account')]");
+	By parentacctxtbx = By.xpath("//div[@data-lp-id='MscrmControls.FieldControls.SimpleLookupControl|parentaccountid.fieldControl|account']");
+	By parentaccsearchbtn = By.xpath("//button[@aria-label='Search records for Parent Account, Lookup field']");
+	By selectparentacc = By.xpath("//span[@id='id-276390f9-8bbf-4452-8f24-636b0ccaee2c-4-parentaccountid6-parentaccountid.fieldControl-LookupResultsDropdown_parentaccountid_0_resultsLabel_0_0']");
+	By recentrecordslink = By.xpath("//button[contains(text(),'Recent records')]");
+	By accsavebtn = By.xpath("//button[@aria-label='Save']");
+	By activatepopupstatusfield = By.xpath("//select[@aria-label='Status']");
+	By accstatusbuysatcorplevel = By.xpath("//option[contains(text(),'Buys at Corporate Level')]");
+	By activatepopupactivatebtn = By.xpath("//button[@data-id='ok_id']");
+	By accstatusreason = By.xpath("//div[@data-lp-id='MscrmControls.FieldControls.PicklistStatusControl|header_statuscode.fieldControl|account']");
+	By activeaccountslabel = By.xpath("//h1[@aria-label='Active Accounts']");
+	By inactiveaccountslabel = By.xpath("//h1[@aria-label='Inactive Accounts']");
+	By statusreasonbuysatcorplevelinheader = By.xpath("//div[@title='Buys at Corporate Level']");
+	By pageno = By.xpath("//span[@title='Current page']");
+	By accstatusoutofbusiness = By.xpath("//option[contains(text(),'Out of Business')]");
+	By deactivatepopupdeactivatebtn = By.xpath("//button[@data-id='ok_id']");
+	By statusreasonoutofbusinessinheader = By.xpath("//div[@title='Out of Business']");
+	By incaccpagebackbtn = By.xpath("//span[@class='symbolFont BackButton-symbol pa-ah ']");
+	By acctypemedia = By.xpath("//div[contains(text(),'Media')]");
+	By mediasegmentationfieldlabel = By.xpath("//label[contains(text(),'Media Segmentation')]");
+	By mediatypefieldlabel = By.xpath("//label[contains(text(),'Media Type')]");
+	By mediasegmentationdrpdown = By.xpath("//select[@aria-label='Media Segmentation']");
+	By mediasegmentationname = By.xpath("//option[contains(text(),'Las Vegas Local')]");
+	By mediatypedrpdown = By.xpath("//select[@aria-label='Media Type']");
+	By mediatypename = By.xpath("//option[contains(text(),'Print - Magazine')]");
+	By acctypeselectedvaluetxtbx = By.xpath("//div[@data-lp-id='MscrmControls.MultiSelectPicklist.UpdMSPicklistControl|xxc_typecode.fieldControl|account']");
+	By removeacctypemediabtn = By.xpath("//button[@aria-label='Remove Media']");
+	By newaccountheader = By.xpath("//h1[@title='New Account']");
+	By discardchangesbtn = By.xpath("//button[@aria-label='Discard changes']");
 	
 	public CRMAccountsPage(WebDriver driver) {
 
@@ -88,9 +120,9 @@ public class CRMAccountsPage {
 		return driver.findElement(acctypeexpandbtn);
 	}
 	
-	public WebElement getAccType()
+	public WebElement getAccTypeBuyer()
 	{
-		return driver.findElement(acctype);
+		return driver.findElement(acctypebuyer);
 	}
 	
 	public WebElement getStreet1()
@@ -130,12 +162,15 @@ public class CRMAccountsPage {
 	
 	public WebElement getAccSaveCloseBtn()
 	{
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(accsavenclosebtn));
 		return driver.findElement(accsavenclosebtn);
 	}
 	
 	
-	public WebElement getAccountName()
+	public WebElement getAccountName() throws InterruptedException
 	{
+		Thread.sleep(10000);
 		return driver.findElement(accountname);
 	}
 	
@@ -220,15 +255,169 @@ public class CRMAccountsPage {
 		return driver.findElement(validateInactiveAcc);
 	}
 
-	public WebElement getCLetterFilterLink() {
+	public WebElement getCLetterFilterLink() throws InterruptedException {
 		
-		wait = new WebDriverWait (driver,20);
-		wait.until(ExpectedConditions.elementToBeClickable(cletterfilterlink));
+		Thread.sleep(10000);
+//		wait = new WebDriverWait (driver,20);
+//		wait.until(ExpectedConditions.elementToBeClickable(cletterfilterlink));
 		return driver.findElement(cletterfilterlink);
 	}
 
 	public WebElement getAccNaviagteBtn() {
 		return driver.findElement(accnaviagtebtn);
+	}
+	
+	public WebElement getParentAccLabel() {
+		return driver.findElement(parentacclabel);
+	}
+	
+	public WebElement getParentAcctxbx() {
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(parentacctxtbx));
+		return driver.findElement(parentacctxtbx);
+	}
+	
+	public WebElement getParentAccSearchBtn() {
+		return driver.findElement(parentaccsearchbtn);
+	}
+	
+	public WebElement selectParentAccName() {
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(selectparentacc));
+		return driver.findElement(selectparentacc);
+	}
+	
+	public WebElement getRecentRecordsLink() {
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(recentrecordslink));
+		return driver.findElement(recentrecordslink);
+	}
+	
+	public WebElement getAccSaveBtn() {
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.elementToBeClickable(accsavebtn));
+		return driver.findElement(accsavebtn);
+	}
+	
+	public WebElement getActivatePopupStatusField() {
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(activatepopupstatusfield));
+		return driver.findElement(activatepopupstatusfield);
+	}
+
+	public WebElement getAccStatusBuysatCorpLevel() {
+
+		return driver.findElement(accstatusbuysatcorplevel);
+	}
+
+	public WebElement getActivatePopupActivatebtn() {
+
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.elementToBeClickable(activatepopupactivatebtn)).click();
+		return driver.findElement(activatepopupactivatebtn);
+	}
+
+	public WebElement getStatusReasonBuysatCorpLevelInHeader() {
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(statusreasonbuysatcorplevelinheader));
+		return driver.findElement(statusreasonbuysatcorplevelinheader);
+	}
+
+	public WebElement getAccStatusReson() {
+
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(statusreasonbuysatcorplevelinheader));
+		return driver.findElement(accstatusreason);
+	}
+
+	public WebElement getActiveAccountsLabel() {
+
+		return driver.findElement(activeaccountslabel);
+	}
+
+	public WebElement getInactiveAccountsLabel() {
+
+		return driver.findElement(inactiveaccountslabel);
+	}
+	
+	public WebElement getAccStatusOutofBusiness() {
+
+		return driver.findElement(accstatusoutofbusiness);
+	}
+	
+	public WebElement getDeactivatePopupDeactivatebtn() {
+
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.elementToBeClickable(deactivatepopupdeactivatebtn)).click();
+		return driver.findElement(deactivatepopupdeactivatebtn);
+	}
+	
+	public WebElement getAccStatusResonForInactiveAcc() {
+
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(statusreasonoutofbusinessinheader));
+		return driver.findElement(accstatusreason);
+	}
+	
+	public WebElement getInactiveAccPageBackBtn()
+	{
+		return driver.findElement(incaccpagebackbtn);
+	}
+
+	public WebElement getAccTypeMedia()
+	{
+		return driver.findElement(acctypemedia);
+	}
+
+	public List<WebElement> getMediaSegmentationFieldLabel() throws InterruptedException
+	{
+		Thread.sleep(5000);
+		return driver.findElements(mediasegmentationfieldlabel);
+	}
+	
+	public List<WebElement> getMediaTypeFieldLabel()
+	{
+		return driver.findElements(mediatypefieldlabel);
+	}
+	
+	public WebElement getMediaSegmentationDropdown()
+	{
+		return driver.findElement(mediasegmentationdrpdown);
+	}
+	
+	public WebElement getMediaSegmentationName()
+	{
+		return driver.findElement(mediasegmentationname);
+	}
+	
+	public WebElement getMediaTypeDropdown()
+	{
+		return driver.findElement(mediatypedrpdown);
+	}
+	
+	public WebElement getMediaTypeName()
+	{
+		return driver.findElement(mediatypename);
+	}
+	
+	public WebElement getAccTypeSelectedValueTxtbx()
+	{
+		return driver.findElement(acctypeselectedvaluetxtbx);
+	}
+	
+	public WebElement getRemoveAccTypeMediaBtn()
+	{
+		return driver.findElement(removeacctypemediabtn);
+	}
+	
+	public WebElement getNewAccountHeader()
+	{
+		return driver.findElement(newaccountheader);
+	}
+	
+	public WebElement getDiscardChangesBtn()
+	{
+		return driver.findElement(discardchangesbtn);
 	}
 	
 }

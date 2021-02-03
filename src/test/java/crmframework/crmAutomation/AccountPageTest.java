@@ -1,11 +1,13 @@
 package crmframework.crmAutomation;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -29,6 +31,7 @@ public class AccountPageTest extends base {
 	public WebDriverWait wait;
 	public String accnameText;
 	public GenerateData genData;
+	public String buysatCorplvl, outofbusiness;
 	CRMLandingPage lap;
 	CRMLoginPage lp;
 	AppLandingPage alp;
@@ -104,22 +107,22 @@ public class AccountPageTest extends base {
 		//Enter Account Name
 		WebElement accountName = driver.findElement(By.xpath("//input[@id='id-276390f9-8bbf-4452-8f24-636b0ccaee2c-1-name8-name.fieldControl-text-box-text']"));
 		accountName.click();
-/*		accnameText = "Cyb_POC";
+		/*		accnameText = "Cyb_POC";
 		accountName.sendKeys(accnameText);*/
-		
+
 		//to create random generated account name
 		accountName.sendKeys(genData.generateRandomAlphaNumeric(10));
 		String accnameText= accountName.getAttribute("Value");
 		System.out.println("Createdd Accoubt"+accnameText);
 
 		//Enter Random generated Phone no.
-/*		ap.getPhone().click();
+		/*		ap.getPhone().click();
 		ap.getPhone().sendKeys(prop.getProperty("phone"));*/
 		//Thread.sleep(5000);
-		
+
 		ap.getPhone().click();
 		ap.getPhone().sendKeys(genData.generateRandomNumber(10));
-		
+
 		//Scroll up the page till Address field
 		act = new Actions(driver);
 		act.moveToElement(ap.getAddress()).perform();
@@ -127,7 +130,7 @@ public class AccountPageTest extends base {
 		//Select account type
 		ap.getAccTypetxtbx().click();
 		ap.getAcctypeExpandbtn().click();
-		ap.getAccType().click();
+		ap.getAccTypeBuyer().click();
 		ap.getAddress().click();
 
 		//Scroll down on the page
@@ -168,7 +171,7 @@ public class AccountPageTest extends base {
 		String validateAccName = ap.getAccountNameSearchTable().getText();
 		Assert.assertEquals(validateAccName, accnameText);
 		System.out.println("Searched Account"+ validateAccName);
-		
+
 		/*WebElement validateAccName = driver.findElement(By.xpath("//a[contains(text(),'"+accnameText+"')]"));
 		System.out.println(validateAccName.getText());
 		Assert.assertTrue(validateAccName.isDisplayed());*/
@@ -489,11 +492,9 @@ public class AccountPageTest extends base {
 		//Select 'Inactive Accounts' option
 		ap.getInactiveAccOptn().click();
 
-		//Thread.sleep(6000);
-		//Click on 'A' link to sort accounts starts with 'A'
+		//Click on 'C' link to sort accounts starts with 'C'
 		try {
 			ap.getCLetterFilterLink().click();
-			//Thread.sleep(3000);
 
 			//Validate deactivated account
 			hp.getSearchAccountField().click();
@@ -509,6 +510,239 @@ public class AccountPageTest extends base {
 		{
 			System.out.println(ex.getMessage());
 		}
+	}
+
+	@Test(priority=10)
+	public void verifyParentAccount() throws InterruptedException
+	{
+		//The purpose of this test case to verify:-
+		//CRM-T43- A new field 'Parent Account ' is available on the Account Form under 
+		//ACCOUNT INFORMATION section and data values available in it.
+
+		hp = new CRMHomePage(driver);
+		ap = new CRMAccountsPage(driver);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+
+		//Click on Accounts Tab at left menu.
+		hp.getAccountTab().click();
+
+		//Select and open an active account on the Accounts grid view
+		ap.getCLetterFilterLink().click();
+		ap.getAccountName().click();
+		ap.getAccNaviagteBtn().click();
+
+		//Verify new field 'Parent Account ' is available on the account form
+		Assert.assertTrue(ap.getParentAccLabel().isDisplayed());
+
+		//Click on 'Search' button
+		ap.getParentAccSearchBtn().click();
+
+		//Click on 'Recent Records' link
+		ap.getRecentRecordsLink().click();
+
+		boolean staleElement = true;
+		try {
+			while(staleElement){
+				//Select a parent account from lookup
+				WebElement Parentaccfrmlist = ap.selectParentAccName();
+				String selectedAccName = Parentaccfrmlist.getText();
+				System.out.println("Expected Parent account name: " +selectedAccName);
+				Parentaccfrmlist.click();
+
+				//Verify that selected account is displayed as Parent Account value on account form
+				WebElement Parentaccinform = ap.getParentAcctxbx();
+				System.out.println("Actual Parent account name: " + Parentaccinform.getText());
+				Assert.assertTrue(Parentaccinform.getText().contains(selectedAccName));
+
+				//Click on Save & Close button
+				ap.getAccSaveCloseBtn().click();
+				staleElement = false;
+			}
+		}
+		catch (StaleElementReferenceException exe) {
+			staleElement = false;
+			System.out.println(exe.getMessage());
+		}
+	}
+
+	@Test(priority=11)
+	public void verifyAccountStatusToActivateAccount() throws InterruptedException
+	{
+		//The purpose of this test case to verify:-
+		//CRM-T39- Account Status and Account Status Reason functionality for account activation
+
+		hp = new CRMHomePage(driver);
+		ap = new CRMAccountsPage(driver);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+
+		//Click on Accounts Tab at left menu.
+		hp.getAccountTab().click();
+
+		//Click on the select a view drop-down available below header
+		ap.getActiveAccDropDownBtn().click();
+
+		//Select 'Inactive Accounts' option
+		ap.getInactiveAccOptn().click();
+
+		boolean staleElement = true;
+		try {
+			while(staleElement){
+				//Open any Inactive account from list
+				ap.getCLetterFilterLink().click();
+				ap.getAccountName().click();
+				ap.getAccNaviagteBtn().click();
+
+				//Click 'Activate' button available in the top panel
+				ap.getActivateBtn().click();
+
+				//Select 'Account Status: Buys at Corporate Level' in the confirm Account Activation pop-up
+				ap.getActivatePopupStatusField().click();
+				WebElement buysatcorplevelstatus = ap.getAccStatusBuysatCorpLevel();
+				buysatCorplvl = ap.getAccStatusBuysatCorpLevel().getText();
+				System.out.println("Account Status: " + buysatCorplvl);
+				buysatcorplevelstatus.click();
+
+				//Click on 'Activate' button
+				ap.getActivatePopupActivatebtn();
+				staleElement = false;
+			}
+		}
+		catch (StaleElementReferenceException exe) {
+			staleElement = false;
+			System.out.println(exe.getMessage());
+		}
+		catch (WebDriverException ex) {
+			System.out.println(ex.getMessage());
+		}
+		
+		//Verify that Account is activated and selected account Status Reason is displayed at the right side of the header.
+		WebElement accstatusreasoninheader = ap.getAccStatusReson();
+		System.out.println("Account Status Reason: " + (accstatusreasoninheader.getText()));
+		Assert.assertTrue(accstatusreasoninheader.getText().contains(buysatCorplvl));
+
+		//Verify that Top ribbon 'Activate' option changes to 'Deactivate'
+		Assert.assertTrue(ap.getDeactivateBtn().isDisplayed());
+
+		//Click on Save & Close button
+		ap.getAccSaveCloseBtn().click();
+	}
+	
+	@Test(priority=12)
+	public void verifyAccountStatusToDeactivateAccount() throws InterruptedException
+	{
+		//The purpose of this test case to verify:-
+		//CRM-T40- Account Status and Account Status Reason functionality for account deactivation
+
+		hp = new CRMHomePage(driver);
+		ap = new CRMAccountsPage(driver);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+
+		//Click on Accounts Tab at left menu.
+		hp.getAccountTab().click();
+
+		boolean staleElement = true;
+		try {
+			while(staleElement){
+				//Open any Active account from list
+				ap.getCLetterFilterLink().click();
+				ap.getAccountName().click();
+				ap.getAccNaviagteBtn().click();
+
+				//Click 'Deactivate' button available in the top panel
+				ap.getDeactivateBtn().click();
+
+				//Select 'Account Status: Out of Business' in the confirm Account Deactivation pop-up
+				ap.getActivatePopupStatusField().click();
+				WebElement outofbusinessstatus = ap.getAccStatusOutofBusiness();
+				outofbusiness = ap.getAccStatusOutofBusiness().getText();
+				System.out.println("Account Status: " + outofbusiness);
+				outofbusinessstatus.click();
+
+				//Click on 'Deactivate' button
+				ap.getDeactivatePopupDeactivatebtn();
+				staleElement = false;
+			}
+		}
+		catch (StaleElementReferenceException exe) {
+			staleElement = false;
+			System.out.println(exe.getMessage());
+		}
+		catch (WebDriverException ex) {
+			System.out.println(ex.getMessage());
+		}
+		
+		//Verify that Account is deactivated and selected account status reason is displayed at the right side of the header.
+		WebElement statusreasonforinactiveaccinheader = ap.getAccStatusResonForInactiveAcc();
+		System.out.println("Account Status Reason: " + (statusreasonforinactiveaccinheader.getText()));
+		Assert.assertTrue(statusreasonforinactiveaccinheader.getText().contains(outofbusiness));
+
+		//Verify that Top ribbon 'Deactivate' option changes to 'Activate'
+		Assert.assertTrue(ap.getActivateBtn().isDisplayed());
+
+		//Navigate back to Active accounts list
+		ap.getInactiveAccPageBackBtn().click();
+	}
+
+	@Test(priority=13)
+	public void verifyMediaSegmentationField() throws InterruptedException
+	{
+		//The purpose of this test case to verify:-
+		//CRM-T29- Media Segmentation drop-down field is visible on Account form only if Type equal to 'Media' is selected
+
+		hp = new CRMHomePage(driver);
+		ap = new CRMAccountsPage(driver);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+
+		//Click on Accounts Tab at left menu.
+		hp.getAccountTab().click();
+
+		//Click on 'New' button to open new Account Form
+		ap.getAccountNewbtn().click();
+
+		//Scroll up the page till Address field
+		act = new Actions(driver);
+		act.moveToElement(ap.getAddress()).perform();
+
+		//Select account Type as 'Media' in Account information section
+		ap.getAccTypetxtbx().click();
+		ap.getAcctypeExpandbtn().click();
+		ap.getAccTypeMedia().click();
+		ap.getAddress().click();
+
+		//Verify that 'Media Segmentation' and 'Media Type' fields are displayed
+		List<WebElement> mediasegmentnlabel = ap.getMediaSegmentationFieldLabel();
+		Assert.assertTrue(mediasegmentnlabel.size()!= 0);
+
+		List<WebElement> mediatypelabel = ap.getMediaTypeFieldLabel();
+		Assert.assertTrue(mediatypelabel.size()!= 0);
+
+		//Click on 'Media Segmentation' drop down
+		ap.getMediaSegmentationDropdown().click();
+		//Select a value in Media Segmentation (Las Vegas Local)
+		ap.getMediaSegmentationName().click();
+
+		//Click on Media Type drop down
+		ap.getMediaTypeDropdown().click();
+		//Select any value in Media Type field
+		ap.getMediaTypeName().click();
+
+		//Update the account Type as 'Buyer' 
+		ap.getAccTypeSelectedValueTxtbx().click();
+		ap.getRemoveAccTypeMediaBtn().click();
+		ap.getAcctypeExpandbtn().click();
+		ap.getAccTypeBuyer().click();
+		ap.getNewAccountHeader().click();
+
+		//Verify that Media Segmentation and Media Type fields should be disappeared from the new account form
+		List<WebElement> mediasegmentnlabel1 = ap.getMediaSegmentationFieldLabel();
+		Assert.assertFalse(mediasegmentnlabel1.size()!= 0);
+		
+		List<WebElement> mediatypelabel1 = ap.getMediaTypeFieldLabel();
+		Assert.assertFalse(mediatypelabel1.size()!= 0);
+
+		//Navigate back to Active accounts list
+		ap.getInactiveAccPageBackBtn().click();
+		ap.getDiscardChangesBtn().click();
 	}
 
 	@AfterTest
