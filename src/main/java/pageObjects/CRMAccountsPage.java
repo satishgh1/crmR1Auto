@@ -502,8 +502,7 @@ public class CRMAccountsPage {
 	}
 	public WebElement getDeleteNote()
 	{
-		return driver.findElement(deleteNote);
-		
+		return driver.findElement(deleteNote);	
 	}
 	public WebElement getTimelineDetails()
 	{
