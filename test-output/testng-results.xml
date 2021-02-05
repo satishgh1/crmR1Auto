@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
@@ -20,6 +21,33 @@
           </reporter-output>
         </test-method> <!-- verifyAccountStatusToActivateAccount -->
         <test-method status="PASS" signature="closeDriver()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@61832929]" name="closeDriver" is-config="true" duration-ms="776" started-at="2021-02-03T16:42:35Z" finished-at="2021-02-03T16:42:36Z">
+=======
+<testng-results skipped="0" failed="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="219162" started-at="2021-02-04T18:25:04Z" finished-at="2021-02-04T18:28:43Z">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="219162" started-at="2021-02-04T18:25:04Z" finished-at="2021-02-04T18:28:43Z">
+      <class name="crmframework.crmAutomation.AccountPageTest">
+        <test-method status="PASS" signature="initialize()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="initialize" is-config="true" duration-ms="5028" started-at="2021-02-04T23:55:04Z" finished-at="2021-02-04T23:55:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initialize -->
+        <test-method status="PASS" signature="verifyCrmHomePage()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifyCrmHomePage" duration-ms="108376" started-at="2021-02-04T23:55:09Z" finished-at="2021-02-04T23:56:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyCrmHomePage -->
+        <test-method status="PASS" signature="verifyAddNoteToAccount()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifyAddNoteToAccount" duration-ms="69663" started-at="2021-02-04T23:56:57Z" finished-at="2021-02-04T23:58:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyAddNoteToAccount -->
+        <test-method status="PASS" signature="verifyAddNewPostToAccount()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="verifyAddNewPostToAccount" duration-ms="33157" started-at="2021-02-04T23:58:07Z" finished-at="2021-02-04T23:58:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyAddNewPostToAccount -->
+        <test-method status="PASS" signature="closeDriver()[pri:0, instance:crmframework.crmAutomation.AccountPageTest@523884b2]" name="closeDriver" is-config="true" duration-ms="2890" started-at="2021-02-04T23:58:40Z" finished-at="2021-02-04T23:58:43Z">
+>>>>>>> 535159b86328247993a21b96d2aab02faa320a11
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeDriver -->

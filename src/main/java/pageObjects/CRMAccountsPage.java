@@ -30,7 +30,7 @@ public class CRMAccountsPage {
 	By cntryexpandbtn = By.xpath("//button[@aria-label='Toggle Dropdown']");
 	By countryname = By.xpath("//body/div[@id='_dropdown']/div[3]");
 	By accsavenclosebtn = By.xpath("//button[@aria-label='Save & Close']");
-	By cletterfilterlink = By.xpath("//a[@id='C_link']");
+	By cletterfilterlink = By.xpath("//a[@id='F_link']");
 	By accountname = By.xpath("//div[@data-id='cell-2-2']");
 	By addtimelinebtn = By.xpath("//button[@aria-label='Create a timeline record.']");
 	By appointmentactivityoptn = By.xpath("//li[@aria-label='Appointment Activity']");
@@ -67,7 +67,7 @@ public class CRMAccountsPage {
 	By accstatusoutofbusiness = By.xpath("//option[contains(text(),'Out of Business')]");
 	By deactivatepopupdeactivatebtn = By.xpath("//button[@data-id='ok_id']");
 	By statusreasonoutofbusinessinheader = By.xpath("//div[@title='Out of Business']");
-	By incaccpagebackbtn = By.xpath("//span[@class='symbolFont BackButton-symbol pa-ah ']");
+	By backbtn = By.xpath("//span[@class='symbolFont BackButton-symbol pa-ah ']");
 	By acctypemedia = By.xpath("//div[contains(text(),'Media')]");
 	By mediasegmentationfieldlabel = By.xpath("//label[contains(text(),'Media Segmentation')]");
 	By mediatypefieldlabel = By.xpath("//label[contains(text(),'Media Type')]");
@@ -79,6 +79,25 @@ public class CRMAccountsPage {
 	By removeacctypemediabtn = By.xpath("//button[@aria-label='Remove Media']");
 	By newaccountheader = By.xpath("//h1[@title='New Account']");
 	By discardchangesbtn = By.xpath("//button[@aria-label='Discard changes']");
+	By notetimelineoptn = By.xpath("//li[@data-id='notescontrol-createNewRecord_flyoutMenuItem_notes']");
+	By notetitletimeline =By.xpath("//input[@id='create_note_medium_title']");
+	By noteiframe = By.xpath("//body[@aria-label='Enter text...']");
+	By notetextenter = By.xpath("//body[@aria-label='Enter text...']");		
+	By addnotebutton = By.xpath("//button[@id='create_note_add_btn']");
+	By cancelnotebutton = By.xpath("//button[@id='create_note_cancel_btn']");
+	By notesubject = By.xpath("//div[@id='timeline_record_title_text520480cb-f222-56a8-9dcb-c78e97e2bce7']");
+	By viewcreatednote = By.xpath("//div[@id='TL_Group_key_3']//div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]");
+	By posttimelineoptn =By.xpath("//li[@data-id='notescontrol-createNewRecord_flyoutMenuItem_post']");
+	By posttextenter = By.xpath("//textarea[@id='create_post_postText']");
+	By postAddButton = By.xpath("//button[@id='create_post_add_btn']");
+	By postCancelButton = By.xpath("//button[@id='create_post_cancel_btn']");
+	By viewCreatedPost = By.xpath("//div[@id='TL_Group_key_3']//div[1]/div[1]/div[2]/div[2]/div[1]/div[1]");
+	By auditHistoryRelatedTab = By.xpath("//span[@id='navAudit_Related']"); //xpath added for AuditHistory option from Related Dropdown list
+	By auditHistoryTab = By.xpath("//li[@title='Audit History']"); // xpath for Activity History Tab
+	By deleteNote = By.xpath("//div[@id='TL_Group_key_3']//div[1]/div[1]/div[1]/div[2]/div[1]/div[3]/button[2]/span");
+	By timelineDetails = By.xpath("//div[@id='TL_Group_key_3']//div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/label[1]");
+	By okConfirmBtn = By.xpath("//span[@id='confirmButtonText']");
+	By deletePost = By.xpath("//div[@id='TL_Group_key_3']//div[1]/div[1]/div[1]/div[2]/div[1]/div[3]/button[3]/span");
 	
 	public CRMAccountsPage(WebDriver driver) {
 
@@ -306,12 +325,10 @@ public class CRMAccountsPage {
 	}
 
 	public WebElement getAccStatusBuysatCorpLevel() {
-
 		return driver.findElement(accstatusbuysatcorplevel);
 	}
 
 	public WebElement getActivatePopupActivatebtn() {
-
 		wait = new WebDriverWait (driver,20);
 		wait.until(ExpectedConditions.elementToBeClickable(activatepopupactivatebtn)).click();
 		return driver.findElement(activatepopupactivatebtn);
@@ -359,9 +376,9 @@ public class CRMAccountsPage {
 		return driver.findElement(accstatusreason);
 	}
 	
-	public WebElement getInactiveAccPageBackBtn()
+	public WebElement getPageBackBtn()
 	{
-		return driver.findElement(incaccpagebackbtn);
+		return driver.findElement(backbtn);
 	}
 
 	public WebElement getAccTypeMedia()
@@ -419,5 +436,86 @@ public class CRMAccountsPage {
 	{
 		return driver.findElement(discardchangesbtn);
 	}
+
+	public WebElement getNoteTimelineOptn()
+	{
+		return driver.findElement(notetimelineoptn);
+	}
+	public WebElement getNoteTitleTextbox()
+	{
+		return driver.findElement(notetitletimeline);	
+	}
+	public WebElement getNoteiframe()
+	{
+		return driver.findElement(noteiframe);
+	}
+	public WebElement getNoteTextEnter()
+	{
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.elementToBeClickable(notetextenter));
+		return driver.findElement(notetextenter);
+	}
+	public WebElement getAddNoteButton()
+	{
+		return driver.findElement(addnotebutton);
+	}
+	public WebElement getCancelNoteButton()
+	{
+		return driver.findElement(cancelnotebutton);
+	}
+	public WebElement getNoteSubject()
+	{
+		return driver.findElement(notesubject);
+	}
+	public WebElement getViewCreatedNote()
+	{
+		return driver.findElement(viewcreatednote);
+	}
+	public WebElement getPostTimelineOptn()
+	{
+		return driver.findElement(posttimelineoptn);
+	}
+	public WebElement getPostTextEnter()
+	{
+		return driver.findElement(posttextenter);
+	}
+	public WebElement getPostAddButton()
+	{
+		return driver.findElement(postAddButton);
+	}
+	public WebElement getPostCancelButton()
+	{
+		return driver.findElement(postCancelButton);
+	}
 	
+	public WebElement getViewCreatedPost()
+	{
+		return driver.findElement(viewCreatedPost);
+	}
+	public WebElement getAuditHistoryRelatedTab()
+	{
+		return driver.findElement(auditHistoryRelatedTab);
+	}	
+	public WebElement getAuditHistoryTab()
+	{
+		wait.until(ExpectedConditions.visibilityOfElementLocated(auditHistoryTab));
+		return driver.findElement(auditHistoryTab);
+	}
+	public WebElement getDeleteNote()
+	{
+		return driver.findElement(deleteNote);	
+	}
+	public WebElement getTimelineDetails()
+	{
+		return driver.findElement(timelineDetails);
+	}
+	public WebElement getOkConfirmBtn()
+	{
+		return driver.findElement(okConfirmBtn);
+	}
+	public WebElement getDeletePost()
+	{
+		return driver.findElement(deletePost);	
+	}
+
 }

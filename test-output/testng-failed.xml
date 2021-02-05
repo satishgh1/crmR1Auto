@@ -5,9 +5,14 @@
     <classes>
       <class name="crmframework.crmAutomation.AccountPageTest">
         <methods>
+<<<<<<< HEAD
           <include name="verifyParentAccount"/>
           <include name="verifyAccountStatusToActivateAccount"/>
           <include name="initialize"/>
+=======
+          <include name="initialize"/>
+          <include name="verifyAddNoteToAccount"/>
+>>>>>>> 535159b86328247993a21b96d2aab02faa320a11
           <include name="closeDriver"/>
         </methods>
       </class> <!-- crmframework.crmAutomation.AccountPageTest -->

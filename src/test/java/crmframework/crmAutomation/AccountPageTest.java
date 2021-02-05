@@ -113,7 +113,7 @@ public class AccountPageTest extends base {
 		//to create random generated account name
 		accountName.sendKeys(genData.generateRandomAlphaNumeric(10));
 		String accnameText= accountName.getAttribute("Value");
-		System.out.println("Createdd Accoubt"+accnameText);
+		System.out.println("Created Account"+accnameText);
 
 		//Enter Random generated Phone no.
 		/*		ap.getPhone().click();
@@ -680,7 +680,7 @@ public class AccountPageTest extends base {
 		Assert.assertTrue(ap.getActivateBtn().isDisplayed());
 
 		//Navigate back to Active accounts list
-		ap.getInactiveAccPageBackBtn().click();
+		ap.getPageBackBtn().click();
 	}
 
 	@Test(priority=13)
@@ -741,8 +741,128 @@ public class AccountPageTest extends base {
 		Assert.assertFalse(mediatypelabel1.size()!= 0);
 
 		//Navigate back to Active accounts list
-		ap.getInactiveAccPageBackBtn().click();
+
+		ap.getPageBackBtn().click();
 		ap.getDiscardChangesBtn().click();
+	}
+	
+	@Test(priority=14)
+	public void verifyAddNoteToAccount() throws InterruptedException
+	{
+		//The purpose of this test case to verify:-
+		//T98- Select any account and add Note to account
+
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+		hp = new CRMHomePage(driver);
+		hp.getAccountTab().click();
+
+		ap = new CRMAccountsPage(driver);
+		//Click on 'A' link to sort accounts starts with 'A'
+		ap.getCLetterFilterLink().click();	
+
+		//Select the account name in list
+		ap.getAccountName().click();
+		ap.getAccNaviagteBtn().click();
+
+		//Click on create a timeline button and select Note option
+		ap.getAddTimelineBtn().click();
+		ap.getNoteTimelineOptn().click();
+		
+		ap.getNoteTitleTextbox().click();
+		String subjectnote = "Cyb_Note";
+		ap.getNoteTitleTextbox().sendKeys(subjectnote);
+		Thread.sleep(15000);
+		/*ap.getNoteiframe().click();
+		ap.getNoteiframe().sendKeys(genData.generateRandomString(25));
+		driver.switchTo().frame(ap.getNoteiframe());
+		ap.getNoteTextEnter().click();
+		ap.getNoteTextEnter().sendKeys(genData.generateRandomString(25));*/
+		ap.getAddNoteButton().click();
+		
+		//to scroll down
+		act = new Actions(driver);
+		act.moveToElement(ap.getViewCreatedNote()).perform();
+		
+		String validateNoteSubject = ap.getViewCreatedNote().getText();
+		Assert.assertEquals(validateNoteSubject, subjectnote);
+		System.out.println("Note title is: "+ validateNoteSubject);
+		Thread.sleep(10000);
+		ap.getTimelineDetails().click();
+		ap.getDeleteNote().click();
+		ap.getOkConfirmBtn().click();
+		System.out.println("Note Deleted");
+		//Navigate back to Active accounts list
+		ap.getPageBackBtn().click();
+	}
+	
+	@Test(priority=15)
+	public void verifyAddNewPostToAccount() throws InterruptedException
+	{
+		//The purpose of this test case to verify:-
+		//T299- Select any account and add Post to account
+
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+		hp = new CRMHomePage(driver);
+		hp.getAccountTab().click();
+
+		ap = new CRMAccountsPage(driver);
+		//Click on 'A' link to sort accounts starts with 'A'
+		ap.getCLetterFilterLink().click();	
+
+		//Select the account name in list
+		ap.getAccountName().click();
+		ap.getAccNaviagteBtn().click();
+		
+		//Click on create a timeline button and select Note option
+		ap.getAddTimelineBtn().click();
+		ap.getPostTimelineOptn().click();
+		ap.getPostTextEnter().click();
+		ap.getPostTextEnter().sendKeys(genData.generateRandomString(25));
+		String postText= ap.getPostTextEnter().getAttribute("title");
+		System.out.println("Created Post: "+postText);
+		ap.getPostAddButton().click();
+		String validatePostText = ap.getViewCreatedPost().getText();
+		System.out.println("Viewed Post is: "+ validatePostText);
+		Assert.assertEquals(validatePostText, postText);
+		ap.getTimelineDetails().click();
+		ap.getDeletePost().click();
+		ap.getOkConfirmBtn().click();
+		System.out.println("Post Deleted.");
+		ap.getPageBackBtn().click();
+	}
+
+	@Test(priority=16)
+	public void verifyAuditHistoryTabOnAccount() throws InterruptedException {
+
+		//The purpose of this test case to verify :-
+		//T300: Select any existing account and click on Audit History Tab Functionality 
+
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+		hp = new CRMHomePage(driver);
+		hp.getAccountTab().click();
+
+		ap = new CRMAccountsPage(driver);
+		//Click on 'A' link to sort accounts starts with 'A'
+		ap.getCLetterFilterLink().click();
+		//Thread.sleep(4000);	
+
+		//Select the account name in list
+		ap.getAccountName().click();
+		ap.getAccNaviagteBtn().click();
+		//Thread.sleep(5000);
+		//click on Related Tab and select Activities option from list. 
+		ap.getRelatedTab().click();
+		ap.getAuditHistoryRelatedTab().click();
+		//Thread.sleep(5000);
+		Boolean displayAuditHistoryTab = ap.getAuditHistoryTab().isDisplayed();
+		System.out.println("Activities Tab Opened successfully:"+displayAuditHistoryTab);
+		
+		String validateAuditHistoryTab = ap.getAuditHistoryTab().getText();
+		Assert.assertEquals(validateAuditHistoryTab, "Audit History");
+		
+		//Navigate back to Active accounts list
+		ap.getPageBackBtn().click();
+		
 	}
 
 	@AfterTest
