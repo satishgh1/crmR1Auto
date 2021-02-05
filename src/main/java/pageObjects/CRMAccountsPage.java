@@ -98,6 +98,7 @@ public class CRMAccountsPage {
 	By timelineDetails = By.xpath("//div[@id='TL_Group_key_3']//div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/label[1]");
 	By okConfirmBtn = By.xpath("//span[@id='confirmButtonText']");
 	By deletePost = By.xpath("//div[@id='TL_Group_key_3']//div[1]/div[1]/div[1]/div[2]/div[1]/div[3]/button[3]/span");
+	By validateaccnameinsearchresults = By.xpath("//div[@data-id='cell-0-2']");
 	
 	public CRMAccountsPage(WebDriver driver) {
 
@@ -518,4 +519,9 @@ public class CRMAccountsPage {
 		return driver.findElement(deletePost);	
 	}
 
+	public WebElement getValidateAccnameInSearchResults() throws InterruptedException
+	{
+		Thread.sleep(20000);
+		return driver.findElement(validateaccnameinsearchresults);
+	}
 }
