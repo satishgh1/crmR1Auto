@@ -63,8 +63,10 @@ public class AccountPageTest extends base {
 
 		lp= new CRMLoginPage(driver);
 		lp.getpwd().click();
+		
 		lp.getpwd().sendKeys(System.getenv("password"));
-		//lp.getpwd().sendKeys(prop.getProperty("password"));/
+		//lp.getpwd().sendKeys(prop.getProperty("password"));
+		Thread.sleep(15000);
 		lp.getsignin().click();
 		//Wait to enter the verification code from Mobile
 		Thread.sleep(30000);
@@ -864,7 +866,217 @@ public class AccountPageTest extends base {
 		ap.getPageBackBtn().click();
 		
 	}
+	
+	@Test(priority=17)
+	public void verifyPhoneCallOnAccount() throws InterruptedException {
 
+		//The purpose of this test case to verify :-
+		//T85: Add Phone Call to an existing Account
+
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+		hp = new CRMHomePage(driver);
+		hp.getAccountTab().click();
+
+		ap = new CRMAccountsPage(driver);
+		//Click on 'A' link to sort accounts starts with 'A'
+		ap.getCLetterFilterLink().click();
+		//Thread.sleep(4000);	
+
+		//Select the account name in list
+		ap.getAccountName().click();
+		ap.getAccNaviagteBtn().click();
+		
+		//Select Phone Call option under Timeline section
+		ap.getAddTimelineBtn().click();
+		ap.getphonecalloption().click();
+		
+		//Enter Phone Call details
+		String phonesubject = "CybSubject";
+		ap.getphonecallsubject().sendKeys(phonesubject);
+		ap.getclickphonecallduedatecalendor().click();
+		ap.getphonecallduedatecurrent().click();
+		ap.getphonecallduetimoptionn().click();
+		ap.getphonecallselectduetime().click();
+		
+		//Save Phone Call
+		ap.getAccSaveCloseBtn().click();
+		
+		WebElement timeline = driver.findElement(By.xpath("//*[text()='"+phonesubject+"']"));
+		if (timeline.getText().equalsIgnoreCase(phonesubject)) {
+			
+			System.out.println("Phone call added successfully");
+			
+		}
+		else {
+			
+			System.out.println("Phone call not added successfully");
+			
+		}
+
+		//Verify that expected Success message displayed
+		//Assert.assertEquals("Phone call saved successfully.", ap.getSuccessMsg().getText());
+
+		//Navigate back to Active accounts list
+		ap.getAccPageBackBtn().click();
+	}
+	
+	@Test(priority=18)
+	public void verifySateAndRegionInGrid() throws InterruptedException {
+
+		//The purpose of this test case to verify :-
+		//T166: Filter State and Region in grid
+
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+		hp = new CRMHomePage(driver);
+		hp.getAccountTab().click();
+
+		ap = new CRMAccountsPage(driver);
+		//Click on 'A' link to sort accounts starts with 'A'
+		ap.getCLetterFilterLink().click();
+			
+		//Click funnel for Region column
+		ap.getclickregiongridfunnel().click();
+		ap.getclickfunnelfilter().click();
+		
+		//Select filter options
+		ap.getclickoperatordd().click();
+		ap.getselectoperator().click();
+		ap.getsclickvaluetextbox().click();
+		ap.getselectregionvalue().click();
+		
+		//Verify region value selected on accounts grid
+		WebElement ExpectedRegion = ap.getselectregionvalue();
+		WebElement ActualRegion = ap.getselectregionvalueactual();
+		if (ExpectedRegion.equals(ActualRegion.getText())){
+			
+			System.out.println("Region matches expected criteria");
+			
+		}
+		else {
+			
+			System.out.println("Region does not match expected criteria.");
+		}
+		
+		//Click funnel for Region column
+		ap.getclickaddressgridfunnel().click();
+		ap.getclickfunnelfilter().click();
+				
+		//Select filter options
+		ap.getclickoperatordd().click();
+		ap.getselectoperator().click();
+		ap.getsclickvaluetextbox().click();
+		ap.getclickaddressvaluefield().sendKeys(prop.getProperty("gridstatefilter"));	
+		
+		//Verify region value selected on accounts grid
+		WebElement ExpectedState = ap.getselectregionvalueactual();
+		
+		if (ExpectedState.getText().contains(ap.getclickaddressvaluefield().getText())){
+			
+			System.out.println("State matches expected criteria");
+			
+		}
+		else {
+			
+			System.out.println("State does not match expected criteria.");
+		}
+	}
+	
+	@Test(priority=19)
+	public void verifyNamePhoneCityInGrid() throws InterruptedException {
+
+		//The purpose of this test case to verify :-
+		//T289: Filter Account DBA Name, Phone and City in grid
+
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+		hp = new CRMHomePage(driver);
+		hp.getAccountTab().click();
+
+		ap = new CRMAccountsPage(driver);
+		//Click on 'A' link to sort accounts starts with 'A'
+		ap.getCLetterFilterLink().click();
+			
+		//Click funnel for Account DBA Name column
+		ap.getclickdbanamegridfunnel().click();
+		ap.getclickfunnelfilter().click();
+		
+		//Select filter options
+		ap.getclickoperatordd().click();
+		ap.getselectoperatorone().click();
+		ap.getclickaddressvaluefield().sendKeys(prop.getProperty("name"));
+		ap.getclickapplybutton().click();
+		
+		//Verify region value selected on accounts grid
+		WebElement ExpectedName = ap.getclickaddressvaluefield();
+		WebElement ActualName = ap.getclickaddressvaluefield();
+		if (ExpectedName.equals(ActualName.getText())){
+			
+			System.out.println("Account DBA Name matches expected criteria");
+			
+		}
+		else {
+			
+			System.out.println("Account DBA Name does not match expected criteria.");
+		}
+		
+		//Clear Filter for Account DBA Name
+		ap.getclickdbanamegridfunnel().click();
+		ap.getclearfiltergrid().click();
+		
+		//Click funnel for Phone column
+		ap.getclickdbaphonegridfunnel().click();
+		ap.getclickfunnelfilter().click();
+				
+		//Select filter options
+		ap.getclickoperatordd().click();
+		ap.getselectoperatorone().click();
+		ap.getclickaddressvaluefield().sendKeys(prop.getProperty("phone"));
+		ap.getclickapplybutton().click();
+				
+		//Verify region value selected on accounts grid
+		WebElement ExpectedPhone = ap.getclickaddressvaluefield();
+		WebElement ActualPhone = ap.getclickaddressvaluefield();
+		if (ExpectedName.equals(ActualName.getText())){
+					
+			System.out.println("Phone matches expected criteria");
+					
+		}
+		else {
+				
+			System.out.println("Phone does not match expected criteria.");
+		}
+				
+		//Clear Filter for Phone
+		ap.getclickdbaphonegridfunnel().click();
+		ap.getclearfiltergrid().click();
+		
+		//Click funnel for City column
+		ap.getclickdbacitygridfunnel().click();
+		ap.getclickfunnelfilter().click();
+				
+		//Select filter options
+		ap.getclickoperatordd().click();
+		ap.getselectoperatorone().click();
+		ap.getclickaddressvaluefield().sendKeys(prop.getProperty("city"));
+		ap.getclickapplybutton().click();
+				
+		//Verify region value selected on accounts grid
+		WebElement ExpectedCity = ap.getclickaddressvaluefield();
+		WebElement ActualCity = ap.getclickaddressvaluefield();
+		if (ExpectedName.equals(ActualName.getText())){
+					
+			System.out.println("City matches expected criteria");
+					
+		}
+		else {
+				
+			System.out.println("City does not match expected criteria.");
+		}
+				
+		//Clear Filter for Phone
+		ap.getclickdbacitygridfunnel().click();
+		ap.getclearfiltergrid().click();
+	}
+		
 	@AfterTest
 	public void closeDriver()
 	{

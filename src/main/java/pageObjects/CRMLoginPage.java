@@ -13,6 +13,7 @@ public class CRMLoginPage {
 	public WebDriverWait wait;
 	
 	By password = By.id("passwordInput");
+	//By password = By.xpath("//input[@class = 'form-control input ext-input text-box ext-text-box']");
 	By signin = By.xpath("//span[@id='submitButton']");
 	By verify = By.id("idSubmit_SAOTCC_Continue");
 	By staysignin = By.xpath("//div[contains(text(),'Stay signed in?')]");

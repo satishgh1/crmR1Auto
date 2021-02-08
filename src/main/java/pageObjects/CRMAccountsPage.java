@@ -99,6 +99,30 @@ public class CRMAccountsPage {
 	By okConfirmBtn = By.xpath("//span[@id='confirmButtonText']");
 	By deletePost = By.xpath("//div[@id='TL_Group_key_3']//div[1]/div[1]/div[1]/div[2]/div[1]/div[3]/button[3]/span");
 	By validateaccnameinsearchresults = By.xpath("//div[@data-id='cell-0-2']");
+	By applocation = By.xpath("//input[@data-id = 'location.fieldControl-text-box-text']");
+	By phonecalloption = By.xpath("//li[@aria-label = 'Phone Call Activity']");
+	By phonecallsubject = By.xpath("//input[@data-id='subject.fieldControl-text-box-text']");
+	By clickphonecallduedatecalendor = By.xpath("//div [@class = 'ms-TextField-wrapper']/div/i");
+	By phonecallduedatecurrent = By.xpath("//button[@class='dayButton-222 dayIsToday-223 ms-CalendarDay-dayIsToday']");
+	By phonecallduetimoption = By.xpath("//div[@id = 'scheduledend_fabric_comboboxwrapper']/button/span");
+	By phonecallselectduetime = By.xpath("//button[@id = 'scheduledend_fabric_combobox-list47']");
+	By clickregiongridfunnel = By.xpath("//div[@data-id = 'xxc_regionid']");
+	By clickfunnelfilter = By.xpath("//button[@aria-label = 'Filter by']");
+	By clickoperatordd = By.xpath("//div[@aria-label = 'Filter by operator']");
+	By selectoperator = By.xpath("//button[@data-index = '0']");
+	By clickvaluetextbox = By.xpath("//input[@aria-label = 'Filter by Value']");
+	By selectregionvalue = By.xpath("//div[@id = 'sug-0']");
+	By selectvalueregionactual = By.xpath("//div[@aria-label = 'Data']/div");
+	By clickapplybutton = By.xpath("//button[@type = 'submit']");
+	By clickaddressgridfunnel = By.xpath("//div[@data-id = 'address1_stateorprovince']");
+	By clickaddressvaluefield = By.xpath("//div[@class = 'ms-TextField-wrapper']/div/input");
+	By clickdbanamegridfunnel = By.xpath("//div[@data-id = 'name']");
+	By selectoperatorone = By.xpath("//button[@data-index = '4']");
+	By clearfiltergrid = By.xpath("//button[@aria-label = 'Clear filter']");
+	By clickdbaphonegridfunnel = By.xpath("//div[@data-id = 'telephone1']");
+	By clickdbacitygridfunnel = By.xpath("//div[@data-id = 'address1_city']");
+	
+		
 	
 	public CRMAccountsPage(WebDriver driver) {
 
@@ -524,4 +548,125 @@ public class CRMAccountsPage {
 		Thread.sleep(20000);
 		return driver.findElement(validateaccnameinsearchresults);
 	}
+	
+	public WebElement getapplocation() {
+		
+		return driver.findElement(applocation);
+	}
+	
+	public WebElement getphonecalloption() {
+		
+		return driver.findElement(phonecalloption);
+	}
+
+	public WebElement getphonecallsubject() {
+		
+		return driver.findElement(phonecallsubject);
+	}
+
+	public WebElement getclickphonecallduedatecalendor() {
+		
+		return driver.findElement(clickphonecallduedatecalendor);
+	}
+
+	public WebElement getphonecallduedatecurrent() {
+		wait = new WebDriverWait (driver,15);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(phonecallduedatecurrent));
+		return driver.findElement(phonecallduedatecurrent);
+	}
+
+
+	public WebElement getphonecallduetimoptionn() {
+		wait = new WebDriverWait (driver,5);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(phonecallduetimoption));
+		return driver.findElement(phonecalloption);
+	}
+
+	public WebElement getphonecallselectduetime() {
+		
+		return driver.findElement(phonecallselectduetime);
+	}
+	
+	public WebElement getclickregiongridfunnel() {
+		return driver.findElement(clickregiongridfunnel);
+	}
+
+	public WebElement getclickfunnelfilter() {
+		return driver.findElement(clickfunnelfilter);
+	}
+
+	public WebElement getclickoperatordd() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(clickoperatordd));
+		return driver.findElement(clickoperatordd);
+	}
+
+	public WebElement getselectoperator() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(selectoperator));
+		return driver.findElement(selectoperator);
+	}
+
+	public WebElement getsclickvaluetextbox() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(clickvaluetextbox));
+		return driver.findElement(clickvaluetextbox);
+	}
+
+	public WebElement getselectregionvalue() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(selectregionvalue));
+		return driver.findElement(selectregionvalue);
+	}
+	
+	public WebElement getselectregionvalueactual() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(selectvalueregionactual));
+		return driver.findElement(selectvalueregionactual);
+	}
+
+	public WebElement getclickapplybutton() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(clickapplybutton));
+		return driver.findElement(clickapplybutton);
+	}
+
+	public WebElement getclickaddressgridfunnel() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(clickaddressgridfunnel));
+		return driver.findElement(clickaddressgridfunnel);
+	}
+
+	public WebElement getclickaddressvaluefield() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(clickaddressvaluefield));
+		return driver.findElement(clickaddressvaluefield);
+	}
+
+	public WebElement getclickdbanamegridfunnel() {
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(clickdbanamegridfunnel));
+		return driver.findElement(clickdbanamegridfunnel);
+	}
+	
+	public WebElement getselectoperatorone()
+	{
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(selectoperatorone));
+		return driver.findElement(selectoperatorone);
+	}
+
+    public WebElement getclearfiltergrid() {
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(clearfiltergrid));
+		return driver.findElement(clearfiltergrid);
+	}
+	
+	public WebElement getclickdbaphonegridfunnel()
+	{
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(clickdbaphonegridfunnel));
+		return driver.findElement(clickdbaphonegridfunnel);
+	}
+
+	public WebElement getclickdbacitygridfunnel()
+	{
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(clickdbacitygridfunnel));
+		return driver.findElement(clickdbacitygridfunnel);
+	}
 }
+
+	
