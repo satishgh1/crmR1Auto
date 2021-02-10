@@ -18,6 +18,7 @@ public class CRMHomePage {
 	By accountTab = By.xpath("//span[contains(text(),'Accounts')]");
 	By clearsearch = By.xpath("//button[@title='Clear search']");
 	By searchresultaccname = By.xpath("//div[@data-id = 'cell-0-2']");
+	By activeaccountstitle = By.xpath("//h1[@aria-label='Active Accounts']");
 				
 	public CRMHomePage(WebDriver driver) {
 		// TODO Auto-generated constructor stub
@@ -34,7 +35,7 @@ public class CRMHomePage {
 	public WebElement getSearchAccountField() {
 		//web element for the search account field
 		wait = new WebDriverWait (driver,20);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(searchaccount));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(activeaccountstitle));
 		return driver.findElement(searchaccount);	
 	}
 	
@@ -52,7 +53,12 @@ public class CRMHomePage {
 		return driver.findElement(clearsearch);
 	}
 	
-	public WebElement getSearchResultAcc() {
+	public WebElement getSearchResultAcc() throws InterruptedException {
+		Thread.sleep(3000);
 		return driver.findElement(searchresultaccname);
+	}
+	
+	public WebElement getActiveAccountsTitle() {
+		return driver.findElement(activeaccountstitle);
 	}
 }

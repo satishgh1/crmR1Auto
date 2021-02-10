@@ -5,19 +5,9 @@
     <classes>
       <class name="crmframework.crmAutomation.AccountPageTest">
         <methods>
-          <include name="verifyAccountStatusToActivateAccount"/>
-          <include name="verifyAddNoteToAccount"/>
-          <include name="verifyPhoneCallOnAccount"/>
-          <include name="verifyAddNewPostToAccount"/>
-          <include name="verifyNamePhoneCityInGrid"/>
-          <include name="verifyCrmHomePage"/>
-          <include name="verifySateAndRegionInGrid"/>
-          <include name="verifyParentAccount"/>
           <include name="initialize"/>
           <include name="closeDriver"/>
-          <include name="verifyAuditHistoryTabOnAccount"/>
-          <include name="verifyMediaSegmentationField"/>
-          <include name="verifyAccountStatusToDeactivateAccount"/>
+          <include name="verifyDuplicateAccount"/>
         </methods>
       </class> <!-- crmframework.crmAutomation.AccountPageTest -->
     </classes>

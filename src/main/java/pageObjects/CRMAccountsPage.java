@@ -121,6 +121,14 @@ public class CRMAccountsPage {
 	By clearfiltergrid = By.xpath("//button[@aria-label = 'Clear filter']");
 	By clickdbaphonegridfunnel = By.xpath("//div[@data-id = 'telephone1']");
 	By clickdbacitygridfunnel = By.xpath("//div[@data-id = 'address1_city']");
+	By accdbanametxtbx = By.xpath("//input[@aria-label='Account DBA Name']");
+	By duplicaterecordspopuptitle = By.xpath("//h1[@aria-label='Duplicate records found']");
+	By duplicaterecordspopupcancelbtn = By.xpath("//span[contains(text(),'Cancel')]");
+	By unsavedchangespopuptitle = By.xpath("//h1[@aria-label='Unsaved changes']");
+	By phoneinsearchtable = By.xpath("//div[@data-id='cell-0-3']");
+	By phonetxboxlabel = By.xpath("//label[contains(text(),'Phone')]");
+	By hletterfilterlink = By.xpath("//li[@aria-label='Filter table by h']");
+	By duplicaterecordspopupignorensavebtn = By.xpath("//button[@aria-label='Ignore and save']");
 	
 		
 	
@@ -134,14 +142,14 @@ public class CRMAccountsPage {
 		return driver.findElement(accountNametxtbx);
 	}
 	
-	public WebElement getAccountNewbtn()
+	public WebElement getAccountNewbtn() throws InterruptedException
 	{
-		wait = new WebDriverWait (driver,20);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(accountnewbtn));
+		Thread.sleep(5000);
 		return driver.findElement(accountnewbtn);
 	}
-	public WebElement getAccountNameSearchTable()
+	public WebElement getAccountNameSearchTable() throws InterruptedException
 	{
+		Thread.sleep(6000);
 		return driver.findElement(accountnamesearchtable);
 	}
 	public WebElement getPhone()
@@ -204,10 +212,9 @@ public class CRMAccountsPage {
 		return driver.findElement(countryname);
 	}
 	
-	public WebElement getAccSaveCloseBtn()
+	public WebElement getAccSaveCloseBtn() throws InterruptedException
 	{
-		wait = new WebDriverWait (driver,20);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(accsavenclosebtn));
+		Thread.sleep(5000);
 		return driver.findElement(accsavenclosebtn);
 	}
 	
@@ -374,6 +381,8 @@ public class CRMAccountsPage {
 
 	public WebElement getActiveAccountsLabel() {
 
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(activeaccountslabel));
 		return driver.findElement(activeaccountslabel);
 	}
 
@@ -666,6 +675,54 @@ public class CRMAccountsPage {
 		wait = new WebDriverWait (driver,20);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(clickdbacitygridfunnel));
 		return driver.findElement(clickdbacitygridfunnel);
+	}
+	
+	public WebElement getAccDBANametxbox()
+	{
+//		wait = new WebDriverWait (driver,20);
+//		wait.until(ExpectedConditions.visibilityOfElementLocated(newaccountheader));
+		return driver.findElement(accdbanametxtbx);
+	}
+	
+	public WebElement getDuplicateRecordsPopupTitle()
+	{
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(duplicaterecordspopuptitle));
+		return driver.findElement(duplicaterecordspopuptitle);
+	}
+	
+	public WebElement getDuplicateRecordsPopupCancelbtn()
+	{
+		return driver.findElement(duplicaterecordspopupcancelbtn);
+	}
+	
+	public WebElement getUnsavedChangesPopupTitle()
+	{
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(unsavedchangespopuptitle));
+		return driver.findElement(unsavedchangespopuptitle);
+	}
+	public WebElement getPhoneinSearchTable()
+	{
+		return driver.findElement(phoneinsearchtable);
+	}
+	
+	public WebElement getPhoneTxtbxLabel() throws InterruptedException
+	{
+		Thread.sleep(2000);
+		return driver.findElement(phonetxboxlabel);
+	}
+	
+	public WebElement getHLetterFilterLink() {
+
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.elementToBeClickable(hletterfilterlink));
+		return driver.findElement(hletterfilterlink);
+	}
+	
+	public WebElement getDuplicateRecordsPopupIgnorenSavebtn()
+	{
+		return driver.findElement(duplicaterecordspopupignorensavebtn);
 	}
 }
 

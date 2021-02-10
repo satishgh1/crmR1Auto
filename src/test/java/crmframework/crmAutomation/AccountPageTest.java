@@ -30,6 +30,7 @@ public class AccountPageTest extends base {
 
 	public WebDriverWait wait;
 	public String accnameText;
+	public String phoneno;
 	public GenerateData genData;
 	public String buysatCorplvl, outofbusiness;
 	CRMLandingPage lap;
@@ -91,36 +92,22 @@ public class AccountPageTest extends base {
 		//The purpose of this test case to verify:-
 		//TS2- Create New Account
 
+		hp = new CRMHomePage(driver);
+		ap = new CRMAccountsPage(driver);
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS) ;
 		//Select Accounts menu from left navigation bar
-		hp = new CRMHomePage(driver);
 		hp.getAccountTab().click();
-		//Wait till Active Accounts page is displayed
-		//new WebDriverWait (driver,30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'New')]")));
-
-		ap = new CRMAccountsPage(driver);
-		Thread.sleep(10000);
+		
 		//Click on 'New' button
 		ap.getAccountNewbtn().click();
-		//Wait till new account page is displayed
-		//new WebDriverWait (driver,20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[@title='New Account']")));
-
+		
 		//Fill all the mandatory fields to create new account
 		//Enter Account Name
-		WebElement accountName = driver.findElement(By.xpath("//input[@id='id-276390f9-8bbf-4452-8f24-636b0ccaee2c-1-name8-name.fieldControl-text-box-text']"));
-		accountName.click();
-		/*		accnameText = "Cyb_POC";
-		accountName.sendKeys(accnameText);*/
-
+		ap.getAccDBANametxbox().click();
 		//to create random generated account name
-		accountName.sendKeys(genData.generateRandomAlphaNumeric(10));
-		String accnameText= accountName.getAttribute("Value");
-		System.out.println("Created Account"+accnameText);
-
-		//Enter Random generated Phone no.
-		/*		ap.getPhone().click();
-		ap.getPhone().sendKeys(prop.getProperty("phone"));*/
-		//Thread.sleep(5000);
+		ap.getAccDBANametxbox().sendKeys(genData.generateRandomAlphaNumeric(10));
+		accnameText= ap.getAccDBANametxbox().getAttribute("Value");
+		System.out.println("Created Account: "+accnameText);
 
 		ap.getPhone().click();
 		ap.getPhone().sendKeys(genData.generateRandomNumber(10));
@@ -138,11 +125,10 @@ public class AccountPageTest extends base {
 		//Scroll down on the page
 		act.keyDown(Keys.CONTROL).sendKeys(Keys.DOWN).perform();
 		act.keyDown(Keys.CONTROL).sendKeys(Keys.DOWN).release().perform();
-
-		Thread.sleep(5000);
+		
 		//Enter Street1 address
 		ap.getStreet1().sendKeys(prop.getProperty("street1"));
-
+	
 		//Enter City
 		ap.getCity().click();
 		ap.getCity().sendKeys(prop.getProperty("city"));
@@ -162,25 +148,20 @@ public class AccountPageTest extends base {
 
 		//Click on Save and Close button
 		ap.getAccSaveCloseBtn().click();
-		//Wait till Active Accounts page is displayed
-		//new WebDriverWait (driver,20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Active Accounts']")));
-
+		
 		//Verify the newly created account
 		hp.getSearchAccountField().click();
 		hp.getSearchAccountField().sendKeys(accnameText);
 		hp.getstartsearch().click();
-		Thread.sleep(10000);
+		
 		String validateAccName = ap.getAccountNameSearchTable().getText();
 		Assert.assertEquals(validateAccName, accnameText);
-		System.out.println("Searched Account"+ validateAccName);
-
-		/*WebElement validateAccName = driver.findElement(By.xpath("//a[contains(text(),'"+accnameText+"')]"));
-		System.out.println(validateAccName.getText());
-		Assert.assertTrue(validateAccName.isDisplayed());*/
+		System.out.println("Searched Account:"+ validateAccName);
+		
+		phoneno = ap.getPhoneinSearchTable().getText();
+		System.out.println("New account's Phone: "+phoneno);
 		System.out.println("New Account is created successfully");
-		//		else {
-		//			System.out.println("Failed to create a new account");
-		//		}
+		
 		//Clear the search term to navigate to active accounts page
 		hp.getClearSearch().click();
 	}
@@ -1075,6 +1056,195 @@ public class AccountPageTest extends base {
 		//Clear Filter for Phone
 		ap.getclickdbacitygridfunnel().click();
 		ap.getclearfiltergrid().click();
+	}
+	
+	@Test(priority=20)
+	public void verifySearchusingAccountNameandPhone() throws InterruptedException
+	{
+		//The purpose of this test case to verify:-
+		//CRM-T46- CRM User is having ability to search Account entity using account name and phone
+
+		hp = new CRMHomePage(driver);
+		ap = new CRMAccountsPage(driver);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+		//Click on Accounts Tab at left menu.
+		hp.getAccountTab().click();
+
+		//Click on 'Search' view and enter any account name
+		String searchaccname = prop.getProperty("searchacc");
+		hp.getSearchAccountField().click();
+		hp.getSearchAccountField().sendKeys(searchaccname);
+		hp.getstartsearch().click();
+		Thread.sleep(5000);
+		
+		//Verify that all accounts that have a Account Legal Name  'K & D Fashions LLC' get appeared in the Search results page
+		WebElement accinsearchresults = null;
+		for (int i=0;i<1;i++)
+		{
+			accinsearchresults = driver.findElement(By.xpath("//div[@data-id='cell-"+i+"-2']"));
+			Assert.assertTrue(accinsearchresults.getText().contains(searchaccname));
+		}
+		//Clear the search term to navigate to active accounts page
+		hp.getClearSearch().click();
+
+		//Click on 'Search' view and enter any search text
+		String searchtext = prop.getProperty("searchterm");
+		hp.getSearchAccountField().click();
+		hp.getSearchAccountField().sendKeys(searchtext);
+		hp.getstartsearch().click();
+		Thread.sleep(5000);
+	
+		//Verify that all accounts that have a Account DBA Name 'Fashions' get appeared in the Search results page.
+		WebElement searchresultacc = null;
+		for (int j=0;j<8;j++)
+		{
+			searchresultacc = driver.findElement(By.xpath("//div[@data-id='cell-"+j+"-2']"));
+			Assert.assertTrue(searchresultacc.getText().contains(searchtext));
+		}
+		hp.getClearSearch().click();
+		
+		//Click on 'Search' view and enter any search text
+		String searchPhone = prop.getProperty("searchPhoneNo");
+		hp.getSearchAccountField().click();
+		hp.getSearchAccountField().sendKeys(searchPhone);
+		hp.getstartsearch().click();
+		Thread.sleep(5000);
+		
+		//Verify that all the account having 98765 in the phone field are displayed
+		WebElement searchresultphone = null;
+		for (int k=0;k<1;k++)
+		{
+			searchresultphone = driver.findElement(By.xpath("//div[@data-id='cell-"+k+"-3']"));
+			Assert.assertTrue(searchresultphone.getText().contains(searchPhone));
+		}
+		//Navigate back to Active accounts list
+		ap.getPageBackBtn().click();
+	}
+	
+	@Test(priority=21)
+	public void verifyDuplicateAccount() throws InterruptedException
+	{
+		//The purpose of this test case to verify:-
+		//CRM-T58- Verify notification for duplicate account creation when same Account DBA Name and Phone
+		//are used for creating new Account or updating any other Account
+
+		hp = new CRMHomePage(driver);
+		ap = new CRMAccountsPage(driver);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+		//Click on Accounts Tab at left menu.
+		hp.getAccountTab().click();
+
+		//Click on 'New' button
+		ap.getAccountNewbtn().click();
+
+		//Enter Account DBA name and Phone no. (From Create account test case)
+		ap.getAccDBANametxbox().click();
+		ap.getAccDBANametxbox().sendKeys(accnameText);
+
+		ap.getPhone().click();
+		ap.getPhone().sendKeys(phoneno);
+
+		//Scroll up the page till Address field
+		act = new Actions(driver);
+		act.moveToElement(ap.getAddress()).perform();
+
+		//Select account type
+		ap.getAccTypetxtbx().click();
+		ap.getAcctypeExpandbtn().click();
+		ap.getAccTypeBuyer().click();
+		ap.getAddress().click();
+
+		//Click on Save and Close button
+		ap.getAccSaveCloseBtn().click();
+
+		//Verify that 'Duplicate records found' pop-up is displayed
+		Assert.assertTrue(ap.getDuplicateRecordsPopupTitle().isDisplayed());
+
+		//Click on 'Cancel' button
+		ap.getDuplicateRecordsPopupCancelbtn().click();
+		ap.getPageBackBtn().click();
+
+		//Verify that 'Unsaved Changes' pop-up is displayed
+		Assert.assertTrue(ap.getUnsavedChangesPopupTitle().isDisplayed());
+
+		//Click on 'Discard Changes' button on pop-up
+		ap.getDiscardChangesBtn().click();
+
+		//Verify that user redirects back to Active accounts list without creating new account
+		Assert.assertTrue(ap.getActiveAccountsLabel().isDisplayed());
+
+		//Now update any existing account name with Account DBA name and Phone no. (From Create account test case)
+		ap.getHLetterFilterLink().click();
+		ap.getAccountName().click();
+		ap.getAccNaviagteBtn().click();
+
+		//Enter account Name
+		ap.getAccDBANametxbox().click();
+		ap.getAccDBANametxbox().sendKeys(Keys.CONTROL + "a");
+		ap.getAccDBANametxbox().sendKeys(Keys.DELETE);
+		ap.getAccDBANametxbox().sendKeys(accnameText);
+
+		ap.getPhone().click();
+		ap.getPhone().sendKeys(Keys.CONTROL + "a");
+		ap.getPhone().sendKeys(Keys.DELETE);
+		ap.getPhoneTxtbxLabel().click();
+		ap.getPhone().click();
+		ap.getPhone().sendKeys(phoneno);
+		ap.getParentAccLabel().click();
+
+		//Click on Save and Close button
+		ap.getAccSaveCloseBtn().click();
+
+		//Verify that 'Duplicate records found' pop-up is displayed
+		Assert.assertTrue(ap.getDuplicateRecordsPopupTitle().isDisplayed());
+
+		//Click on 'Cancel' button
+		ap.getDuplicateRecordsPopupCancelbtn().click();
+		ap.getPageBackBtn().click();
+		ap.getDuplicateRecordsPopupCancelbtn().click();
+		//Click on 'Discard Changes' button on pop-up
+		ap.getDiscardChangesBtn().click();
+
+		//Click on Accounts Tab at left menu.
+		hp.getAccountTab().click();
+		
+		//Click on 'New' button
+		ap.getAccountNewbtn().click();
+
+		//Enter Account DBA name and Phone no. (From Create account test case)
+		ap.getAccDBANametxbox().click();
+		ap.getAccDBANametxbox().sendKeys(accnameText);
+
+		ap.getPhone().click();
+		ap.getPhone().sendKeys(phoneno);
+
+		//Scroll up the page till Address field
+		act = new Actions(driver);
+		act.moveToElement(ap.getAddress()).perform();
+
+		//Select account type
+		ap.getAccTypetxtbx().click();
+		ap.getAcctypeExpandbtn().click();
+		ap.getAccTypeBuyer().click();
+		ap.getAddress().click();
+
+		//Click on Save and Close button
+		ap.getAccSaveCloseBtn().click();
+
+		//Click on "Ignore and Save" button on the notification pop-up
+		ap.getDuplicateRecordsPopupIgnorenSavebtn().click();
+		
+		//Verify that new account is created and displayed under Active accounts list
+		hp.getSearchAccountField().click();
+		hp.getSearchAccountField().sendKeys(accnameText);
+		hp.getstartsearch().click();
+		WebElement accnameinsearch = hp.getSearchResultAcc();
+		Assert.assertTrue(accnameinsearch.getText().contains(accnameText));
+		
+		//Clear the search term to navigate to active accounts page
+		hp.getClearSearch().click();
 	}
 		
 	@AfterTest
