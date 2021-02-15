@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriverException;
@@ -18,6 +19,7 @@ import org.testng.annotations.Test;
 import pageObjects.AppLandingPage;
 import pageObjects.CRMAccountsPage;
 import pageObjects.CRMAddMarketingRelationshipOwner;
+import pageObjects.CRMContactPage;
 import pageObjects.CRMHomePage;
 import pageObjects.CRMIncentiveTab;
 import pageObjects.CRMLandingPage;
@@ -33,6 +35,8 @@ public class AccountPageTest extends base {
 	public String phoneno;
 	public GenerateData genData;
 	public String buysatCorplvl, outofbusiness;
+	public String ContactFirstName;
+	public String ContactLastName;
 	CRMLandingPage lap;
 	CRMLoginPage lp;
 	AppLandingPage alp;
@@ -41,6 +45,8 @@ public class AccountPageTest extends base {
 	CRMIncentiveTab inc;
 	CRMAddMarketingRelationshipOwner amro;
 	Actions act;
+	CRMContactPage cp;
+	
 
 	@BeforeTest
 	public void initialize() throws IOException
@@ -1245,6 +1251,117 @@ public class AccountPageTest extends base {
 		
 		//Clear the search term to navigate to active accounts page
 		hp.getClearSearch().click();
+	}
+	
+	@Test(priority=22)
+	public void verifyExportToExcel() throws InterruptedException
+	{
+		//The purpose of this test case to verify:-
+		//CRM-T293- Verify Export To Excel functionality for Accounts
+
+		hp = new CRMHomePage(driver);
+		ap = new CRMAccountsPage(driver);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+		//Click on Accounts Tab at left menu.
+		hp.getAccountTab().click();
+		
+		//Click three dots for Export option in header
+		ap.getclickoverflowbutton().click();
+		
+		//Click Export To Excel option under it
+		ap.getclickexporttoexcelbutton().click();
+		
+		//Export file to online excel
+		ap.getopenexcelonline().click();
+		ap.getsaveexcelonline().click();
+		ap.getclosepopupexcelonline().click();   
+		
+		//Click three dots for Export option in header
+		ap.getclickoverflowbutton().click();
+				
+		//Click Export To Excel option under it
+		ap.getclickexporttoexcelbutton().click();
+		
+		//Export Excel to Static Worksheet
+		ap.getexporttostaticworksheet().click();
+		
+		//Click three dots for Export option in header
+		ap.getclickoverflowbutton().click();
+				
+		//Click Export To Excel option under it
+		ap.getclickexporttoexcelbutton().click();
+		
+		//Export Excel to Static Worksheet Page Only
+		ap.getexporttostaticworksheetpageonly().click();
+		
+		//Click three dots for Export option in header
+		ap.getclickoverflowbutton().click();
+				
+		//Click Export To Excel option under it
+		ap.getclickexporttoexcelbutton().click();
+		
+		//Export to Dynamic Worksheet
+		ap.getexporttodynamicworksheet().click();
+		ap.getselectcheckbox1().click();
+		ap.getselectcheckbox2().click();
+		ap.getexportworksheetpopup().click();
+		
+		//Click three dots for Export option in header
+		ap.getclickoverflowbutton().click();
+						
+		//Click Export To Excel option under it
+		ap.getclickexporttoexcelbutton().click();
+		
+		//Export to Dynamic Pivot Table
+		ap.getexporttodynamicpivottable().click();
+		ap.getselectcheckbox1().click();
+		ap.getselectcheckbox2().click();
+		ap.getexportworksheetpopup().click();
+	}
+	
+	@Test(priority=22)
+	public void verifyAddContact() throws InterruptedException
+	{
+		//The purpose of this test case to verify:-
+		//CRM-T294- Verify new contact creation from existing account
+
+		hp = new CRMHomePage(driver);
+		ap = new CRMAccountsPage(driver);
+		cp = new CRMContactPage(driver);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+		//Click on Accounts Tab at left menu.
+		hp.getAccountTab().click();
+		
+		//Open an existing account
+		ap.getAccountName().click();
+		ap.getAccNaviagteBtn().click();
+		
+		//Scroll down to contacts section
+		WebElement scroll = cp.getscrolltoaddcontact();
+		JavascriptExecutor js = ((JavascriptExecutor) driver);
+		js.executeScript("arguments[0].scrollIntoView();", scroll);
+		
+		//Add new contact
+		cp.getclicknewcontactbutton().click();
+		cp.getfirstname().sendKeys(genData.generateRandomString(10));
+		cp.getlastname().sendKeys(genData.generateRandomString(10));
+		cp.getemail().sendKeys(genData.generateEmail(15));
+		cp.getmobile().sendKeys(genData.generateRandomNumber(10));
+		WebElement scroll1 = cp.getscrolltocontactaddress();
+		JavascriptExecutor dup = ((JavascriptExecutor) driver);
+		dup.executeScript("arguments[0].scrollIntoView();", scroll1);
+		cp.getstreet1().sendKeys(genData.generateStringWithAllobedSplChars(50, "@,!Q#@$%#%"));
+		cp.getcity().sendKeys(genData.generateRandomString(8));
+		cp.getstateorprovince().sendKeys(genData.generateRandomString(10));
+		cp.getziporpostalcode().sendKeys(genData.generateRandomNumber(6));
+		cp.getcountry().sendKeys(genData.generateRandomString(8));
+		cp.getclicklistbox().click();
+		cp.getsavecontact().click();
+		WebElement contactname = cp.getverifycontact();
+		Assert.assertTrue(contactname.getText().contains(ContactFirstName+ContactLastName));
+		System.out.println("Contact added successfully to an account.");
 	}
 		
 	@AfterTest

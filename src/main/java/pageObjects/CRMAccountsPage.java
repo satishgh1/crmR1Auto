@@ -129,8 +129,19 @@ public class CRMAccountsPage {
 	By phonetxboxlabel = By.xpath("//label[contains(text(),'Phone')]");
 	By hletterfilterlink = By.xpath("//li[@aria-label='Filter table by h']");
 	By duplicaterecordspopupignorensavebtn = By.xpath("//button[@aria-label='Ignore and save']");
+	By clickoverflowbutton = By.xpath("//button[@data-id = 'OverflowButton']");
+	By clickexporttoexcelbutton = By.xpath("//button[@data-id = 'account|NoRelationship|HomePageGrid|Mscrm.HomepageGrid.account.ExportToExcel.Menu$splitButtonId']");
+	By openexcelonline = By.xpath("//span[@aria-label = 'Open in Excel Online']");
+	By saveexcelonline = By.xpath("//button[@data-id = 'export_to_excelonline_save']");
+	By closepopupexcelonline = By.xpath("//button[@data-id = 'okButton']");
+	By exporttostaticworksheet = By.xpath("//span[@aria-label = 'Static Worksheet']");
+	By exporttostaticworksheetpageonly = By.xpath("//span[@aria-label = 'Static Worksheet (Page only)']");
+	By exporttodynamicworksheet = By.xpath("//span[@aria-label = 'Dynamic Worksheet']");
+	By selectcheckbox1 = By.xpath("//input[@data-id = 'entitySelector_id.fieldControl-selectAllCheckBoxElementKeyaccountxxc_accountactivecontactcount']");
+	By selectcheckbox2 = By.xpath("//input[@data-id = 'entitySelector_id.fieldControl-selectAllCheckBoxElementKeyaccountaccountnumber']");
+	By exportworksheetpopup = By.xpath("//button[@data-id = 'export_excel']");
+	By exporttodynamicpivottable = By.xpath("//span[@aria-label = 'Dynamic PivotTable']");
 	
-		
 	
 	public CRMAccountsPage(WebDriver driver) {
 
@@ -723,6 +734,84 @@ public class CRMAccountsPage {
 	public WebElement getDuplicateRecordsPopupIgnorenSavebtn()
 	{
 		return driver.findElement(duplicaterecordspopupignorensavebtn);
+	}
+	
+	public WebElement getclickoverflowbutton() {
+		
+		return driver.findElement(clickoverflowbutton);
+	}
+	
+	public WebElement getclickexporttoexcelbutton() {
+		
+		return driver.findElement(clickexporttoexcelbutton);
+	}
+
+	public WebElement getopenexcelonline() {
+		
+		return driver.findElement(openexcelonline);
+	}
+
+	public WebElement getsaveexcelonline() 
+	{
+		wait = new WebDriverWait (driver,15);
+		wait.until(ExpectedConditions.elementToBeClickable(saveexcelonline));
+		return driver.findElement(saveexcelonline);
+	}
+
+	public WebElement getclosepopupexcelonline() 
+	{
+		wait = new WebDriverWait (driver,15);
+		wait.until(ExpectedConditions.elementToBeClickable(closepopupexcelonline));
+		return driver.findElement(closepopupexcelonline);
+	}
+
+	public WebElement getexporttostaticworksheet() 
+	{
+		wait = new WebDriverWait (driver,15);
+		wait.until(ExpectedConditions.elementToBeClickable(exporttostaticworksheet));
+		return driver.findElement(exporttostaticworksheet);
+	}
+
+	public WebElement getexporttostaticworksheetpageonly() 
+	{
+		wait = new WebDriverWait (driver,15);
+		wait.until(ExpectedConditions.elementToBeClickable(exporttostaticworksheetpageonly));
+		return driver.findElement(exporttostaticworksheetpageonly);
+	}
+
+	public WebElement getexporttodynamicworksheet() 
+	{
+		wait = new WebDriverWait (driver,15);
+		wait.until(ExpectedConditions.elementToBeClickable(exporttodynamicworksheet));
+		return driver.findElement(exporttodynamicworksheet);
+	}
+
+	public WebElement getselectcheckbox1() 
+	{
+		wait = new WebDriverWait (driver,15);
+		wait.until(ExpectedConditions.elementToBeClickable(selectcheckbox1));
+		return driver.findElement(selectcheckbox1);
+	}
+
+	public WebElement getselectcheckbox2() 
+	{
+		wait = new WebDriverWait (driver,15);
+		wait.until(ExpectedConditions.elementToBeClickable(selectcheckbox2));
+		return driver.findElement(selectcheckbox2);
+	}
+
+	public WebElement getexportworksheetpopup() 
+	{
+		wait = new WebDriverWait (driver,15);
+		wait.until(ExpectedConditions.elementToBeClickable(exportworksheetpopup));
+		return driver.findElement(exportworksheetpopup);
+	}
+
+	public WebElement getexporttodynamicpivottable() 
+	{
+		wait = new WebDriverWait (driver,15);
+		wait.until(ExpectedConditions.elementToBeClickable(exporttodynamicpivottable));
+		return driver.findElement(exporttodynamicpivottable);
 	}
 }
 
