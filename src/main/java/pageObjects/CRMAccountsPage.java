@@ -141,7 +141,22 @@ public class CRMAccountsPage {
 	By selectcheckbox2 = By.xpath("//input[@data-id = 'entitySelector_id.fieldControl-selectAllCheckBoxElementKeyaccountaccountnumber']");
 	By exportworksheetpopup = By.xpath("//button[@data-id = 'export_excel']");
 	By exporttodynamicpivottable = By.xpath("//span[@aria-label = 'Dynamic PivotTable']");
-	
+	By contactssectionbusinessphonefield = By.xpath("//div[@data-id='cell-0-3']");
+	By contactssectionlabel = By.xpath("//label[contains(text(),'Group By')]");
+	By contactssectionemailfield = By.xpath("//div[@data-id='cell-0-6']");
+	By contactssectionemailfieldlabel = By.xpath("//div[contains(text(),'Email')]");
+	By contactssectioncontactname = By.xpath("//div[@data-id='cell-0-2']");
+	By associatedlistslabel = By.xpath("//h2[contains(text(),'Associated Lists')]");
+	By contactssectionmobilephonefield = By.xpath("//div[@data-id='cell-0-5']");
+	By contactnavigatebtn = By.xpath("//button[@title='Navigate']");
+	By accrefreshbtn = By.xpath("//span[@aria-label='Refresh']");
+	By activecontactslist = By.xpath("//div[@aria-label='Active Contacts Account Subgrid']");
+	By bletterfilterlink = By.xpath("//li[@aria-label='Filter table by b']");
+	By relatedtabcontactsitem = By.xpath("//span[@id='navContacts_Related']");
+	By contactassociatedviewdropdownicon = By.xpath("//span[@class='symbolFont ChevronDownMed-symbol  ']");
+	By contactassociatedviewlabel = By.xpath("//span[contains(text(),'Contact Associated View')]");
+	By selectviewsallcontactsitem = By.xpath("//span[contains(text(),'All Contacts')]");
+	By enteranotelabel = By.xpath("//div[contains(text(),'Enter a note...')]");
 	
 	public CRMAccountsPage(WebDriver driver) {
 
@@ -812,6 +827,91 @@ public class CRMAccountsPage {
 		wait = new WebDriverWait (driver,15);
 		wait.until(ExpectedConditions.elementToBeClickable(exporttodynamicpivottable));
 		return driver.findElement(exporttodynamicpivottable);
+	}
+	public WebElement getContactsSectionLabel()
+	{
+		return driver.findElement(contactssectionlabel);
+	}
+	
+	public WebElement getContactsSectionEmailField()
+	{
+		return driver.findElement(contactssectionemailfield);
+	}
+	
+	public WebElement getContactsSectionBusinessPhoneField()
+	{
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(contactssectionlabel));
+		return driver.findElement(contactssectionbusinessphonefield);
+	}
+	
+	public WebElement getContactsSectionEmailFieldLabel()
+	{
+		return driver.findElement(contactssectionemailfieldlabel);
+	}
+	
+	public WebElement getContactsSectionContactName()
+	{
+		return driver.findElement(contactssectioncontactname);
+	}
+	
+	public WebElement getAssociatedListsLabel()
+	{
+		return driver.findElement(associatedlistslabel);
+	}
+	
+	public WebElement getContactsSectionMobilePhoneField()
+	{
+		return driver.findElement(contactssectionmobilephonefield);
+	}
+	
+	public WebElement getContactNavigateBtn()
+	{
+		return driver.findElement(contactnavigatebtn);
+	}
+	
+	public WebElement getAccRefreshBtn() throws InterruptedException
+	{
+//		wait = new WebDriverWait (driver,20);
+//		wait.until(ExpectedConditions.elementToBeClickable(accrefreshbtn));
+		Thread.sleep(5000);
+		return driver.findElement(accrefreshbtn);
+	}
+	
+	public List<WebElement> getActiveContactsList() throws InterruptedException
+	{
+		Thread.sleep(5000);
+		return driver.findElements(activecontactslist);
+	}
+	
+	public WebElement getBLetterFilterLink() {
+
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.elementToBeClickable(bletterfilterlink));
+		return driver.findElement(bletterfilterlink);
+	}
+	
+	public WebElement getRelatedTabContactsItem() {
+		return driver.findElement(relatedtabcontactsitem);
+	}
+	
+	public WebElement getContactAssociatedViewDropDownIcon()
+	{
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(contactassociatedviewlabel));
+		return driver.findElement(contactassociatedviewdropdownicon);
+	}
+	
+	public WebElement getContactAssociatedViewLabel() {
+		return driver.findElement(contactassociatedviewlabel);
+	}
+	
+	public WebElement getSelectViewsAllContactsItem() {
+		return driver.findElement(selectviewsallcontactsitem);
+	}
+	
+	public WebElement getEnteraNoteLabel() {
+		return driver.findElement(enteranotelabel);
 	}
 }
 

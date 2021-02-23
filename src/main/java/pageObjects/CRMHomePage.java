@@ -19,6 +19,9 @@ public class CRMHomePage {
 	By clearsearch = By.xpath("//button[@title='Clear search']");
 	By searchresultaccname = By.xpath("//div[@data-id = 'cell-0-2']");
 	By activeaccountstitle = By.xpath("//h1[@aria-label='Active Accounts']");
+	By contacttab = By.xpath("//span[contains(text(),'Contacts')]");
+	By activecontactstitle = By.xpath("//h1[@aria-label='Active Contacts']");
+	By searchresultcontactbusinessphone = By.xpath("//div[@data-id = 'cell-0-4']");
 				
 	public CRMHomePage(WebDriver driver) {
 		// TODO Auto-generated constructor stub
@@ -60,5 +63,25 @@ public class CRMHomePage {
 	
 	public WebElement getActiveAccountsTitle() {
 		return driver.findElement(activeaccountstitle);
+	}
+	public WebElement getContactsTab() {
+		// web element for the Account tab at left find side pane.
+		return driver.findElement(contacttab);
+	}
+	
+	public WebElement getActiveContactsTitle() {
+		return driver.findElement(activecontactstitle);
+	}
+	
+	public WebElement getSearchContactField() {
+		//web element for the search account field
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(activecontactstitle));
+		return driver.findElement(searchaccount);	
+	}
+	
+	public WebElement getSearchResultContactBusinessPhone() throws InterruptedException {
+		Thread.sleep(3000);
+		return driver.findElement(searchresultcontactbusinessphone);
 	}
 }
