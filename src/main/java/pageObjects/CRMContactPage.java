@@ -27,6 +27,9 @@ public class CRMContactPage {
 	By clicklistbox = By.xpath("//div[@class = 'wj-listbox-item']");
 	By savecontact = By.xpath("//button[@aria-label = 'Save & Close']");
 	By verifycontact = By.xpath("//div[@aria-label = 'Active Contacts Account Subgrid']");
+	By contactformemailtxtfield = By.xpath("//input[@data-id='emailaddress1.fieldControl-mail-text-input']");
+	By contactformbusinessphonetxtfield = By.xpath("//input[@aria-describedby='id-fd46b725-b6a7-47e9-b1d0-6f99bbc77f32-10-telephone16-telephone1.fieldControl-InputMaskControl-description']");
+
 	
 	public CRMContactPage(WebDriver driver) {
 
@@ -137,4 +140,16 @@ public class CRMContactPage {
 		wait.until(ExpectedConditions.elementToBeClickable(verifycontact));
 		return driver.findElement(verifycontact);
 		}
+	public WebElement getContactFormEmailField() {
+
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(contactformemailtxtfield));
+		return driver.findElement(contactformemailtxtfield);
+	}
+
+	public WebElement getContactFormBusinessPhoneField() throws InterruptedException {
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(contactformbusinessphonetxtfield));
+		return driver.findElement(contactformbusinessphonetxtfield);
+	}
 }

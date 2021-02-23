@@ -1364,6 +1364,176 @@ public class AccountPageTest extends base {
 		System.out.println("Contact added successfully to an account.");
 	}
 		
+	@Test(priority=23)
+	public void updateContactsFromAccountForm() throws InterruptedException
+	{
+		//The purpose of this test case to verify:-
+		//CRM-T78- Verify buyer services account manager has access to edit buyer profile 
+		//information while viewing a list of buyers by account.
+
+		hp = new CRMHomePage(driver);
+		ap = new CRMAccountsPage(driver);
+		cp = new CRMContactPage(driver);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+		//Click on Accounts Tab at left menu.
+		hp.getAccountTab().click();
+
+		boolean staleElement = true;
+		try {
+			while(staleElement){
+				//Click on 'Search' view and enter an account name having associated Contacts (C & R Vintage)
+				hp.getSearchAccountField().click();
+				hp.getSearchAccountField().sendKeys(prop.getProperty("acchavingcontacts"));
+				hp.getstartsearch().click();
+				hp.getSearchResultAcc().click();
+				ap.getAccNaviagteBtn().click();
+				staleElement = false;
+			}
+		}
+		catch (StaleElementReferenceException exe) {
+			staleElement = false;
+			System.out.println(exe.getMessage());
+		}
+		catch (WebDriverException ex) {
+			System.out.println(ex.getMessage());
+		}
+		//Under Contacts section in summary tab, click on the below field and update data for a contact/buyer: Email, Business Phone
+		ap.getContactsSectionContactName().click();
+		ap.getContactsSectionBusinessPhoneField().click();
+		ap.getContactsSectionBusinessPhoneField().sendKeys(Keys.BACK_SPACE);
+		ap.getContactsSectionLabel().click();
+		String contactphoneno = genData.generateRandomNumber(10);
+		ap.getContactsSectionBusinessPhoneField().sendKeys(contactphoneno);
+		ap.getContactsSectionLabel().click();
+
+		//Scroll till the Email field
+		act = new Actions(driver);
+		act.moveToElement(ap.getAssociatedListsLabel()).perform();
+		ap.getContactsSectionBusinessPhoneField().sendKeys(Keys.ARROW_RIGHT);
+		ap.getContactsSectionMobilePhoneField().sendKeys(Keys.ARROW_RIGHT);
+
+		//Update Email field
+		ap.getContactsSectionEmailField().click();
+		ap.getContactsSectionEmailField().sendKeys(Keys.BACK_SPACE);
+		ap.getContactsSectionLabel().click();
+		ap.getContactsSectionEmailField().sendKeys(prop.getProperty("contactupdateemail"));
+		ap.getContactsSectionLabel().click();
+
+		//Click on 'Save' button and then Click 'Refresh' button
+		ap.getAccSaveBtn().click();
+		ap.getAccRefreshBtn().click();
+
+		//Store contact name in a variable
+		String contactname = ap.getContactsSectionContactName().getText();
+		System.out.println("Contact name: " +contactname);
+		
+		//Click on Contact navigate button to open the contact details
+		act = new Actions(driver);
+		act.doubleClick(ap.getContactsSectionContactName()).perform();
+
+		Thread.sleep(10000);
+		//Scroll till email and business phone fields
+		WebElement enteranotelabel = ap.getEnteraNoteLabel();	
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("arguments[0].scrollIntoView(true);",enteranotelabel);
+		Thread.sleep(5000);
+		
+		//Verify that updated data is displayed on the contact form
+		WebElement updatedContactEmail = cp.getContactFormEmailField();
+		String contactemail = updatedContactEmail.getAttribute("Value");
+		System.out.println("Updated Contact Email: " + contactemail);
+		Assert.assertTrue(contactemail.contains(prop.getProperty("contactupdateemail")));
+		
+		//Click on 'Contacts' tab from left navigation bar
+		hp.getContactsTab().click();
+		hp.getSearchContactField().click();
+		hp.getSearchContactField().sendKeys(contactname);
+		hp.getstartsearch().click();
+		
+		String updatedContactBuisnessPhone = hp.getSearchResultContactBusinessPhone().getText();
+		System.out.println("Updated contact Business Phone: " +updatedContactBuisnessPhone);
+		Assert.assertTrue(updatedContactBuisnessPhone.contains(contactphoneno));
+		
+		//Clear the search term
+		hp.getClearSearch().click();
+	}
+	
+	//Manual run is Failed
+	@Test(priority=24)
+	public void verifyAssociatedContactsAccountStatusOfDeactivatedAccount() throws InterruptedException
+	{
+		//The purpose of this test case to verify:-
+		//CRM-T63- Verify if an account is deactivated with reason 'Out of Business', all 
+		//related contacts will also be marked as Out of business.
+
+		hp = new CRMHomePage(driver);
+		ap = new CRMAccountsPage(driver);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+		//Click on Accounts Tab at left menu.
+		hp.getAccountTab().click();
+
+		boolean staleElement = true;
+		try {
+			while(staleElement){
+				//Open any Active account from list
+				ap.getBLetterFilterLink().click();
+				ap.getAccountName().click();
+				ap.getAccNaviagteBtn().click();
+				
+				//Click 'Deactivate' button available in the top panel
+				ap.getDeactivateBtn().click();
+
+				//Select 'Account Status: Out of Business' in the confirm Account Deactivation pop-up
+				ap.getActivatePopupStatusField().click();
+				WebElement outofbusinessstatus = ap.getAccStatusOutofBusiness();
+				outofbusiness = ap.getAccStatusOutofBusiness().getText();
+				System.out.println("Account Status: " + outofbusiness);
+				outofbusinessstatus.click();
+
+				//Click on 'Deactivate' button
+				ap.getDeactivatePopupDeactivatebtn();
+				
+				//Click on 'Refresh' button
+				ap.getAccRefreshBtn().click();
+				staleElement = false;
+			}
+		}
+		catch (StaleElementReferenceException exe) {
+			staleElement = false;
+			System.out.println(exe.getMessage());
+		}
+	
+		act = new Actions(driver);
+		act.moveToElement(ap.getAssociatedListsLabel()).perform();
+		
+		//In Contacts section, verify that the deactivated contacts should no more be displayed in contacts section
+		List<WebElement> activecontactslist = ap.getActiveContactsList();
+		Assert.assertTrue(activecontactslist.size()!= 0);
+		
+		//Click on 'Related' tab and Select 'Contacts' item 
+		ap.getRelatedTab().click();
+		ap.getRelatedTabContactsItem().click();
+		
+		//Click on 'Select a View' drop-down icon next to 'Contact Associated View' label
+		ap.getContactAssociatedViewDropDownIcon().click();
+		
+		//Select 'System Views- All Contacts' item
+		ap.getSelectViewsAllContactsItem().click();
+		Thread.sleep(6000);
+		//Verify the Status should be 'Out of Business' for each contact in list
+		WebElement contactstatus = null;
+		for (int i=0;i<3;i++)
+		{
+			contactstatus = driver.findElement(By.xpath("//div[@data-id='cell-"+i+"-6']"));
+			System.out.println(contactstatus.getText());
+			Assert.assertTrue(contactstatus.getText().contains(outofbusiness));
+		}
+		
+		ap.getPageBackBtn().click();
+	}
+	
 	@AfterTest
 	public void closeDriver()
 	{
