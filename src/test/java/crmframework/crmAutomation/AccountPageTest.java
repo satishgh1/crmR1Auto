@@ -56,7 +56,7 @@ public class AccountPageTest extends base {
 	}
 
 	@Test(priority=1)
-	public void verifyCrmHomePage() throws IOException, InterruptedException {
+	public void TS001_VerifyHomePageTest() throws IOException, InterruptedException {
 
 		//The purpose of this test case to verify:-
 		//TS1- Login to CRM Application and  Select published Apps (Demand Driver Management)
@@ -93,10 +93,10 @@ public class AccountPageTest extends base {
 	}
 
 	@Test(priority=2)
-	public void verifyCreateNewAccount() throws InterruptedException
+	public void TS002_VerifyCreateNewAccountTest() throws InterruptedException
 	{
 		//The purpose of this test case to verify:-
-		//TS2- Create New Account
+		//TS343- Create New Account
 
 		hp = new CRMHomePage(driver);
 		ap = new CRMAccountsPage(driver);
@@ -173,10 +173,10 @@ public class AccountPageTest extends base {
 	}
 
 	@Test(priority=3)
-	public void verifyAddTimelineToAccount() throws InterruptedException
+	public void TS003_VerifyAddTimelineToAccountTest() throws InterruptedException
 	{
 		//The purpose of this test case to verify:-
-		//TS7- Select any account and add Timeline
+		//TS295- Select any account and add Timeline
 
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
 		hp = new CRMHomePage(driver);
@@ -207,180 +207,17 @@ public class AccountPageTest extends base {
 		//Verify that expected Success message displayed
 		Assert.assertEquals("Your changes were saved.", ap.getSuccessMsg().getText());
 
-		//Navigate back to Active accounts list
-		ap.getAccPageBackBtn().click();
+		//Navigate back to Active accounts lis
+		ap.getPageBackBtn().click();
 	}
+
+	
 
 	@Test(priority=4)
-	public void verifyAddIncentiveToAccount() throws InterruptedException {
+	public void TS004_VerifyAddMarketingRelationshipOwnerToAccountTest() throws InterruptedException {
 
 		//The purpose of this test case to verify:-
-		//TS4-Select any existing Account and add Incentive
-
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
-		hp = new CRMHomePage(driver);
-		hp.getAccountTab().click();
-
-		ap = new CRMAccountsPage(driver);
-		ap.getAllFilterLink().click();
-		//Thread.sleep(3000);
-
-		// Search Account Name
-		hp.getSearchAccountField().sendKeys("Cyb_QATest");
-		hp.getstartsearch().click();
-		//Thread.sleep(10000);
-
-		inc = new CRMIncentiveTab(driver);
-		// Open Account
-		inc.accname().click();
-		ap.getAccNaviagteBtn().click();
-		//Thread.sleep(10000);
-
-		// Click Incentives tab at existing account
-		inc.getinctab().click();
-
-		// Open New Incentive Form
-		inc.getnewinc().click();
-
-		// Select Contact at New Incentive Form
-		inc.getconclick().click();
-		inc.getconsearch().click();
-		inc.getconselect().click();
-
-		// Select Market at New Incentive Form
-		inc.getmarclick().click();
-		inc.getmarsearch().click();
-		inc.getmarselect().click();
-
-		// Select Referral Source at New Incentive Form
-		inc.getrefclick().click();
-		inc.getrefsearch().click();
-		inc.getrefselect().click();
-
-		// Enter Other Incentive Source at New Incentive Form
-		inc.getosclick().click();
-		inc.getosvalue().sendKeys("None");
-
-		// Save and Close Incentive
-		inc.getincsave().click();
-		Thread.sleep(15000);
-		// Incentive Verification
-		if (inc.accname().getText().contains("Cyb") && inc.conname().getText().contains("Test") && inc.marname().getText().contains("Jan"))
-		{
-			System.out.println ("Incentive added successfully.");
-		}
-		else
-		{
-			System.out.println ("Incentive not added.");
-		}
-
-		//Navigate back to Active accounts list
-		ap.getAccPageBackBtn().click();
-		//Thread.sleep(3000);
-
-		//Clear the search term
-		hp.getClearSearch().click();
-	}
-
-	@Test(priority=5)
-	public void verifyAddIncentiveDetailsToAccount() throws InterruptedException
-	{
-		//The purpose of this test case to verify :-
-		//TS5- Select any existing Account and add Incentive Details
-
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
-		hp = new CRMHomePage(driver);
-		hp.getAccountTab().click();
-
-		ap = new CRMAccountsPage(driver);
-		//Click on 'A' link to sort accounts starts with 'A'
-		ap.getCLetterFilterLink().click();
-		//Thread.sleep(4000);	
-
-		//Select the account name in list
-		ap.getAccountName().click();
-		ap.getAccNaviagteBtn().click();
-
-		inc = new CRMIncentiveTab(driver);
-		//Select 'Incentives' tab
-		inc.getinctab().click();
-
-		//Click on 'New Incentive Details' button
-		inc.getIncDetaills().click();
-
-		//Enter the data in Incentive field 
-		inc.getInctxtbx().click();
-		inc.getInctxtbx().sendKeys(Keys.ENTER); 
-
-		inc.getIncChangeView().click();
-		inc.getIncActiveIncs().click();
-		//Thread.sleep(2000);
-		inc.getIncName().click();
-
-		//Enter the data in Incentive Category field
-		inc.getIncCattxtbx().click();
-		inc.getIncCattxtbx().sendKeys(prop.getProperty("incentivecategory"));
-		inc.getIncCatSearch().click();
-		String IncCatagtitle = inc.getIncCatName().getText();
-		inc.getIncCatName().click();
-		inc.getIncDetailsSavenClose().click();
-		//Thread.sleep(5000);
-
-		//Verify that added Incentive details are reflected correctly
-		if ((inc.getValidateIncName().getText()).contains(IncCatagtitle)) {
-			System.out.println("Incentive details get added successfully");
-		}
-		else {
-			System.out.println("Fails to add Incentive Details");
-		}
-
-		//Verify that expected Success message displayed
-		//Thread.sleep(3000);
-		System.out.println(inc.getIncdtlsSuccessMsg().getText());
-		Assert.assertEquals("Your changes were saved.", inc.getIncdtlsSuccessMsg().getText());
-
-		ap = new CRMAccountsPage(driver);
-		//Navigate back to Active accounts list
-		ap.getAccPageBackBtn().click();
-		//Thread.sleep(3000);
-	}
-
-	@Test(priority=6)
-	public void verifyRelatedTabOnAccount() throws InterruptedException {
-
-		//The purpose of this test case to verify :-
-		//Select any existing account and Verify Related Tab Functionality 
-
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
-		hp = new CRMHomePage(driver);
-		hp.getAccountTab().click();
-
-		ap = new CRMAccountsPage(driver);
-		//Click on 'A' link to sort accounts starts with 'A'
-		ap.getCLetterFilterLink().click();
-		//Thread.sleep(4000);	
-
-		//Select the account name in list
-		ap.getAccountName().click();
-		ap.getAccNaviagteBtn().click();
-		//Thread.sleep(5000);
-		//click on Related Tab and select Activities option from list. 
-		ap.getRelatedTab().click();
-		ap.getSelectActivitiesRelated().click();
-		//Thread.sleep(5000);
-		Boolean displayActivityTab = ap.getActivityTab().isDisplayed();
-		System.out.println("Activities Tab Opened successfully:"+displayActivityTab);
-
-		//Navigate back to Active accounts list
-		ap.getAccPageBackBtn().click();				
-		//Thread.sleep(3000);
-	}
-
-	@Test(priority=7)
-	public void verifyAddMarketingRelationshipOwnerToAccount() throws InterruptedException {
-
-		//The purpose of this test case to verify:-
-		//TS8- Add relationship manager to account
+		//TS75- Add relationship manager to account
 
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS) ;
 		hp = new CRMHomePage(driver);
@@ -419,14 +256,14 @@ public class AccountPageTest extends base {
 		Assert.assertTrue(verifyOwner.getText().contains(ownertxt));
 		System.out.println("Marketing Relationship Owner get added successfully");
 		//Navigate back to Active accounts list
-		ap.getAccPageBackBtn().click();
+		ap.getPageBackBtn().click();
 	}
 
-	@Test(priority=8)
-	public void verifySearchAccount() throws InterruptedException
+	@Test(priority=5)
+	public void TS005_VerifySearchAccountTest() throws InterruptedException
 	{
 		//The purpose of this test case to verify:-
-		//TS3- Search any existing Account by Account DBA Name
+		//TS46- Search any existing Account by Account DBA Name
 
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
 		hp = new CRMHomePage(driver);
@@ -436,7 +273,7 @@ public class AccountPageTest extends base {
 		hp.getSearchAccountField().sendKeys(accnameText);
 		hp.getstartsearch().click();
 		//Thread.sleep(10000);
-		WebElement validateAccName = driver.findElement(By.xpath("//a[contains(text(),'"+accnameText+"')]"));
+		WebElement validateAccName = driver.findElement(By.xpath("//label[contains(text(),'"+accnameText+"')]"));
 		Boolean checkvalidateAccName = validateAccName.isDisplayed();
 
 		Assert.assertTrue(checkvalidateAccName);
@@ -445,11 +282,11 @@ public class AccountPageTest extends base {
 		hp.getClearSearch().click();
 	}
 
-	@Test(priority=9)
-	public void verifyDeactivateAccount() throws InterruptedException
+	@Test(priority=6)
+	public void TS006_VerifyDeactivateAccountTest() throws InterruptedException
 	{
 		//The purpose of this test case to verify:-
-		//TS9- Select any existing Account and deactivate it
+		//TS40- Select any existing Account and deactivate it
 
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
 		hp = new CRMHomePage(driver);
@@ -461,7 +298,7 @@ public class AccountPageTest extends base {
 		hp.getstartsearch().click();
 		//Thread.sleep(10000);
 
-		WebElement validateAccName = driver.findElement(By.xpath("//a[contains(text(),'"+accnameText+"')]"));
+		WebElement validateAccName = driver.findElement(By.xpath("//label[contains(text(),'"+accnameText+"')]"));
 		validateAccName.click();
 		ap.getAccNaviagteBtn().click();
 		//Thread.sleep(10000);
@@ -501,8 +338,8 @@ public class AccountPageTest extends base {
 		}
 	}
 
-	@Test(priority=10)
-	public void verifyParentAccount() throws InterruptedException
+	@Test(priority=7)
+	public void TS007_VerifyParentAccountTest() throws InterruptedException
 	{
 		//The purpose of this test case to verify:-
 		//CRM-T43- A new field 'Parent Account ' is available on the Account Form under 
@@ -554,8 +391,8 @@ public class AccountPageTest extends base {
 		}
 	}
 
-	@Test(priority=11)
-	public void verifyAccountStatusToActivateAccount() throws InterruptedException
+	@Test(priority=8)
+	public void TS008_VerifyAccountStatusToActivateAccountTest() throws InterruptedException
 	{
 		//The purpose of this test case to verify:-
 		//CRM-T39- Account Status and Account Status Reason functionality for account activation
@@ -616,8 +453,8 @@ public class AccountPageTest extends base {
 		ap.getAccSaveCloseBtn().click();
 	}
 	
-	@Test(priority=12)
-	public void verifyAccountStatusToDeactivateAccount() throws InterruptedException
+	@Test(priority=9)
+	public void TS009_VerifyAccountStatusToDeactivateAccountTest() throws InterruptedException
 	{
 		//The purpose of this test case to verify:-
 		//CRM-T40- Account Status and Account Status Reason functionality for account deactivation
@@ -672,8 +509,8 @@ public class AccountPageTest extends base {
 		ap.getPageBackBtn().click();
 	}
 
-	@Test(priority=13)
-	public void verifyMediaSegmentationField() throws InterruptedException
+	@Test(priority=10)
+	public void TS010_VerifyMediaSegmentationFieldTest() throws InterruptedException
 	{
 		//The purpose of this test case to verify:-
 		//CRM-T29- Media Segmentation drop-down field is visible on Account form only if Type equal to 'Media' is selected
@@ -735,8 +572,8 @@ public class AccountPageTest extends base {
 		ap.getDiscardChangesBtn().click();
 	}
 	
-	@Test(priority=14)
-	public void verifyAddNoteToAccount() throws InterruptedException
+	@Test(priority=11)
+	public void TS011_VerifyAddNoteToAccountTest() throws InterruptedException
 	{
 		//The purpose of this test case to verify:-
 		//T98- Select any account and add Note to account
@@ -784,8 +621,8 @@ public class AccountPageTest extends base {
 		ap.getPageBackBtn().click();
 	}
 	
-	@Test(priority=15)
-	public void verifyAddNewPostToAccount() throws InterruptedException
+	@Test(priority=12)
+	public void TS012_VerifyAddNewPostToAccountTest() throws InterruptedException
 	{
 		//The purpose of this test case to verify:-
 		//T299- Select any account and add Post to account
@@ -820,8 +657,8 @@ public class AccountPageTest extends base {
 		ap.getPageBackBtn().click();
 	}
 
-	@Test(priority=16)
-	public void verifyAuditHistoryTabOnAccount() throws InterruptedException {
+	@Test(priority=13)
+	public void TS013_VerifyAuditHistoryTabOnAccountTest() throws InterruptedException {
 
 		//The purpose of this test case to verify :-
 		//T300: Select any existing account and click on Audit History Tab Functionality 
@@ -854,8 +691,8 @@ public class AccountPageTest extends base {
 		
 	}
 	
-	@Test(priority=17)
-	public void verifyPhoneCallOnAccount() throws InterruptedException {
+	@Test(priority=14)
+	public void TS014_VerifyPhoneCallOnAccountTest() throws InterruptedException {
 
 		//The purpose of this test case to verify :-
 		//T85: Add Phone Call to an existing Account
@@ -907,8 +744,8 @@ public class AccountPageTest extends base {
 		ap.getAccPageBackBtn().click();
 	}
 	
-	@Test(priority=18)
-	public void verifySateAndRegionInGrid() throws InterruptedException {
+	@Test(priority=15)
+	public void TS015_VerifySateAndRegionInGridTest() throws InterruptedException {
 
 		//The purpose of this test case to verify :-
 		//T166: Filter State and Region in grid
@@ -968,8 +805,8 @@ public class AccountPageTest extends base {
 		}
 	}
 	
-	@Test(priority=19)
-	public void verifyNamePhoneCityInGrid() throws InterruptedException {
+	@Test(priority=16)
+	public void TS016_VerifyNamePhoneCityInGridTest() throws InterruptedException {
 
 		//The purpose of this test case to verify :-
 		//T289: Filter Account DBA Name, Phone and City in grid
@@ -1022,7 +859,7 @@ public class AccountPageTest extends base {
 		//Verify region value selected on accounts grid
 		WebElement ExpectedPhone = ap.getclickaddressvaluefield();
 		WebElement ActualPhone = ap.getclickaddressvaluefield();
-		if (ExpectedName.equals(ActualName.getText())){
+		if (ExpectedPhone.equals(ActualPhone.getText())){
 					
 			System.out.println("Phone matches expected criteria");
 					
@@ -1049,7 +886,7 @@ public class AccountPageTest extends base {
 		//Verify region value selected on accounts grid
 		WebElement ExpectedCity = ap.getclickaddressvaluefield();
 		WebElement ActualCity = ap.getclickaddressvaluefield();
-		if (ExpectedName.equals(ActualName.getText())){
+		if (ExpectedCity.equals(ActualCity.getText())){
 					
 			System.out.println("City matches expected criteria");
 					
@@ -1064,8 +901,8 @@ public class AccountPageTest extends base {
 		ap.getclearfiltergrid().click();
 	}
 	
-	@Test(priority=20)
-	public void verifySearchusingAccountNameandPhone() throws InterruptedException
+	@Test(priority=17)
+	public void TS017_VerifySearchusingAccountNameandPhoneTest() throws InterruptedException
 	{
 		//The purpose of this test case to verify:-
 		//CRM-T46- CRM User is having ability to search Account entity using account name and phone
@@ -1128,8 +965,8 @@ public class AccountPageTest extends base {
 		ap.getPageBackBtn().click();
 	}
 	
-	@Test(priority=21)
-	public void verifyDuplicateAccount() throws InterruptedException
+	@Test(priority=18)
+	public void TS018_VerifyDuplicateAccountTest() throws InterruptedException
 	{
 		//The purpose of this test case to verify:-
 		//CRM-T58- Verify notification for duplicate account creation when same Account DBA Name and Phone
@@ -1253,8 +1090,8 @@ public class AccountPageTest extends base {
 		hp.getClearSearch().click();
 	}
 	
-	@Test(priority=22)
-	public void verifyExportToExcel() throws InterruptedException
+	@Test(priority=19)
+	public void TS019_VerifyExportToExcelTest() throws InterruptedException
 	{
 		//The purpose of this test case to verify:-
 		//CRM-T293- Verify Export To Excel functionality for Accounts
@@ -1320,8 +1157,8 @@ public class AccountPageTest extends base {
 		ap.getexportworksheetpopup().click();
 	}
 	
-	@Test(priority=22)
-	public void verifyAddContact() throws InterruptedException
+	@Test(priority=20)
+	public void TS020_VerifyAddContactTest() throws InterruptedException
 	{
 		//The purpose of this test case to verify:-
 		//CRM-T294- Verify new contact creation from existing account
@@ -1364,8 +1201,8 @@ public class AccountPageTest extends base {
 		System.out.println("Contact added successfully to an account.");
 	}
 		
-	@Test(priority=23)
-	public void updateContactsFromAccountForm() throws InterruptedException
+	@Test(priority=21)
+	public void TS021_VerifyUpdateContactsFromAccountFormTest() throws InterruptedException
 	{
 		//The purpose of this test case to verify:-
 		//CRM-T78- Verify buyer services account manager has access to edit buyer profile 
@@ -1460,8 +1297,8 @@ public class AccountPageTest extends base {
 	}
 	
 	//Manual run is Failed
-	@Test(priority=24)
-	public void verifyAssociatedContactsAccountStatusOfDeactivatedAccount() throws InterruptedException
+	@Test(priority=22)
+	public void TS022_VerifyAssociatedContactsAccountStatusOfDeactivatedAccountTest() throws InterruptedException
 	{
 		//The purpose of this test case to verify:-
 		//CRM-T63- Verify if an account is deactivated with reason 'Out of Business', all 
@@ -1533,6 +1370,112 @@ public class AccountPageTest extends base {
 		
 		ap.getPageBackBtn().click();
 	}
+	
+	@Test(priority=23)
+	public void TS023_VerifyBusinessRuleForPhoneNumberTest() throws InterruptedException {
+
+		//The purpose of this test case to verify :-
+		//T307: Select any existing account and click on Details Tab Functionality 
+
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+		hp = new CRMHomePage(driver);
+		hp.getAccountTab().click();
+
+		ap = new CRMAccountsPage(driver);
+		Thread.sleep(10000);
+		//Click on 'New' button
+		ap.getAccountNewbtn().click();
+		
+		ap.getAccountnametxtbx().click();
+		ap.getAccountnametxtbx().sendKeys(genData.generateRandomAlphaNumeric(10));
+		ap.getAccSaveBtn().click();
+		
+		ap.getNotificationExpandIcon().click();
+		ap.getNotificationExpandIcon().click();
+		ap.getAccountnametxtbx().sendKeys(Keys.TAB);
+		ap.getPhone().click();	
+		String totalwarningmessage= ap.getNotificationWrapperMsg().getText();
+		Assert.assertEquals(totalwarningmessage, "You have 7 notifications. Select to view.");
+		System.out.println("Warning message displayed.");
+		Thread.sleep(10000);
+
+		ap.getPhone().click();
+		ap.getPhone().sendKeys(genData.generateRandomNumber(10));
+		ap.getPhone().sendKeys(Keys.TAB);
+		ap.getAccSaveBtn().click();
+		String typewarningmessage=ap.getTypeNotificationWrapperMsg().getText();
+		Assert.assertEquals(typewarningmessage, "Type : Required fields must be filled in.");
+		System.out.println("Displayed only Type warning message displayed.");
+		ap.getPageBackBtn().click();
+	}
+	
+	@Test(priority=24)
+	public void TS024_VerifyBusinessRuleForAddressTest() throws InterruptedException {
+
+		//The purpose of this test case to verify :-
+		//T308: Select any existing account and click on Details Tab Functionality 
+
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+		hp = new CRMHomePage(driver);
+		hp.getAccountTab().click();
+
+		ap = new CRMAccountsPage(driver);
+		Thread.sleep(10000);
+		//Click on 'New' button
+		ap.getAccountNewbtn().click();
+		
+		ap.getAccountnametxtbx().click();
+		ap.getAccountnametxtbx().sendKeys(genData.generateRandomAlphaNumeric(10));
+		ap.getAccSaveBtn().click();
+		
+		ap.getNotificationExpandIcon().click();
+		ap.getNotificationExpandIcon().click();
+		ap.getAccountnametxtbx().sendKeys(Keys.TAB);
+		ap.getPhone().click();	
+		String totalwarningmessage= ap.getNotificationWrapperMsg().getText();
+		Assert.assertEquals(totalwarningmessage, "You have 7 notifications. Select to view.");
+		System.out.println("Warning message displayed.");
+		Thread.sleep(10000);
+		ap.getAddress().click();
+
+		//Scroll down on the page
+		act.keyDown(Keys.CONTROL).sendKeys(Keys.DOWN).perform();
+		act.keyDown(Keys.CONTROL).sendKeys(Keys.DOWN).release().perform();
+		
+		//Enter Street1 address
+		ap.getStreet1().sendKeys(prop.getProperty("street1"));
+	
+		//Enter City
+		ap.getCity().click();
+		ap.getCity().sendKeys(prop.getProperty("city"));
+
+		//Enter state
+		ap.getState().click();
+		ap.getState().sendKeys(prop.getProperty("state"));
+
+		//Enter zipcode
+		ap.getZipcode().click();
+		ap.getZipcode().sendKeys(prop.getProperty("zipcode"));
+
+		//Enter country
+		ap.getCountrytxbx().click();
+		ap.getCountrydrpbtn().click();
+		ap.getCountryName().click();
+		ap.getAccSaveBtn().click();
+		String typewarningmessage=ap.getTypeNotificationWrapperMsg().getText();
+		Assert.assertEquals(typewarningmessage, "Type : Required fields must be filled in.");
+		System.out.println("Displayed only Type warning message displayed.");
+		ap.getPageBackBtn().click();
+
+/*		ap.getPhone().click();
+		ap.getPhone().sendKeys(genData.generateRandomNumber(10));
+		ap.getPhone().sendKeys(Keys.TAB);
+		ap.getAccSaveBtn().click();
+		String typewarningmessage=ap.getTypeNotificationWrapperMsg().getText();
+		Assert.assertEquals(typewarningmessage, "Type : Required fields must be filled in.");
+		System.out.println("Displayed only Type warning message displayed.");*/
+	}
+
 	
 	@AfterTest
 	public void closeDriver()

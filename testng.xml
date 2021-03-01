@@ -9,24 +9,7 @@
 			<class name="crmframework.crmAutomation.AccountPageTest" />
 			<methods>
 				<!-- <exclude name="verifyCreateNewAccount" /> -->
-				<exclude name="verifyAddMarketingRelationshipOwnerToAccount" />
-				<exclude name="verifyAddIncentiveDetailsToAccount" />
-				<exclude name="verifyAddIncentiveToAccount" />
-				<exclude name="verifyDeactivateAccount" />
-				<exclude name="verifyRelatedTabOnAccount" />
-				<exclude name="verifySearchAccount" />
-				<exclude name="verifyAddTimelineToAccount" />
-				<exclude name="verifyAccountStatusToActivateAccount" />
-				<exclude name="verifyAccountStatusToDeactivateAccount" />
-				<exclude name="verifyAddNewPostToAccount" />
-				<exclude name="verifyAddNoteToAccount" />
-				<exclude name="verifyAuditHistoryTabOnAccount" />
-				<exclude name="verifyMediaSegmentationField" />
-				<exclude name="verifyNamePhoneCityInGrid" />
-				<exclude name="verifyParentAccount" />
-				<exclude name="verifyPhoneCallOnAccount" />
-				<exclude name="verifySateAndRegionInGrid" />
-				<exclude name="verifySearchusingAccountNameandPhone" />
+				<exclude name= "verify_TS27_validateBusinessRuleForAddressTest" />
 			</methods>
 		</classes>
 	</test> <!-- Test -->

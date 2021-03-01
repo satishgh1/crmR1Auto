@@ -157,6 +157,13 @@ public class CRMAccountsPage {
 	By contactassociatedviewlabel = By.xpath("//span[contains(text(),'Contact Associated View')]");
 	By selectviewsallcontactsitem = By.xpath("//span[contains(text(),'All Contacts')]");
 	By enteranotelabel = By.xpath("//div[contains(text(),'Enter a note...')]");
+	By detailsTab = By.xpath("//li[@title='Details']"); // xpath for Detail tab at Account Details page.
+	By originatingleadinput = By.xpath("//section[@id='DETAILS_TAB_section_2']//section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[3]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/input[1]");
+	By notificationExpandIcon = By.xpath("//span[@id='notificationExpandIcon']");
+	By notificationwrappermsg = By.xpath("//html[1]/body[1]/div[2]/div[1]/div[4]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/span[2]");
+	By phoneErrorMsg = By.xpath("//*[contains(text(),'Phone : Required fields must be filled in.')]");
+	By typeNotificationWrapperMsg = By.xpath("//span[contains(text(),'Type : Required fields must be filled in.')]");
+	By phoneRequiredIcon = By.xpath("/div[@data-id='telephone1-required-icon']");
 	
 	public CRMAccountsPage(WebDriver driver) {
 
@@ -912,6 +919,26 @@ public class CRMAccountsPage {
 	
 	public WebElement getEnteraNoteLabel() {
 		return driver.findElement(enteranotelabel);
+	}
+	public WebElement getNotificationWrapperMsg()
+	{
+		return driver.findElement(notificationwrappermsg);
+	}
+	public WebElement getNotificationExpandIcon()
+	{
+		return driver.findElement(notificationExpandIcon);
+	}
+	public WebElement getPhoneErrorMsg()
+	{
+		return driver.findElement(phoneErrorMsg);
+	}
+	public WebElement getTypeNotificationWrapperMsg()
+	{
+		return driver.findElement(typeNotificationWrapperMsg);	
+	}
+	public WebElement getPhoneRequiredIcon()
+	{
+		return driver.findElement(phoneRequiredIcon);
 	}
 }
 
