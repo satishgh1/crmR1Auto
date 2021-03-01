@@ -1175,29 +1175,39 @@ public class AccountPageTest extends base {
 		ap.getAccountName().click();
 		ap.getAccNaviagteBtn().click();
 		
-		//Scroll down to contacts section
-		WebElement scroll = cp.getscrolltoaddcontact();
-		JavascriptExecutor js = ((JavascriptExecutor) driver);
-		js.executeScript("arguments[0].scrollIntoView();", scroll);
+		//Scroll down to contacts section		
+		act = new Actions(driver);
+		act.moveToElement(ap.getAssociatedListsLabel()).perform();
+		Thread.sleep(4000);
+		cp.getContactSectionMenuBtn().click();
 		
 		//Add new contact
 		cp.getclicknewcontactbutton().click();
-		cp.getfirstname().sendKeys(genData.generateRandomString(10));
-		cp.getlastname().sendKeys(genData.generateRandomString(10));
+		String ContactFirstName = "QA"+ genData.generateRandomString(3);
+		cp.getfirstname().click();
+		cp.getfirstname().sendKeys(ContactFirstName);
+		
+		String ContactLastName = genData.generateRandomString(5);
+		cp.getlastname().click();
+		cp.getlastname().sendKeys(ContactLastName);
+		
+		WebElement scrollText = cp.getScrollTextOnContactForm();	
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("arguments[0].scrollIntoView(true);",scrollText);
+		Thread.sleep(3000);
+	
 		cp.getemail().sendKeys(genData.generateEmail(15));
 		cp.getmobile().sendKeys(genData.generateRandomNumber(10));
-		WebElement scroll1 = cp.getscrolltocontactaddress();
-		JavascriptExecutor dup = ((JavascriptExecutor) driver);
-		dup.executeScript("arguments[0].scrollIntoView();", scroll1);
-		cp.getstreet1().sendKeys(genData.generateStringWithAllobedSplChars(50, "@,!Q#@$%#%"));
-		cp.getcity().sendKeys(genData.generateRandomString(8));
-		cp.getstateorprovince().sendKeys(genData.generateRandomString(10));
-		cp.getziporpostalcode().sendKeys(genData.generateRandomNumber(6));
-		cp.getcountry().sendKeys(genData.generateRandomString(8));
-		cp.getclicklistbox().click();
+		
+		//Click on Save button in header
 		cp.getsavecontact().click();
-		WebElement contactname = cp.getverifycontact();
-		Assert.assertTrue(contactname.getText().contains(ContactFirstName+ContactLastName));
+		
+		String contactname = cp.getverifycontact().getText();
+		System.out.println("Contact Name: "+contactname);
+		String validateContactName = ContactFirstName +" "+ ContactLastName;
+		System.out.println("Validate Contact Name: "+ validateContactName);
+		Assert.assertTrue(contactname.contains(validateContactName));
+		ap.getPageBackBtn().click();
 		System.out.println("Contact added successfully to an account.");
 	}
 		
@@ -1254,7 +1264,8 @@ public class AccountPageTest extends base {
 		ap.getContactsSectionEmailField().click();
 		ap.getContactsSectionEmailField().sendKeys(Keys.BACK_SPACE);
 		ap.getContactsSectionLabel().click();
-		ap.getContactsSectionEmailField().sendKeys(prop.getProperty("contactupdateemail"));
+		String contactemail = genData.generateEmail(15);
+		ap.getContactsSectionEmailField().sendKeys(contactemail);
 		ap.getContactsSectionLabel().click();
 
 		//Click on 'Save' button and then Click 'Refresh' button
@@ -1278,9 +1289,9 @@ public class AccountPageTest extends base {
 		
 		//Verify that updated data is displayed on the contact form
 		WebElement updatedContactEmail = cp.getContactFormEmailField();
-		String contactemail = updatedContactEmail.getAttribute("Value");
-		System.out.println("Updated Contact Email: " + contactemail);
-		Assert.assertTrue(contactemail.contains(prop.getProperty("contactupdateemail")));
+		String contactemailtext = updatedContactEmail.getAttribute("Value");
+		System.out.println("Updated Contact Email: " + contactemailtext);
+		Assert.assertTrue(contactemailtext.contains(contactemail));
 		
 		//Click on 'Contacts' tab from left navigation bar
 		hp.getContactsTab().click();
@@ -1474,6 +1485,70 @@ public class AccountPageTest extends base {
 		String typewarningmessage=ap.getTypeNotificationWrapperMsg().getText();
 		Assert.assertEquals(typewarningmessage, "Type : Required fields must be filled in.");
 		System.out.println("Displayed only Type warning message displayed.");*/
+	}
+	
+	@Test(priority=25)
+	public void TS025_VerifyUpdateAccountInformation() throws InterruptedException
+	{
+		//The purpose of this test case to verify:-
+		//CRM-T288- Verify that existing account information is updated properly
+
+		hp = new CRMHomePage(driver);
+		ap = new CRMAccountsPage(driver);
+		
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+		//Click on Accounts Tab at left menu.
+		hp.getAccountTab().click();
+		
+		//Open an existing account
+		ap.getBLetterFilterLink().click();
+		ap.getAccountName().click();
+		ap.getAccNaviagteBtn().click();
+		
+		//Update all the fields at Summary tab
+		String accountdbanamebeforeupdate = ap.getupdateaccountname().getAttribute("value");
+		System.out.println("AccountDBA name before update: "+accountdbanamebeforeupdate);
+		ap.getupdateaccountname().sendKeys(Keys.CONTROL + "a");
+		ap.getupdateaccountname().sendKeys(Keys.DELETE);
+		String AccountNameNew = genData.generateRandomAlphaNumeric(10);
+		ap.getupdateaccountname().sendKeys(AccountNameNew);
+		String accountdbaname = ap.getupdateaccountname().getAttribute("value");
+		System.out.println("AccountDBA name after update: "+accountdbaname);
+		
+		ap.getPhone().sendKeys(Keys.CONTROL + "a");
+		ap.getPhone().sendKeys(Keys.DELETE);
+		ap.getclickextensiontextbox().click();
+		ap.getPhone().click();
+		String phoneafterupdate = genData.generateRandomNumber(10);
+		System.out.println("Phone after update: "+phoneafterupdate);
+		ap.getPhone().sendKeys(phoneafterupdate);
+		
+		//Scroll up the page till Address field
+		act = new Actions(driver);
+		act.moveToElement(ap.getAddress()).perform();
+				
+		ap.getmovetotype().click();
+		ap.getdeletetype().click();
+		ap.getclicksearchddbutton().click();
+		ap.getselecttype().click();
+		ap.getclicksearchddbutton().click();
+		
+		//Save updated account information
+		ap.getAccSaveCloseBtn().click();
+		
+		//Verification for updated account information
+		hp.getAccountTab().click();
+		hp.getSearchAccountField().click();
+		hp.getSearchAccountField().sendKeys(AccountNameNew);
+		hp.getstartsearch().click();
+		WebElement accountdbanameafterupdate = ap.getAccountNameSearchTable();
+		Assert.assertFalse(accountdbanameafterupdate.getText().contains(accountdbanamebeforeupdate));
+		
+		WebElement AccPhone = ap.getPhoneinSearchTable();
+		Assert.assertTrue(AccPhone.getText().contains(phoneafterupdate));
+		System.out.println("Account Information updated successfully");
+		hp.getClearSearch().click();
 	}
 
 	

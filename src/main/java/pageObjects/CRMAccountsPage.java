@@ -164,6 +164,43 @@ public class CRMAccountsPage {
 	By phoneErrorMsg = By.xpath("//*[contains(text(),'Phone : Required fields must be filled in.')]");
 	By typeNotificationWrapperMsg = By.xpath("//span[contains(text(),'Type : Required fields must be filled in.')]");
 	By phoneRequiredIcon = By.xpath("/div[@data-id='telephone1-required-icon']");
+	By searchaccounttextbox = By.xpath("//input[@aria-label = 'Search this view']");
+	By clicksearchbutton = By.xpath("//button[@aria-label = 'Start search']");
+	By updateaccountname = By.xpath("//input[@data-id = 'name.fieldControl-text-box-text']");
+	By updateaccountlegalname = By.xpath("//input[@data-id = 'xxc_accountlegalname.fieldControl-text-box-text']");
+	By movetoparentaccount = By.xpath("//span[@data-id = 'parentaccountid.fieldControl-crmSymbolFont_selectedRecords_entity-symbol']");
+	By deleteselectedparentaccount = By.xpath("//section[@id= 'ACCOUNT_INFORMATION']/section[1]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[1]/button[1]/span[1]");
+	By clickparentaccountlookup = By.xpath("//input[@aria-label = 'Parent Account, Lookup']");
+	By selectparentaccount = By.xpath("//ul[@aria-label = 'Lookup recently used results']/li[1]/div[2]/span[1]");
+	By clickextensiontextbox = By.xpath("//input[@data-id = 'xxc_phone1ext.fieldControl-text-box-text']");
+	By clickfaxtextbox = By.xpath("//input[@aria-label = 'Fax']");
+	By clickwebsiteurl = By.xpath("//input[@data-id = 'websiteurl.fieldControl-url-text-input']");
+	By scrolltoaddress = By.xpath("//div[@data-id = 'telephone1-required-icon']");
+	By movetomarketingrelationshipowner = By.xpath("//div[@data-id = 'xxc_marketingrelationshipownerid']/div[1]/div[2]/div[1]/div[3]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[1]/div[2]/div[2]");
+	By deletemarketingrelationshipowner = By.xpath("//div[@data-id = 'xxc_marketingrelationshipownerid']/div[1]/div[2]/div[1]/div[3]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[1]/button[1]");
+	By clickmarketingrelationshipowner = By.xpath("//input[@aria-label = 'Marketing Relationship Owner, Lookup']");
+	By selectmarketingrelationshipowner = By.xpath("//li[@data-id = 'xxc_marketingrelationshipownerid.fieldControl-LookupResultsDropdown_xxc_marketingrelationshipownerid_resultsContainer']/div[2]/span[1]");
+	By movetotype = By.xpath("//div[@id = 'xxc_typecode_i']");
+	By deletetype = By.xpath("//div[@id = 'xxc_typecode_i']/div[5]/ul[1]/li[1]/button[1]");
+	By clicksearchddbutton = By.xpath("//button[@aria-label = 'Toggle menu']");
+	By selecttype = By.xpath("//div[@data-id = 'xxc_typecode']/div[1]/div[2]/div[1]/div[3]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[3]/div[1]/div[6]/div[2]/ul[1]/li[1]/label[1]");
+	By updateaddressline1 = By.xpath("//input[@data-id = 'address1_line1.fieldControl-text-box-text']");
+	By updateaddressline2 = By.xpath("//input[@data-id = 'address1_line2.fieldControl-text-box-text']");
+	By updateaddressline3 = By.xpath("//input[@data-id = 'address1_line3.fieldControl-text-box-text']");
+	By updatecity = By.xpath("//input[@data-id = 'address1_city.fieldControl-text-box-text']");
+	By updatestate = By.xpath("//input[@data-id = 'address1_stateorprovince.fieldControl-text-box-text']");
+	By updatepostalcode = By.xpath("//input[@data-id = 'address1_postalcode.fieldControl-text-box-text']");
+	By clickcountrydropdown = By.xpath("//button[@aria-label = 'Toggle Dropdown']");
+	By selectcountry = By.xpath("//div[@id = '_dropdown']/div[1]");
+	By findupdatedaccount = By.xpath("//div[@data-id = 'data-set-quickFind-container']/button[1]");
+	By scrolltocontacts = By.xpath("//h2[@data-id = 'form-sectionHeader-SUMMARY_TAB_column_3_section_1']");
+	By scrolltoassociatedlists = By.xpath("//h2[@data-id = 'form-sectionHeader-SUMMARY_TAB_section_6']");
+	By listgridcolumn1 = By.xpath("//div[@data-id = 'AssociatedLists_container']/div[1]/div[4]/div[1]/div[1]/div[5]/div[1]/div[1]/div[2]");
+	By listgridcolumn2 = By.xpath("//div[@data-id = 'AssociatedLists_container']/div[1]/div[4]/div[1]/div[1]/div[5]/div[1]/div[1]/div[3]");
+	By listgridcolumn3 = By.xpath("//div[@data-id = 'AssociatedLists_container']/div[1]/div[4]/div[1]/div[1]/div[5]/div[1]/div[1]/div[4]");
+	By nolist = By.xpath("//div[@class = 'cc-grid-noRecords-Container']");
+	By list = By.xpath("//div[@id = 'DataSetHostContainer_dataSetRoot_AssociatedLists']/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/a[1]");
+	By listmember = By.xpath("//div[@aria-label = 'Active List Members']/div[2]/div[3]/a[1]");
 	
 	public CRMAccountsPage(WebDriver driver) {
 
@@ -939,6 +976,230 @@ public class CRMAccountsPage {
 	public WebElement getPhoneRequiredIcon()
 	{
 		return driver.findElement(phoneRequiredIcon);
+	}
+	
+	public WebElement getsearchaccounttextbox()
+	{
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(searchaccounttextbox));
+		return driver.findElement(searchaccounttextbox);
+	}
+	public WebElement getclicksearchbutton()
+	{
+		wait = new WebDriverWait (driver,10);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(clicksearchbutton));
+		return driver.findElement(clicksearchbutton);
+	}
+	public WebElement getupdateaccountname()
+	{
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(updateaccountname));
+		return driver.findElement(updateaccountname);
+	}
+	public WebElement getupdateaccountlegalname()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(updateaccountlegalname));
+		return driver.findElement(updateaccountlegalname);
+	}
+	public WebElement getmovetoparentaccount()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(movetoparentaccount));
+		return driver.findElement(movetoparentaccount);
+	}
+	public WebElement getdeleteselectedparentaccount()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(deleteselectedparentaccount));
+		return driver.findElement(deleteselectedparentaccount);
+	}
+	public WebElement getclickparentaccountlookup()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(clickparentaccountlookup));
+		return driver.findElement(clickparentaccountlookup);
+	}
+	public WebElement getselectparentaccount()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(selectparentaccount));
+		return driver.findElement(selectparentaccount);
+	}
+	public WebElement getclickextensiontextbox()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(clickextensiontextbox));
+		return driver.findElement(clickextensiontextbox);
+	}
+	public WebElement getclickfaxtextbox()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(clickfaxtextbox));
+		return driver.findElement(clickfaxtextbox);
+	}
+	public WebElement getclickwebsiteurl()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(clickwebsiteurl));
+		return driver.findElement(clickwebsiteurl);
+	}
+	public WebElement getscrolltoaddress()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(scrolltoaddress));
+		return driver.findElement(scrolltoaddress);
+	}
+	public WebElement getmovetomarketingrelationshipowner()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(movetomarketingrelationshipowner));
+		return driver.findElement(movetomarketingrelationshipowner);
+	}
+	public WebElement getdeletemarketingrelationshipowner()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(deletemarketingrelationshipowner));
+		return driver.findElement(deletemarketingrelationshipowner);
+	}
+	public WebElement getclickmarketingrelationshipowner()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(clickmarketingrelationshipowner));
+		return driver.findElement(clickmarketingrelationshipowner);
+	}
+	public WebElement getselectmarketingrelationshipowner()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(selectmarketingrelationshipowner));
+		return driver.findElement(selectmarketingrelationshipowner);
+	}
+	public WebElement getmovetotype()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(movetotype));
+		return driver.findElement(movetotype);
+	}
+	public WebElement getdeletetype()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(deletetype));
+		return driver.findElement(deletetype);
+	}
+	public WebElement getclicksearchddbutton()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(clicksearchddbutton));
+		return driver.findElement(clicksearchddbutton);
+	}
+	public WebElement getselecttype()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(selecttype));
+		return driver.findElement(selecttype);
+	}
+	public WebElement getupdateaddressline1()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(updateaddressline1));
+		return driver.findElement(updateaddressline1);
+	}
+	public WebElement getupdateaddressline2()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(updateaddressline2));
+		return driver.findElement(updateaddressline2);
+	}
+	public WebElement getupdateaddressline3()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(updateaddressline3));
+		return driver.findElement(updateaddressline3);
+	}
+	public WebElement getupdatecity()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(updatecity));
+		return driver.findElement(updatecity);
+	}
+	public WebElement getupdatestate()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(updatestate));
+		return driver.findElement(updatestate);
+	}
+	public WebElement getupdatepostalcode()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(updatepostalcode));
+		return driver.findElement(updatepostalcode);
+	}
+	public WebElement getclickcountrydropdown()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(clickcountrydropdown));
+		return driver.findElement(clickcountrydropdown);
+	}
+	public WebElement getselectcountry()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(selectcountry));
+		return driver.findElement(selectcountry);
+	}
+	public WebElement getfindupdatedaccount()
+	{
+		wait = new WebDriverWait (driver,3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(findupdatedaccount));
+		return driver.findElement(findupdatedaccount);
+	}
+
+	public WebElement getscrolltocontacts()
+	{
+		wait = new WebDriverWait (driver,5);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(scrolltocontacts));
+		return driver.findElement(scrolltocontacts);
+	}
+	public WebElement getscrolltoassociatedlists()
+	{
+		wait = new WebDriverWait (driver,5);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(scrolltoassociatedlists));
+		return driver.findElement(scrolltoassociatedlists);
+	}
+	public WebElement getlistgridcolumn1()
+	{
+		wait = new WebDriverWait (driver,5);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(listgridcolumn1));
+		return driver.findElement(listgridcolumn1);
+	}
+	public WebElement getlistgridcolumn2()
+	{
+		wait = new WebDriverWait (driver,5);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(listgridcolumn2));
+		return driver.findElement(listgridcolumn2);
+	}
+	public WebElement getlistgridcolumn3()
+	{
+		wait = new WebDriverWait (driver,5);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(listgridcolumn3));
+		return driver.findElement(listgridcolumn3);
+	}
+	public WebElement getnolist()
+	{
+		wait = new WebDriverWait (driver,5);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(nolist));
+		return driver.findElement(nolist);
+	}
+	public WebElement getlist()
+	{
+		wait = new WebDriverWait (driver,5);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(list));
+		return driver.findElement(list);
+	}
+	public WebElement getlistmember()
+	{
+		wait = new WebDriverWait (driver,5);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(listmember));
+		return driver.findElement(listmember);
 	}
 }
 
