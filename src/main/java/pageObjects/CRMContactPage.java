@@ -25,11 +25,29 @@ public class CRMContactPage {
 	By ziporpostalcode = By.xpath("//input[@aria-label = 'ZIP/Postal Code']");
 	By country = By.xpath("//input[@aria-label = 'Country']");
 	By clicklistbox = By.xpath("//div[@class = 'wj-listbox-item']");
-	By savecontact = By.xpath("//button[@aria-label = 'Save & Close']");
+	By savecontact = By.xpath("//button[@aria-label = 'Save']");
 	By verifycontact = By.xpath("//div[@aria-label = 'Active Contacts Account Subgrid']");
 	By contactformemailtxtfield = By.xpath("//input[@data-id='emailaddress1.fieldControl-mail-text-input']");
 	By contactformbusinessphonetxtfield = By.xpath("//input[@aria-describedby='id-fd46b725-b6a7-47e9-b1d0-6f99bbc77f32-10-telephone16-telephone1.fieldControl-InputMaskControl-description']");
-
+	By contactsectionmenubtn = By.xpath("//button[@data-lp-id='SubGridStandard:contact-OverflowButton']");
+	By contactsavenclosebtn = By.xpath("//button[@aria-label='Save & Close']");
+	By contactnameinheader = By.xpath("//h1[@data-id='header_title']");
+	By activecontactslabel = By.xpath("//h1[@aria-label='Active Contacts']");
+	By createnewcontactbtn = By.xpath("//button[@aria-label='New']");
+	By contactfirstnamelabel = By.xpath("//label[text()='First Name']");
+	By contacttypetxtbx = By.xpath("//input[@id='xxc_typecode_ledit']");
+	By contacttypeexpandbtn = By.xpath("//button[@aria-label='Toggle menu']");
+	By contacttypebuyer = By.xpath("//div[contains(text(),'Buyer')]");
+	By contactaccountnametxtbx = By.xpath("//input[@aria-label='Account Name, Lookup']");
+	By searchrecordsbtn = By.xpath("//button[@aria-label='Search records for Account Name, Lookup field']");
+	By accountnametitle = By.xpath("//span[@data-id='parentcustomerid.fieldControl-name0_0_0']");
+	By scrolltextoncontactform = By.xpath("//div[text()='Select Save to see your timeline.']");
+	By accountincentivedetailslabel = By.xpath("//div[text()='Account Incentive Details']");
+	By mobilephonelabel = By.xpath("//label[text()='Mobile Phone']");
+	By citylabel = By.xpath("//label[text()='City']");
+	By countrytxtbx = By.xpath("//input[@aria-label='Country']");
+	By cntryexpandbtn = By.xpath("//button[@aria-label='Toggle Dropdown']");
+	By countryname = By.xpath("//body/div[@id='_dropdown']/div[3]");
 	
 	public CRMContactPage(WebDriver driver) {
 
@@ -134,10 +152,9 @@ public class CRMContactPage {
 	return driver.findElement(savecontact);
 	}
 	
-	public WebElement getverifycontact() {
+	public WebElement getverifycontact() throws InterruptedException {
 		
-		wait = new WebDriverWait (driver,15);
-		wait.until(ExpectedConditions.elementToBeClickable(verifycontact));
+		Thread.sleep(7000);
 		return driver.findElement(verifycontact);
 		}
 	public WebElement getContactFormEmailField() {
@@ -151,5 +168,97 @@ public class CRMContactPage {
 		wait = new WebDriverWait (driver,20);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(contactformbusinessphonetxtfield));
 		return driver.findElement(contactformbusinessphonetxtfield);
+	}
+	
+public WebElement getContactSavenCloseBtn() {
+		
+		return driver.findElement(contactsavenclosebtn);
+	}
+	
+	public WebElement getContactNameinHeader() throws InterruptedException {
+		
+		Thread.sleep(7000);
+		return driver.findElement(contactnameinheader);
+	}
+	
+	public WebElement getActiveContactsLabel() {
+		return driver.findElement(activecontactslabel);
+	}
+	
+	public WebElement getCreateNewContactBtn() throws InterruptedException {
+		Thread.sleep(5000);
+		return driver.findElement(createnewcontactbtn);
+	}
+	
+	public WebElement getContactFirstNameLabel() {
+		return driver.findElement(contactfirstnamelabel);
+	}
+	
+	public WebElement getContactTypetxtbx()
+	{
+		return driver.findElement(contacttypetxtbx);
+	}
+
+	public WebElement getContactTypeExpandbtn()
+	{
+		return driver.findElement(contacttypeexpandbtn);
+	}
+
+	public WebElement getContactTypeBuyer()
+	{
+		return driver.findElement(contacttypebuyer);
+	}
+	
+	public WebElement getContactAccountNameTxtbx()
+	{
+		return driver.findElement(contactaccountnametxtbx);
+	}
+	
+	public WebElement getSearchRecordsBtn()
+	{
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(searchrecordsbtn));	
+		return driver.findElement(searchrecordsbtn);
+	}
+	
+	public WebElement getAccountNameTitle() {
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(accountnametitle));
+		return driver.findElement(accountnametitle);
+	}
+	
+	public WebElement getScrollTextOnContactForm() {
+		
+		return driver.findElement(scrolltextoncontactform);
+	}
+		
+	public WebElement getMobilePhoneLabel() {
+		
+		return driver.findElement(mobilephonelabel);
+	}
+	public WebElement getCityLabel() {
+		
+		return driver.findElement(citylabel);
+	}
+	public WebElement getCountrytxbx()
+	{
+		return driver.findElement(countrytxtbx);
+	}
+
+	public WebElement getCountrydrpbtn()
+	{
+		return driver.findElement(cntryexpandbtn);
+	}
+
+	public WebElement getCountryName()
+	{
+		return driver.findElement(countryname);
+	}
+	
+	public WebElement getContactSectionMenuBtn()
+	{
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(contactsectionmenubtn));
+		return driver.findElement(contactsectionmenubtn);
 	}
 }
