@@ -725,20 +725,20 @@ public class AccountPageTest extends base {
 		//Save Phone Call
 		ap.getAccSaveCloseBtn().click();
 		
-		WebElement timeline = driver.findElement(By.xpath("//*[text()='"+phonesubject+"']"));
-		if (timeline.getText().equalsIgnoreCase(phonesubject)) {
-			
-			System.out.println("Phone call added successfully");
-			
+		act = new Actions(driver);
+		act.moveToElement(ap.getPhoneCallTimelineSubject()).perform();
+
+		String validatephonecallsubject = ap.getPhoneCallTimelineSubject().getText();
+		System.out.println("Phone Call Subject is: "+validatephonecallsubject);
+		Assert.assertEquals(validatephonecallsubject, phonesubject);
+		if (validatephonecallsubject.equalsIgnoreCase(phonesubject)) {
+			System.out.println("Phone call added successfully");		
 		}
 		else {
 			
 			System.out.println("Phone call not added successfully");
 			
 		}
-
-		//Verify that expected Success message displayed
-		//Assert.assertEquals("Phone call saved successfully.", ap.getSuccessMsg().getText());
 
 		//Navigate back to Active accounts list
 		ap.getAccPageBackBtn().click();
@@ -1404,6 +1404,7 @@ public class AccountPageTest extends base {
 		Assert.assertEquals(typewarningmessage, "Type : Required fields must be filled in.");
 		System.out.println("Displayed only Type warning message displayed.");
 		ap.getPageBackBtn().click();
+		ap.getDiscardChangesBtn().click();
 	}
 	
 	@Test(priority=24)

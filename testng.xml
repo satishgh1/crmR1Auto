@@ -8,9 +8,9 @@
 		<classes>
 			<class name="crmframework.crmAutomation.AccountPageTest" />
 			<methods>
-				<include name="TS001_VerifyHomePageTest"/>
+		<!-- 		<include name="TS001_VerifyHomePageTest"/>
           <include name="TS015_VerifyStateAndRegionInGridTest"/>
-          <include name="TS016_VerifyNamePhoneCityInGridTest"/>
+          <include name="TS016_VerifyNamePhoneCityInGridTest"/> -->
 			</methods>
 		</classes>
 	</test> <!-- Test -->
