@@ -8,8 +8,12 @@
 		<classes>
 			<class name="crmframework.crmAutomation.AccountPageTest" />
 			<methods>
-				<!-- <exclude name="verifyCreateNewAccount" /> -->
-				<exclude name= "verify_TS27_validateBusinessRuleForAddressTest" />
+				<include name="TS001_VerifyHomePageTest"/>
+        		<!-- <include name="TS002_VerifyCreateNewAccountTest" /> -->
+          <include name="TS015_VerifyStateAndRegionInGridTest"/>
+          <include name="initialize"/>
+          <!-- <include name="TS016_VerifyNamePhoneCityInGridTest"/> -->
+          <include name="closeDriver"/>
 			</methods>
 		</classes>
 	</test> <!-- Test -->

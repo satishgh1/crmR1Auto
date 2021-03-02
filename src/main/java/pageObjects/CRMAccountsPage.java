@@ -30,7 +30,7 @@ public class CRMAccountsPage {
 	By cntryexpandbtn = By.xpath("//button[@aria-label='Toggle Dropdown']");
 	By countryname = By.xpath("//body/div[@id='_dropdown']/div[3]");
 	By accsavenclosebtn = By.xpath("//button[@aria-label='Save & Close']");
-	By cletterfilterlink = By.xpath("//a[@id='F_link']");
+	By cletterfilterlink = By.xpath("//a[@id='C_link']");
 	By accountname = By.xpath("//div[@data-id='cell-2-2']");
 	By addtimelinebtn = By.xpath("//button[@aria-label='Create a timeline record.']");
 	By appointmentactivityoptn = By.xpath("//li[@aria-label='Appointment Activity']");
@@ -53,7 +53,7 @@ public class CRMAccountsPage {
 	By parentacclabel = By.xpath("//label[contains(text(),'Parent Account')]");
 	By parentacctxtbx = By.xpath("//div[@data-lp-id='MscrmControls.FieldControls.SimpleLookupControl|parentaccountid.fieldControl|account']");
 	By parentaccsearchbtn = By.xpath("//button[@aria-label='Search records for Parent Account, Lookup field']");
-	By selectparentacc = By.xpath("//span[@id='id-276390f9-8bbf-4452-8f24-636b0ccaee2c-4-parentaccountid6-parentaccountid.fieldControl-LookupResultsDropdown_parentaccountid_0_resultsLabel_0_0']");
+	By selectparentacc = By.xpath("//ul[@aria-label='Lookup Search Results']/li[1]/div[2]/span[1]");
 	By recentrecordslink = By.xpath("//button[contains(text(),'Recent records')]");
 	By accsavebtn = By.xpath("//button[@aria-label='Save']");
 	By activatepopupstatusfield = By.xpath("//select[@aria-label='Status']");
@@ -110,9 +110,9 @@ public class CRMAccountsPage {
 	By clickfunnelfilter = By.xpath("//button[@aria-label = 'Filter by']");
 	By clickoperatordd = By.xpath("//div[@aria-label = 'Filter by operator']");
 	By selectoperator = By.xpath("//button[@data-index = '0']");
-	By clickvaluetextbox = By.xpath("//input[@aria-label = 'Filter by Value']");
+	By clickvaluetextbox = By.xpath("//div[@class='ms-SelectionZone']");
 	By selectregionvalue = By.xpath("//div[@id = 'sug-0']");
-	By selectvalueregionactual = By.xpath("//div[@aria-label = 'Data']/div");
+	By selectvalueregionactual = By.xpath("//div[@aria-label = 'Data']/div[6]");
 	By clickapplybutton = By.xpath("//button[@type = 'submit']");
 	By clickaddressgridfunnel = By.xpath("//div[@data-id = 'address1_stateorprovince']");
 	By clickaddressvaluefield = By.xpath("//div[@class = 'ms-TextField-wrapper']/div/input");
@@ -201,6 +201,7 @@ public class CRMAccountsPage {
 	By nolist = By.xpath("//div[@class = 'cc-grid-noRecords-Container']");
 	By list = By.xpath("//div[@id = 'DataSetHostContainer_dataSetRoot_AssociatedLists']/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/a[1]");
 	By listmember = By.xpath("//div[@aria-label = 'Active List Members']/div[2]/div[3]/a[1]");
+	//By parentaccfromlist = By.xpath("//span[@id='id-276390f9-8bbf-4452-8f24-636b0ccaee2c-62-parentaccountid6-parentaccountid.fieldControl-name0_0_0']");
 	
 	public CRMAccountsPage(WebDriver driver) {
 
@@ -666,7 +667,8 @@ public class CRMAccountsPage {
 		return driver.findElement(phonecallselectduetime);
 	}
 	
-	public WebElement getclickregiongridfunnel() {
+	public WebElement getclickregiongridfunnel() throws InterruptedException {
+		Thread.sleep(5000);
 		return driver.findElement(clickregiongridfunnel);
 	}
 
@@ -675,41 +677,48 @@ public class CRMAccountsPage {
 	}
 
 	public WebElement getclickoperatordd() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(clickoperatordd));
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.elementToBeClickable(clickoperatordd));
 		return driver.findElement(clickoperatordd);
 	}
 
 	public WebElement getselectoperator() {
+		wait = new WebDriverWait (driver,20);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(selectoperator));
 		return driver.findElement(selectoperator);
 	}
 
 	public WebElement getsclickvaluetextbox() {
+		wait = new WebDriverWait (driver,20);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(clickvaluetextbox));
 		return driver.findElement(clickvaluetextbox);
 	}
 
 	public WebElement getselectregionvalue() {
+		wait = new WebDriverWait (driver,20);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(selectregionvalue));
 		return driver.findElement(selectregionvalue);
 	}
 	
 	public WebElement getselectregionvalueactual() {
+		wait = new WebDriverWait (driver,20);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(selectvalueregionactual));
 		return driver.findElement(selectvalueregionactual);
 	}
 
 	public WebElement getclickapplybutton() {
+		wait = new WebDriverWait (driver,20);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(clickapplybutton));
 		return driver.findElement(clickapplybutton);
 	}
 
-	public WebElement getclickaddressgridfunnel() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(clickaddressgridfunnel));
+	public WebElement getclickaddressgridfunnel() throws InterruptedException {
+		Thread.sleep(5000);
 		return driver.findElement(clickaddressgridfunnel);
 	}
 
 	public WebElement getclickaddressvaluefield() {
+		wait = new WebDriverWait (driver,20);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(clickaddressvaluefield));
 		return driver.findElement(clickaddressvaluefield);
 	}
@@ -1201,6 +1210,11 @@ public class CRMAccountsPage {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(listmember));
 		return driver.findElement(listmember);
 	}
+	
+//	public WebElement getParentAccFromList()
+//	{
+//		return driver.findElement(parentaccfromlist);
+//	}
 }
 
 	
