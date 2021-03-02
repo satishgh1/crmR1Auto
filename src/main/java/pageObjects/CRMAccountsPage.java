@@ -103,7 +103,8 @@ public class CRMAccountsPage {
 	By phonecalloption = By.xpath("//li[@aria-label = 'Phone Call Activity']");
 	By phonecallsubject = By.xpath("//input[@data-id='subject.fieldControl-text-box-text']");
 	By clickphonecallduedatecalendor = By.xpath("//div [@class = 'ms-TextField-wrapper']/div/i");
-	By phonecallduedatecurrent = By.xpath("//button[@class='dayButton-222 dayIsToday-223 ms-CalendarDay-dayIsToday']");
+	//By phonecallduedatecurrent = By.xpath("//button[@class='dayButton-222 dayIsToday-223 ms-CalendarDay-dayIsToday']");
+	By phonecallduedatecurrent = By.xpath("//div[@aria-label = 'Calendar']/div[1]/div[2]/div[2]/div[2]/table[1]/tbody[1]/tr[3]/td[3]/button[1]");
 	By phonecallduetimoption = By.xpath("//div[@id = 'scheduledend_fabric_comboboxwrapper']/button/span");
 	By phonecallselectduetime = By.xpath("//button[@id = 'scheduledend_fabric_combobox-list47']");
 	By clickregiongridfunnel = By.xpath("//div[@data-id = 'xxc_regionid']");
@@ -123,7 +124,8 @@ public class CRMAccountsPage {
 	By clickdbacitygridfunnel = By.xpath("//div[@data-id = 'address1_city']");
 	By accdbanametxtbx = By.xpath("//input[@aria-label='Account DBA Name']");
 	By duplicaterecordspopuptitle = By.xpath("//h1[@aria-label='Duplicate records found']");
-	By duplicaterecordspopupcancelbtn = By.xpath("//span[contains(text(),'Cancel')]");
+	//By duplicaterecordspopupcancelbtn = By.xpath("//span[contains(text(),'Cancel')]");
+	By duplicaterecordspopupcancelbtn = By.xpath("//button[@aria-label = 'Cancel']");
 	By unsavedchangespopuptitle = By.xpath("//h1[@aria-label='Unsaved changes']");
 	By phoneinsearchtable = By.xpath("//div[@data-id='cell-0-3']");
 	By phonetxboxlabel = By.xpath("//label[contains(text(),'Phone')]");
@@ -131,16 +133,16 @@ public class CRMAccountsPage {
 	By duplicaterecordspopupignorensavebtn = By.xpath("//button[@aria-label='Ignore and save']");
 	By clickoverflowbutton = By.xpath("//button[@data-id = 'OverflowButton']");
 	By clickexporttoexcelbutton = By.xpath("//button[@data-id = 'account|NoRelationship|HomePageGrid|Mscrm.HomepageGrid.account.ExportToExcel.Menu$splitButtonId']");
-	By openexcelonline = By.xpath("//span[@aria-label = 'Open in Excel Online']");
+	//By openexcelonline = By.xpath("//span[@aria-label = 'Open in Excel Online']");
 	By saveexcelonline = By.xpath("//button[@data-id = 'export_to_excelonline_save']");
-	By closepopupexcelonline = By.xpath("//button[@data-id = 'okButton']");
-	By exporttostaticworksheet = By.xpath("//span[@aria-label = 'Static Worksheet']");
-	By exporttostaticworksheetpageonly = By.xpath("//span[@aria-label = 'Static Worksheet (Page only)']");
-	By exporttodynamicworksheet = By.xpath("//span[@aria-label = 'Dynamic Worksheet']");
+	//By closepopupexcelonline = By.xpath("//button[@data-id = 'okButton']");
+	//By exporttostaticworksheet = By.xpath("//span[@aria-label = 'Static Worksheet']");
+	//By exporttostaticworksheetpageonly = By.xpath("//span[@aria-label = 'Static Worksheet (Page only)']");
+	//By exporttodynamicworksheet = By.xpath("//span[@aria-label = 'Dynamic Worksheet']");
 	By selectcheckbox1 = By.xpath("//input[@data-id = 'entitySelector_id.fieldControl-selectAllCheckBoxElementKeyaccountxxc_accountactivecontactcount']");
 	By selectcheckbox2 = By.xpath("//input[@data-id = 'entitySelector_id.fieldControl-selectAllCheckBoxElementKeyaccountaccountnumber']");
 	By exportworksheetpopup = By.xpath("//button[@data-id = 'export_excel']");
-	By exporttodynamicpivottable = By.xpath("//span[@aria-label = 'Dynamic PivotTable']");
+	//By exporttodynamicpivottable = By.xpath("//span[@aria-label = 'Dynamic PivotTable']");
 	By contactssectionbusinessphonefield = By.xpath("//div[@data-id='cell-0-3']");
 	By contactssectionlabel = By.xpath("//label[contains(text(),'Group By')]");
 	By contactssectionemailfield = By.xpath("//div[@data-id='cell-0-6']");
@@ -149,7 +151,8 @@ public class CRMAccountsPage {
 	By associatedlistslabel = By.xpath("//h2[contains(text(),'Associated Lists')]");
 	By contactssectionmobilephonefield = By.xpath("//div[@data-id='cell-0-5']");
 	By contactnavigatebtn = By.xpath("//button[@title='Navigate']");
-	By accrefreshbtn = By.xpath("//span[@aria-label='Refresh']");
+	By accrefreshbtn = By.xpath("//button[@aria-label='Refresh']");
+	//By accrefreshbtn = By.xpath("//span[@aria-label='Refresh']");
 	By activecontactslist = By.xpath("//div[@aria-label='Active Contacts Account Subgrid']");
 	By bletterfilterlink = By.xpath("//li[@aria-label='Filter table by b']");
 	By relatedtabcontactsitem = By.xpath("//span[@id='navContacts_Related']");
@@ -201,10 +204,23 @@ public class CRMAccountsPage {
 	By nolist = By.xpath("//div[@class = 'cc-grid-noRecords-Container']");
 	By list = By.xpath("//div[@id = 'DataSetHostContainer_dataSetRoot_AssociatedLists']/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/a[1]");
 	By listmember = By.xpath("//div[@aria-label = 'Active List Members']/div[2]/div[3]/a[1]");
+	By openexcelonline = By.xpath("//button[@aria-label = 'Open in Excel Online']");
+	By exporttostaticworksheet = By.xpath("//button[@aria-label = 'Static Worksheet']/span/span[2]");
+	By exporttostaticworksheetpageonly = By.xpath("//span[contains(text(),'Static Worksheet (Page only)')]");
+	By exporttodynamicworksheet = By.xpath("//span[contains(text(),'Dynamic Worksheet')]");
+	By exporttodynamicpivottable = By.xpath("//span[contains(text(),'Dynamic PivotTable')]");
+	//By closepopupexcelonline = By.xpath("//div[@id = 'modalDialogContentContainer']/div[3]/button[1]");
+	By closepopupexcelonline = By.xpath("//button[@data-id='export_to_excelonline_save']/span[1]");
+	By phoneCallTimelineSubject= By.xpath("//div[@id='TL_Group_key_3']//div[1]/div[1]/div/div[2]/div[2]/label[1]");
+	
 	
 	public CRMAccountsPage(WebDriver driver) {
 
 		this.driver = driver;
+	}
+	
+	public WebElement getPhoneCallTimelineSubject() {
+		return driver.findElement(phoneCallTimelineSubject);
 	}
 	
 	public WebElement getAccountnametxtbx() {
@@ -658,7 +674,7 @@ public class CRMAccountsPage {
 	public WebElement getphonecallduetimoptionn() {
 		wait = new WebDriverWait (driver,5);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(phonecallduetimoption));
-		return driver.findElement(phonecalloption);
+		return driver.findElement(phonecallduetimoption);
 	}
 
 	public WebElement getphonecallselectduetime() {

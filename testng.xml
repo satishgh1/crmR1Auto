@@ -8,8 +8,7 @@
 		<classes>
 			<class name="crmframework.crmAutomation.AccountPageTest" />
 			<methods>
-				<!-- <exclude name="verifyCreateNewAccount" /> -->
-				<exclude name= "verify_TS27_validateBusinessRuleForAddressTest" />
+				<!-- <exclude name="TS002_VerifyCreateNewAccountTest" /> -->
 			</methods>
 		</classes>
 	</test> <!-- Test -->

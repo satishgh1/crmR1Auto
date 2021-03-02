@@ -5,26 +5,10 @@
     <classes>
       <class name="crmframework.crmAutomation.AccountPageTest">
         <methods>
-          <include name="verify_TS10_ParentAccountTest"/>
-          <include name="verify_TS9_DeactivateAccountTest"/>
-          <include name="verify_TS20_SearchusingAccountNameandPhoneTest"/>
-          <include name="verify_TS24_UpdateContactsFromAccountFormTest"/>
-          <include name="verify_TS4_AddIncentiveToAccountTest"/>
-          <include name="verify_TS26_validateBusinessRuleForPhoneNumberTest"/>
-          <include name="verify_TS19_NamePhoneCityInGridTest"/>
-          <include name="verify_TS23_AddContactTest"/>
-          <include name="verify_TS25_AssociatedContactsAccountStatusOfDeactivatedAccountTest"/>
-          <include name="verify_TS6_RelatedTabOnAccountTest"/>
-          <include name="verify_TS7_AddMarketingRelationshipOwnerToAccountTest"/>
-          <include name="verify_TS18_SateAndRegionInGridTest"/>
-          <include name="verify_TS5_AddIncentiveDetailsToAccountTest"/>
+          <include name="TS014_VerifyPhoneCallOnAccountTest"/>
           <include name="initialize"/>
-          <include name="verify_TS17_PhoneCallOnAccountTest"/>
-          <include name="verify_TS3_AddTimelineToAccountTest"/>
           <include name="closeDriver"/>
-          <include name="verify_TS8_SearchAccountTest"/>
-          <include name="verify_TS22_ExportToExcelTest"/>
-          <include name="verify_TS21_DuplicateAccountTest"/>
+          <include name="TS019_VerifyExportToExcelTest"/>
         </methods>
       </class> <!-- crmframework.crmAutomation.AccountPageTest -->
     </classes>
