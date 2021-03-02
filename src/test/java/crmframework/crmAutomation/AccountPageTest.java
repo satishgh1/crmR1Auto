@@ -310,7 +310,7 @@ public class AccountPageTest extends base {
 		Assert.assertTrue(ap.getActivateBtn().isDisplayed());
 
 		//Navigate back to Active accounts page
-		ap.getAccPageBackBtn().click();
+		ap.getPageBackBtn().click();
 
 		//Click on 'Active Accounts' drop-down view button
 		ap.getActiveAccDropDownBtn().click();
@@ -323,8 +323,8 @@ public class AccountPageTest extends base {
 			ap.getCLetterFilterLink().click();
 
 			//Validate deactivated account
-			hp.getSearchAccountField().click();
-			hp.getSearchAccountField().sendKeys(accnameText);
+			hp.getSearchInactiveAccountField().click();
+			hp.getSearchInactiveAccountField().sendKeys(accnameText);
 			hp.getstartsearch().click();
 			//Thread.sleep(10000);
 			Assert.assertTrue(ap.getValidateInactiveAccName().isDisplayed());
@@ -364,7 +364,7 @@ public class AccountPageTest extends base {
 		ap.getParentAccSearchBtn().click();
 
 		//Click on 'Recent Records' link
-		ap.getRecentRecordsLink().click();
+		//ap.getRecentRecordsLink().click();
 
 		boolean staleElement = true;
 		try {
@@ -745,7 +745,7 @@ public class AccountPageTest extends base {
 	}
 	
 	@Test(priority=15)
-	public void TS015_VerifySateAndRegionInGridTest() throws InterruptedException {
+	public void TS015_VerifyStateAndRegionInGridTest() throws InterruptedException {
 
 		//The purpose of this test case to verify :-
 		//T166: Filter State and Region in grid
@@ -766,20 +766,21 @@ public class AccountPageTest extends base {
 		ap.getclickoperatordd().click();
 		ap.getselectoperator().click();
 		ap.getsclickvaluetextbox().click();
+		String ExpectedRegion = ap.getselectregionvalue().getText();
 		ap.getselectregionvalue().click();
+		ap.getclickapplybutton().click();
 		
 		//Verify region value selected on accounts grid
-		WebElement ExpectedRegion = ap.getselectregionvalue();
-		WebElement ActualRegion = ap.getselectregionvalueactual();
-		if (ExpectedRegion.equals(ActualRegion.getText())){
-			
-			System.out.println("Region matches expected criteria");
-			
+//		WebElement ActualRegion = ap.getselectregionvalueactual();
+//		Assert.assertEquals(ExpectedRegion,ActualRegion.getText());
+		Thread.sleep(5000);
+		WebElement regionvaluesongrid = null;
+		for (int i=0;i<7;i++)
+		{
+			regionvaluesongrid = driver.findElement(By.xpath("//div[@data-id='cell-"+i+"-6']"));
+			Assert.assertTrue(regionvaluesongrid.getText().contains(ExpectedRegion));
 		}
-		else {
-			
-			System.out.println("Region does not match expected criteria.");
-		}
+		System.out.println("Region matches expected criteria");
 		
 		//Click funnel for Region column
 		ap.getclickaddressgridfunnel().click();
@@ -792,17 +793,20 @@ public class AccountPageTest extends base {
 		ap.getclickaddressvaluefield().sendKeys(prop.getProperty("gridstatefilter"));	
 		
 		//Verify region value selected on accounts grid
-		WebElement ExpectedState = ap.getselectregionvalueactual();
+//		WebElement ExpectedState = ap.getselectregionvalueactual();
+//		
+//		Assert.assertTrue(ExpectedState.getText().contains(ap.getclickaddressvaluefield().getText()));
+//		System.out.println("State matches expected criteria");
 		
-		if (ExpectedState.getText().contains(ap.getclickaddressvaluefield().getText())){
-			
-			System.out.println("State matches expected criteria");
-			
+		Thread.sleep(5000);
+		WebElement statevaluesongrid = null;
+		for (int i=0;i<7;i++)
+		{
+			statevaluesongrid = driver.findElement(By.xpath("//div[@data-id='cell-"+i+"-5']"));
+			Assert.assertTrue(statevaluesongrid.getText().contains(ap.getclickaddressvaluefield().getText()));
 		}
-		else {
-			
-			System.out.println("State does not match expected criteria.");
-		}
+		System.out.println("State matches expected criteria");
+		
 	}
 	
 	@Test(priority=16)

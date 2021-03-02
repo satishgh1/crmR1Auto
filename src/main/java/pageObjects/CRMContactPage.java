@@ -26,7 +26,7 @@ public class CRMContactPage {
 	By country = By.xpath("//input[@aria-label = 'Country']");
 	By clicklistbox = By.xpath("//div[@class = 'wj-listbox-item']");
 	By savecontact = By.xpath("//button[@aria-label = 'Save']");
-	By verifycontact = By.xpath("//div[@aria-label = 'Active Contacts Account Subgrid']");
+	By verifycontact = By.xpath("//h1[@data-id='header_title']");
 	By contactformemailtxtfield = By.xpath("//input[@data-id='emailaddress1.fieldControl-mail-text-input']");
 	By contactformbusinessphonetxtfield = By.xpath("//input[@aria-describedby='id-fd46b725-b6a7-47e9-b1d0-6f99bbc77f32-10-telephone16-telephone1.fieldControl-InputMaskControl-description']");
 	By contactsectionmenubtn = By.xpath("//button[@data-lp-id='SubGridStandard:contact-OverflowButton']");
