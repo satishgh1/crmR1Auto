@@ -708,7 +708,7 @@ public class CRMAccountsPage {
 
 	public WebElement getclickapplybutton() {
 		wait = new WebDriverWait (driver,20);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(clickapplybutton));
+		wait.until(ExpectedConditions.elementToBeClickable(clickapplybutton));
 		return driver.findElement(clickapplybutton);
 	}
 
@@ -723,9 +723,8 @@ public class CRMAccountsPage {
 		return driver.findElement(clickaddressvaluefield);
 	}
 
-	public WebElement getclickdbanamegridfunnel() {
-		wait = new WebDriverWait (driver,20);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(clickdbanamegridfunnel));
+	public WebElement getclickdbanamegridfunnel() throws InterruptedException {
+		Thread.sleep(5000);
 		return driver.findElement(clickdbanamegridfunnel);
 	}
 	
@@ -742,17 +741,15 @@ public class CRMAccountsPage {
 		return driver.findElement(clearfiltergrid);
 	}
 	
-	public WebElement getclickdbaphonegridfunnel()
+	public WebElement getclickdbaphonegridfunnel() throws InterruptedException
 	{
-		wait = new WebDriverWait (driver,20);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(clickdbaphonegridfunnel));
+		Thread.sleep(5000);
 		return driver.findElement(clickdbaphonegridfunnel);
 	}
 
-	public WebElement getclickdbacitygridfunnel()
+	public WebElement getclickdbacitygridfunnel() throws InterruptedException
 	{
-		wait = new WebDriverWait (driver,20);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(clickdbacitygridfunnel));
+		Thread.sleep(5000);
 		return driver.findElement(clickdbacitygridfunnel);
 	}
 	
