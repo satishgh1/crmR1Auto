@@ -7,6 +7,7 @@
         <methods>
           <include name="TS015_VerifyStateAndRegionInGridTest"/>
           <include name="initialize"/>
+          <include name="TS016_VerifyNamePhoneCityInGridTest"/>
           <include name="closeDriver"/>
         </methods>
       </class> <!-- crmframework.crmAutomation.AccountPageTest -->

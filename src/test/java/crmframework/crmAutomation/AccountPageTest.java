@@ -755,7 +755,7 @@ public class AccountPageTest extends base {
 		hp.getAccountTab().click();
 
 		ap = new CRMAccountsPage(driver);
-		//Click on 'A' link to sort accounts starts with 'A'
+		//Click on 'C' link to sort accounts starts with 'C'
 		ap.getCLetterFilterLink().click();
 			
 		//Click funnel for Region column
@@ -769,11 +769,9 @@ public class AccountPageTest extends base {
 		String ExpectedRegion = ap.getselectregionvalue().getText();
 		ap.getselectregionvalue().click();
 		ap.getclickapplybutton().click();
+		Thread.sleep(5000);
 		
 		//Verify region value selected on accounts grid
-//		WebElement ActualRegion = ap.getselectregionvalueactual();
-//		Assert.assertEquals(ExpectedRegion,ActualRegion.getText());
-		Thread.sleep(5000);
 		WebElement regionvaluesongrid = null;
 		for (int i=0;i<7;i++)
 		{
@@ -782,31 +780,24 @@ public class AccountPageTest extends base {
 		}
 		System.out.println("Region matches expected criteria");
 		
-		//Click funnel for Region column
+		//Click funnel for state column
 		ap.getclickaddressgridfunnel().click();
 		ap.getclickfunnelfilter().click();
 				
 		//Select filter options
 		ap.getclickoperatordd().click();
 		ap.getselectoperator().click();
-		ap.getsclickvaluetextbox().click();
 		ap.getclickaddressvaluefield().sendKeys(prop.getProperty("gridstatefilter"));	
-		
-		//Verify region value selected on accounts grid
-//		WebElement ExpectedState = ap.getselectregionvalueactual();
-//		
-//		Assert.assertTrue(ExpectedState.getText().contains(ap.getclickaddressvaluefield().getText()));
-//		System.out.println("State matches expected criteria");
-		
 		Thread.sleep(5000);
+		
+		//Verify state value selected on accounts grid
 		WebElement statevaluesongrid = null;
 		for (int i=0;i<7;i++)
 		{
 			statevaluesongrid = driver.findElement(By.xpath("//div[@data-id='cell-"+i+"-5']"));
 			Assert.assertTrue(statevaluesongrid.getText().contains(ap.getclickaddressvaluefield().getText()));
 		}
-		System.out.println("State matches expected criteria");
-		
+		System.out.println("State matches expected criteria");	
 	}
 	
 	@Test(priority=16)
@@ -820,7 +811,7 @@ public class AccountPageTest extends base {
 		hp.getAccountTab().click();
 
 		ap = new CRMAccountsPage(driver);
-		//Click on 'A' link to sort accounts starts with 'A'
+		//Click on 'C' link to sort accounts starts with 'C'
 		ap.getCLetterFilterLink().click();
 			
 		//Click funnel for Account DBA Name column
@@ -832,19 +823,16 @@ public class AccountPageTest extends base {
 		ap.getselectoperatorone().click();
 		ap.getclickaddressvaluefield().sendKeys(prop.getProperty("name"));
 		ap.getclickapplybutton().click();
+		Thread.sleep(5000);
 		
-		//Verify region value selected on accounts grid
-		WebElement ExpectedName = ap.getclickaddressvaluefield();
-		WebElement ActualName = ap.getclickaddressvaluefield();
-		if (ExpectedName.equals(ActualName.getText())){
-			
-			System.out.println("Account DBA Name matches expected criteria");
-			
+		//Verify Account DBA Name value selected on accounts grid
+		WebElement accnamevaluesongrid = null;
+		for (int i=0;i<7;i++)
+		{
+			accnamevaluesongrid = driver.findElement(By.xpath("//div[@data-id='cell-"+i+"-2']"));
+			Assert.assertTrue(accnamevaluesongrid.getText().contains(prop.getProperty("name")));
 		}
-		else {
-			
-			System.out.println("Account DBA Name does not match expected criteria.");
-		}
+		System.out.println("Account DBA Name matches expected criteria");
 		
 		//Clear Filter for Account DBA Name
 		ap.getclickdbanamegridfunnel().click();
@@ -859,19 +847,16 @@ public class AccountPageTest extends base {
 		ap.getselectoperatorone().click();
 		ap.getclickaddressvaluefield().sendKeys(prop.getProperty("phone"));
 		ap.getclickapplybutton().click();
-				
-		//Verify region value selected on accounts grid
-		WebElement ExpectedPhone = ap.getclickaddressvaluefield();
-		WebElement ActualPhone = ap.getclickaddressvaluefield();
-		if (ExpectedPhone.equals(ActualPhone.getText())){
-					
-			System.out.println("Phone matches expected criteria");
-					
+		Thread.sleep(5000);
+		
+		//Verify phone value selected on accounts grid
+		WebElement phonevaluesongrid = null;
+		for (int i=0;i<7;i++)
+		{
+			phonevaluesongrid = driver.findElement(By.xpath("//div[@data-id='cell-"+i+"-3']"));
+			Assert.assertTrue(phonevaluesongrid.getText().contains(prop.getProperty("phone")));
 		}
-		else {
-				
-			System.out.println("Phone does not match expected criteria.");
-		}
+		System.out.println("Phone matches expected criteria");
 				
 		//Clear Filter for Phone
 		ap.getclickdbaphonegridfunnel().click();
@@ -886,19 +871,16 @@ public class AccountPageTest extends base {
 		ap.getselectoperatorone().click();
 		ap.getclickaddressvaluefield().sendKeys(prop.getProperty("city"));
 		ap.getclickapplybutton().click();
-				
-		//Verify region value selected on accounts grid
-		WebElement ExpectedCity = ap.getclickaddressvaluefield();
-		WebElement ActualCity = ap.getclickaddressvaluefield();
-		if (ExpectedCity.equals(ActualCity.getText())){
-					
-			System.out.println("City matches expected criteria");
-					
+		Thread.sleep(5000);	
+		
+		//Verify city value selected on accounts grid
+		WebElement cityvaluesongrid = null;
+		for (int i=0;i<7;i++)
+		{
+			cityvaluesongrid = driver.findElement(By.xpath("//div[@data-id='cell-"+i+"-4']"));
+			Assert.assertTrue(cityvaluesongrid.getText().contains(prop.getProperty("city")));
 		}
-		else {
-				
-			System.out.println("City does not match expected criteria.");
-		}
+		System.out.println("City matches expected criteria");
 				
 		//Clear Filter for Phone
 		ap.getclickdbacitygridfunnel().click();
