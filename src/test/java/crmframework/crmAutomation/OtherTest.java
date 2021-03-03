@@ -3,7 +3,9 @@ package crmframework.crmAutomation;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -213,6 +215,149 @@ public class OtherTest extends base{
 		//Navigate back to Active accounts list
 		ap.getPageBackBtn().click();			
 		//Thread.sleep(3000);
+	}
+	
+	@Test(priority=28)
+	public void TS023_VerifyExportToExcelTest() throws InterruptedException
+	{
+		//The purpose of this test case to verify:-
+		//CRM-T293- Verify Export To Excel functionality for Accounts
+
+		hp = new CRMHomePage(driver);
+		ap = new CRMAccountsPage(driver);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+		//Click on Accounts Tab at left menu.
+		hp.getAccountTab().click();
+		
+		//Click three dots for Export option in header
+		ap.getclickoverflowbutton().click();
+		
+		//Click Export To Excel option under it
+		ap.getclickexporttoexcelbutton().click();
+		
+		//Export file to online excel
+		ap.getopenexcelonline().click();
+		//ap.getsaveexcelonline().click();
+		
+		Thread.sleep(5000);
+		ap.getclosepopupexcelonline().click();   
+		Thread.sleep(10000);
+		//Click three dots for Export option in header
+		ap.getclickoverflowbutton().click();
+				
+		//Click Export To Excel option under it
+		ap.getclickexporttoexcelbutton().click();
+		
+		//Export Excel to Static Worksheet
+		ap.getexporttostaticworksheet().click();
+		
+		//Click three dots for Export option in header
+		ap.getclickoverflowbutton().click();
+				
+		//Click Export To Excel option under it
+		ap.getclickexporttoexcelbutton().click();
+		
+		//Export Excel to Static Worksheet Page Only
+		ap.getexporttostaticworksheetpageonly().click();
+		
+		//Click three dots for Export option in header
+		//ap.getclickoverflowbutton().click();
+				
+		//Click Export To Excel dropdown arrow option under it
+		ap.getclickexporttoexcelbutton().click();
+		
+		//Export to Dynamic Worksheet
+		ap.getexporttodynamicworksheet().click();
+		ap.getselectcheckbox1().click();
+		ap.getselectcheckbox2().click();
+		ap.getexportworksheetpopup().click();
+		
+		//Click three dots for Export option in header
+		ap.getclickoverflowbutton().click();
+						
+		//Click Export To Excel option under it
+		ap.getclickexporttoexcelbutton().click();
+		
+		//Export to Dynamic Pivot Table
+		ap.getexporttodynamicpivottable().click();
+		ap.getselectcheckbox1().click();
+		ap.getselectcheckbox2().click();
+		ap.getexportworksheetpopup().click();
+	}
+	
+	@Test(priority=26)
+	public void TS025_VerifyBusinessRuleForAddressTest() throws InterruptedException {
+
+		//The purpose of this test case to verify :-
+		//T308: Select any existing account and click on Details Tab Functionality 
+
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+		hp = new CRMHomePage(driver);
+		hp.getAccountTab().click();
+
+		ap = new CRMAccountsPage(driver);
+		Thread.sleep(10000);
+		//Click on 'New' button
+		ap.getAccountNewbtn().click();
+		
+		ap.getAccountnametxtbx().click();
+		ap.getAccountnametxtbx().sendKeys(genData.generateRandomAlphaNumeric(10));
+		ap.getAccSaveBtn().click();
+		
+		ap.getNotificationExpandIcon().click();
+		ap.getNotificationExpandIcon().click();
+		ap.getAccountnametxtbx().sendKeys(Keys.TAB);
+		ap.getPhone().click();	
+		String totalwarningmessage= ap.getNotificationWrapperMsg().getText();
+		Assert.assertEquals(totalwarningmessage, "You have 7 notifications. Select to view.");
+		System.out.println("Warning message displayed.");
+		Thread.sleep(10000);
+		ap.getAddress().click();
+
+		//Scroll down on the page
+//		act.keyDown(Keys.CONTROL).sendKeys(Keys.DOWN).perform();
+//		act.keyDown(Keys.CONTROL).sendKeys(Keys.DOWN).release().perform();
+		
+		WebElement enteranotelabel = ap.getStreet1();
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("arguments[0].scrollIntoView(true);",enteranotelabel);
+
+		//Enter Street1 address
+		//ap.getStreet1().click();
+		
+		//Enter Street1 address
+		ap.getStreet1().sendKeys(prop.getProperty("street1"));
+	
+		//Enter City
+		ap.getCity().click();
+		ap.getCity().sendKeys(prop.getProperty("city"));
+
+		//Enter state
+		ap.getState().click();
+		ap.getState().sendKeys(prop.getProperty("state"));
+
+		//Enter zipcode
+		ap.getZipcode().click();
+		ap.getZipcode().sendKeys(prop.getProperty("zipcode"));
+
+		//Enter country
+		ap.getCountrytxbx().click();
+		ap.getCountrydrpbtn().click();
+		ap.getCountryName().click();
+		ap.getAccSaveBtn().click();
+		String typewarningmessage=ap.getTypeNotificationWrapperMsg().getText();
+		Assert.assertEquals(typewarningmessage, "Type : Required fields must be filled in.");
+		System.out.println("Displayed only Type warning message displayed.");
+		ap.getPageBackBtn().click();
+
+/*		ap.getPhone().click();
+		ap.getPhone().sendKeys(genData.generateRandomNumber(10));
+		ap.getPhone().sendKeys(Keys.TAB);
+		ap.getAccSaveBtn().click();
+		String typewarningmessage=ap.getTypeNotificationWrapperMsg().getText();
+		Assert.assertEquals(typewarningmessage, "Type : Required fields must be filled in.");
+		System.out.println("Displayed only Type warning message displayed.");*/
 	}
 	@AfterTest
 	public void closeDriver()

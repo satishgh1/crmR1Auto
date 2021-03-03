@@ -5,8 +5,9 @@
     <classes>
       <class name="crmframework.crmAutomation.AccountPageTest">
         <methods>
-          <include name="TS017_VerifyDuplicateAccountTest"/>
           <include name="initialize"/>
+          <include name="TS024_ManualFail_VerifyAssociatedContactsAccountStatusOfDeactivatedAccountTest"/>
+          <include name="closeDriver"/>
         </methods>
       </class> <!-- crmframework.crmAutomation.AccountPageTest -->
     </classes>

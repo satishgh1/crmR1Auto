@@ -7,11 +7,6 @@
 	<test thread-count="5" name="Test">
 		<classes>
 			<class name="crmframework.crmAutomation.AccountPageTest" />
-			<!-- <methods>
-		 		<include name="TS001_VerifyHomePageTest"/>
-		 		<include name="TS014_VerifyStateAndRegionInGridTest" />
-          <include name ="TS021_VerifyUpdateContactsFromAccountFormTest" />
-			</methods> -->
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

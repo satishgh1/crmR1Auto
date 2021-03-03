@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>22/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Mar 03 13:36:18 IST 2021</td>
+<td>Started on:</td><td>Wed Mar 03 17:16:56 IST 2021</td>
 </tr>
-<tr><td>Total time:</td><td>148 seconds (148652 ms)</td>
+<tr><td>Total time:</td><td>1164 seconds (1164088 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,46 +75,16 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='crmframework.crmAutomation.AccountPageTest.TS017_VerifyDuplicateAccountTest()'><b>TS017_VerifyDuplicateAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td><div><pre>org.openqa.selenium.UnhandledAlertException: unexpected alert open: {Alert text : }
-  (Session info: chrome=88.0.4324.190): {Alert text : 
-Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
-System info: host: &apos;NILAMMA-W10&apos;, ip: &apos;192.168.68.2&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_161&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=88.0.4324.96 (68dba2d8a0b149a1d3afac56fa74648032bcf46b-refs/branch-heads/4324@{#1784}), userDataDir=C:\Users\nilamma\AppData\Local\Temp\scoped_dir15316_1275547772}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:49703}, acceptInsecureCerts=false, browserVersion=88.0.4324.190, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:extension:largeBlob=true, webauthn:virtualAuthenticators=true}]
-Session ID: bb40874f8aa07e9a51e3659cc184679a
-*** Element info: {Using=xpath, value=//h2[contains(text(),&apos;Address&apos;)]}
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:113)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:45)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:637)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:410)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:509)
-	at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:402)
-	at pageObjects.CRMAccountsPage.getAddress(CRMAccountsPage.java:240)
-	at crmframework.crmAutomation.AccountPageTest.TS017_VerifyDuplicateAccountTest(AccountPageTest.java:915)
-... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1705072168", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1705072168'><pre>org.openqa.selenium.UnhandledAlertException: unexpected alert open: {Alert text : }
-  (Session info: chrome=88.0.4324.190): {Alert text : 
-Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
-System info: host: &apos;NILAMMA-W10&apos;, ip: &apos;192.168.68.2&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_161&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=88.0.4324.96 (68dba2d8a0b149a1d3afac56fa74648032bcf46b-refs/branch-heads/4324@{#1784}), userDataDir=C:\Users\nilamma\AppData\Local\Temp\scoped_dir15316_1275547772}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:49703}, acceptInsecureCerts=false, browserVersion=88.0.4324.190, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:extension:largeBlob=true, webauthn:virtualAuthenticators=true}]
-Session ID: bb40874f8aa07e9a51e3659cc184679a
-*** Element info: {Using=xpath, value=//h2[contains(text(),&apos;Address&apos;)]}
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:113)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:45)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:637)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:410)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:509)
-	at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:402)
-	at pageObjects.CRMAccountsPage.getAddress(CRMAccountsPage.java:240)
-	at crmframework.crmAutomation.AccountPageTest.TS017_VerifyDuplicateAccountTest(AccountPageTest.java:915)
+<td title='crmframework.crmAutomation.AccountPageTest.TS024_ManualFail_VerifyAssociatedContactsAccountStatusOfDeactivatedAccountTest()'><b>TS024_ManualFail_VerifyAssociatedContactsAccountStatusOfDeactivatedAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at crmframework.crmAutomation.AccountPageTest.TS024_ManualFail_VerifyAssociatedContactsAccountStatusOfDeactivatedAccountTest(AccountPageTest.java:1482)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace902860396", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace902860396'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at crmframework.crmAutomation.AccountPageTest.TS024_ManualFail_VerifyAssociatedContactsAccountStatusOfDeactivatedAccountTest(AccountPageTest.java:1482)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -140,8 +110,8 @@ Session ID: bb40874f8aa07e9a51e3659cc184679a
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
 </pre></div></td>
-<td>31</td>
-<td>crmframework.crmAutomation.AccountPageTest@3ffc5af1</td></tr>
+<td>42</td>
+<td>crmframework.crmAutomation.AccountPageTest@61832929</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
@@ -153,8 +123,113 @@ Session ID: bb40874f8aa07e9a51e3659cc184679a
 <tr>
 <td title='crmframework.crmAutomation.AccountPageTest.TS001_VerifyHomePageTest()'><b>TS001_VerifyHomePageTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
 <td></td>
-<td>112</td>
-<td>crmframework.crmAutomation.AccountPageTest@3ffc5af1</td></tr>
+<td>121</td>
+<td>crmframework.crmAutomation.AccountPageTest@61832929</td></tr>
+<tr>
+<td title='crmframework.crmAutomation.AccountPageTest.TS002_VerifyCreateNewAccountTest()'><b>TS002_VerifyCreateNewAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
+<td></td>
+<td>46</td>
+<td>crmframework.crmAutomation.AccountPageTest@61832929</td></tr>
+<tr>
+<td title='crmframework.crmAutomation.AccountPageTest.TS003_VerifyAddTimelineToAccountTest()'><b>TS003_VerifyAddTimelineToAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
+<td></td>
+<td>40</td>
+<td>crmframework.crmAutomation.AccountPageTest@61832929</td></tr>
+<tr>
+<td title='crmframework.crmAutomation.AccountPageTest.TS004_VerifyAddMarketingRelationshipOwnerToAccountTest()'><b>TS004_VerifyAddMarketingRelationshipOwnerToAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
+<td></td>
+<td>35</td>
+<td>crmframework.crmAutomation.AccountPageTest@61832929</td></tr>
+<tr>
+<td title='crmframework.crmAutomation.AccountPageTest.TS005_VerifySearchAccountTest()'><b>TS005_VerifySearchAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
+<td></td>
+<td>4</td>
+<td>crmframework.crmAutomation.AccountPageTest@61832929</td></tr>
+<tr>
+<td title='crmframework.crmAutomation.AccountPageTest.TS006_VerifyAuditHistoryTabOnAccountTest()'><b>TS006_VerifyAuditHistoryTabOnAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
+<td></td>
+<td>31</td>
+<td>crmframework.crmAutomation.AccountPageTest@61832929</td></tr>
+<tr>
+<td title='crmframework.crmAutomation.AccountPageTest.TS007_VerifyParentAccountTest()'><b>TS007_VerifyParentAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
+<td></td>
+<td>33</td>
+<td>crmframework.crmAutomation.AccountPageTest@61832929</td></tr>
+<tr>
+<td title='crmframework.crmAutomation.AccountPageTest.TS008_VerifyAccountStatusToActivateAccountTest()'><b>TS008_VerifyAccountStatusToActivateAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
+<td></td>
+<td>43</td>
+<td>crmframework.crmAutomation.AccountPageTest@61832929</td></tr>
+<tr>
+<td title='crmframework.crmAutomation.AccountPageTest.TS009_VerifyAccountStatusToDeactivateAccountTest()'><b>TS009_VerifyAccountStatusToDeactivateAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
+<td></td>
+<td>62</td>
+<td>crmframework.crmAutomation.AccountPageTest@61832929</td></tr>
+<tr>
+<td title='crmframework.crmAutomation.AccountPageTest.TS010_VerifyBusinessRuleForPhoneNumberTest()'><b>TS010_VerifyBusinessRuleForPhoneNumberTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
+<td></td>
+<td>42</td>
+<td>crmframework.crmAutomation.AccountPageTest@61832929</td></tr>
+<tr>
+<td title='crmframework.crmAutomation.AccountPageTest.TS011_VerifyAddNoteToAccountTest()'><b>TS011_VerifyAddNoteToAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
+<td></td>
+<td>65</td>
+<td>crmframework.crmAutomation.AccountPageTest@61832929</td></tr>
+<tr>
+<td title='crmframework.crmAutomation.AccountPageTest.TS012_VerifyAddNewPostToAccountTest()'><b>TS012_VerifyAddNewPostToAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
+<td></td>
+<td>40</td>
+<td>crmframework.crmAutomation.AccountPageTest@61832929</td></tr>
+<tr>
+<td title='crmframework.crmAutomation.AccountPageTest.TS013_VerifyPhoneCallOnAccountTest()'><b>TS013_VerifyPhoneCallOnAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
+<td></td>
+<td>53</td>
+<td>crmframework.crmAutomation.AccountPageTest@61832929</td></tr>
+<tr>
+<td title='crmframework.crmAutomation.AccountPageTest.TS014_VerifyStateAndRegionInGridTest()'><b>TS014_VerifyStateAndRegionInGridTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
+<td></td>
+<td>48</td>
+<td>crmframework.crmAutomation.AccountPageTest@61832929</td></tr>
+<tr>
+<td title='crmframework.crmAutomation.AccountPageTest.TS015_VerifyNamePhoneCityInGridTest()'><b>TS015_VerifyNamePhoneCityInGridTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
+<td></td>
+<td>65</td>
+<td>crmframework.crmAutomation.AccountPageTest@61832929</td></tr>
+<tr>
+<td title='crmframework.crmAutomation.AccountPageTest.TS016_VerifySearchusingAccountNameandPhoneTest()'><b>TS016_VerifySearchusingAccountNameandPhoneTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
+<td></td>
+<td>27</td>
+<td>crmframework.crmAutomation.AccountPageTest@61832929</td></tr>
+<tr>
+<td title='crmframework.crmAutomation.AccountPageTest.TS017_VerifyDuplicateAccountTest()'><b>TS017_VerifyDuplicateAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
+<td></td>
+<td>91</td>
+<td>crmframework.crmAutomation.AccountPageTest@61832929</td></tr>
+<tr>
+<td title='crmframework.crmAutomation.AccountPageTest.TS018_VerifyDeactivateAccountTest()'><b>TS018_VerifyDeactivateAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
+<td></td>
+<td>30</td>
+<td>crmframework.crmAutomation.AccountPageTest@61832929</td></tr>
+<tr>
+<td title='crmframework.crmAutomation.AccountPageTest.TS019_VerifyUpdateAccountInformation()'><b>TS019_VerifyUpdateAccountInformation</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
+<td></td>
+<td>39</td>
+<td>crmframework.crmAutomation.AccountPageTest@61832929</td></tr>
+<tr>
+<td title='crmframework.crmAutomation.AccountPageTest.TS020_VerifyAddContactTest()'><b>TS020_VerifyAddContactTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
+<td></td>
+<td>44</td>
+<td>crmframework.crmAutomation.AccountPageTest@61832929</td></tr>
+<tr>
+<td title='crmframework.crmAutomation.AccountPageTest.TS021_VerifyUpdateContactsFromAccountFormTest()'><b>TS021_VerifyUpdateContactsFromAccountFormTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
+<td></td>
+<td>52</td>
+<td>crmframework.crmAutomation.AccountPageTest@61832929</td></tr>
+<tr>
+<td title='crmframework.crmAutomation.AccountPageTest.TS022_VerifyMediaSegmentationFieldTest()'><b>TS022_VerifyMediaSegmentationFieldTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
+<td></td>
+<td>87</td>
+<td>crmframework.crmAutomation.AccountPageTest@61832929</td></tr>
 </table><p>
 </body>
 </html>

@@ -199,11 +199,12 @@ public class CRMAccountsPage {
 	By exporttostaticworksheetpageonly = By.xpath("//span[contains(text(),'Static Worksheet (Page only)')]");
 	By exporttodynamicworksheet = By.xpath("//span[contains(text(),'Dynamic Worksheet')]");
 	By exporttodynamicpivottable = By.xpath("//span[contains(text(),'Dynamic PivotTable')]");
-	By closepopupexcelonline = By.xpath("//button[@data-id='export_to_excelonline_save']/span[1]");
+	By closepopupexcelonline = By.xpath("//button[@data-id='dialogCloseIconButton']/span[1]");
 	By phoneCallTimelineSubject= By.xpath("//div[@id='TL_Group_key_3']//div[1]/div[1]/div/div[2]/div[2]/label[1]");
 	By accrefreshbtn = By.xpath("//button[@aria-label='Refresh']");
 	By duplicaterecordspopupcancelbtn = By.xpath("//button[@aria-label = 'Cancel']");
 	By phonecallduedatecurrent = By.xpath("//div[@aria-label = 'Calendar']/div[1]/div[2]/div[2]/div[2]/table[1]/tbody[1]/tr[3]/td[3]/button[1]");
+	
 	
 	
 	public CRMAccountsPage(WebDriver driver) {
@@ -292,7 +293,7 @@ public class CRMAccountsPage {
 	
 	public WebElement getAccSaveCloseBtn() throws InterruptedException
 	{
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 		return driver.findElement(accsavenclosebtn);
 	}
 	
@@ -768,10 +769,11 @@ public class CRMAccountsPage {
 		return driver.findElement(accdbanametxtbx);
 	}
 	
-	public WebElement getDuplicateRecordsPopupTitle()
+	public WebElement getDuplicateRecordsPopupTitle() throws InterruptedException
 	{
-		wait = new WebDriverWait (driver,20);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(duplicaterecordspopuptitle));
+		Thread.sleep(5000);
+//		wait = new WebDriverWait (driver,20);
+//		wait.until(ExpectedConditions.visibilityOfElementLocated(duplicaterecordspopuptitle));
 		return driver.findElement(duplicaterecordspopuptitle);
 	}
 	
