@@ -5,18 +5,15 @@
     <classes>
       <class name="crmframework.crmAutomation.AccountPageTest">
         <methods>
-          <include name="TS004_VerifyAddMarketingRelationshipOwnerToAccountTest"/>
-          <include name="TS014_VerifyPhoneCallOnAccountTest"/>
           <include name="TS021_VerifyUpdateContactsFromAccountFormTest"/>
-          <include name="TS023_VerifyBusinessRuleForPhoneNumberTest"/>
-          <include name="TS025_VerifyUpdateAccountInformation"/>
-          <include name="TS018_VerifyDuplicateAccountTest"/>
+          <include name="TS017_VerifyDuplicateAccountTest"/>
           <include name="initialize"/>
-          <include name="TS020_VerifyAddContactTest"/>
+          <include name="TS019_VerifyUpdateAccountInformation"/>
+          <include name="TS024_ManualFail_VerifyAssociatedContactsAccountStatusOfDeactivatedAccountTest"/>
+          <include name="TS018_VerifyDeactivateAccountTest"/>
           <include name="closeDriver"/>
-          <include name="TS022_VerifyAssociatedContactsAccountStatusOfDeactivatedAccountTest"/>
-          <include name="TS024_VerifyBusinessRuleForAddressTest"/>
-          <include name="TS019_VerifyExportToExcelTest"/>
+          <include name="TS023_VerifyExportToExcelTest"/>
+          <include name="TS025_VerifyBusinessRuleForAddressTest"/>
         </methods>
       </class> <!-- crmframework.crmAutomation.AccountPageTest -->
     </classes>

@@ -37,7 +37,7 @@ public class CRMAccountsPage {
 	By timelinesubjecttxtbx = By.xpath("//input[@aria-label='Subject']");
 	By timelinesavenclosebtn = By.xpath("//button[@data-id='quickCreateSaveAndCloseBtn']");
 	By successmsg = By.xpath("//span[@data-id='notification-message']");
-	By accpagebackbtn = By.xpath("//span[@class='symbolFont BackButton-symbol pa-ak ']");
+	By accpagebackbtn = By.xpath("//button[@aria-label=\"Press Enter to go back.\"]");
 	By relatedTab = By.xpath("//li[@title='Related']");
 	By activitiesRelatedTab = By.xpath("//span[@id='navActivities_Related']"); // added xpath for activities option at Related Dropdown list
 	By activityTab = By.xpath("//li[@title='Activities']");  // added xpath for activity tab
@@ -67,7 +67,7 @@ public class CRMAccountsPage {
 	By accstatusoutofbusiness = By.xpath("//option[contains(text(),'Out of Business')]");
 	By deactivatepopupdeactivatebtn = By.xpath("//button[@data-id='ok_id']");
 	By statusreasonoutofbusinessinheader = By.xpath("//div[@title='Out of Business']");
-	By backbtn = By.xpath("//span[@class='symbolFont BackButton-symbol pa-ah ']");
+	By backbtn = By.xpath("//button[@aria-label=\"Press Enter to go back.\"]");
 	By acctypemedia = By.xpath("//div[contains(text(),'Media')]");
 	By mediasegmentationfieldlabel = By.xpath("//label[contains(text(),'Media Segmentation')]");
 	By mediatypefieldlabel = By.xpath("//label[contains(text(),'Media Type')]");
@@ -488,8 +488,9 @@ public class CRMAccountsPage {
 		return driver.findElement(accstatusreason);
 	}
 	
-	public WebElement getPageBackBtn()
+	public WebElement getPageBackBtn() throws InterruptedException
 	{
+		Thread.sleep(5000);
 		return driver.findElement(backbtn);
 	}
 
