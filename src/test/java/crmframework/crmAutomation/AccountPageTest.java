@@ -283,61 +283,38 @@ public class AccountPageTest extends base {
 	}
 
 	@Test(priority=6)
-	public void TS006_VerifyDeactivateAccountTest() throws InterruptedException
-	{
-		//The purpose of this test case to verify:-
-		//TS40- Select any existing Account and deactivate it
+	public void TS006_VerifyAuditHistoryTabOnAccountTest() throws InterruptedException {
+
+		//The purpose of this test case to verify :-
+		//T300: Select any existing account and click on Audit History Tab Functionality 
 
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
 		hp = new CRMHomePage(driver);
-		ap = new CRMAccountsPage(driver);
-
 		hp.getAccountTab().click();
-		hp.getSearchAccountField().click();
-		hp.getSearchAccountField().sendKeys(accnameText);
-		hp.getstartsearch().click();
-		//Thread.sleep(10000);
 
-		WebElement validateAccName = driver.findElement(By.xpath("//label[contains(text(),'"+accnameText+"')]"));
-		validateAccName.click();
+		ap = new CRMAccountsPage(driver);
+		//Click on 'A' link to sort accounts starts with 'A'
+		ap.getCLetterFilterLink().click();
+		//Thread.sleep(4000);	
+
+		//Select the account name in list
+		ap.getAccountName().click();
 		ap.getAccNaviagteBtn().click();
-		//Thread.sleep(10000);
-		//Click on Deactivate button
-		ap.getDeactivateBtn().click();
-
-		//Click on 'Deactivate button of confirmation pop-up
-		ap.getDeactivateOkBtn().click();
-		Assert.assertTrue(ap.getActivateBtn().isDisplayed());
-
-		//Navigate back to Active accounts page
+		//Thread.sleep(5000);
+		//click on Related Tab and select Activities option from list. 
+		ap.getRelatedTab().click();
+		ap.getAuditHistoryRelatedTab().click();
+		//Thread.sleep(5000);
+		Boolean displayAuditHistoryTab = ap.getAuditHistoryTab().isDisplayed();
+		System.out.println("Activities Tab Opened successfully:"+displayAuditHistoryTab);
+		
+		String validateAuditHistoryTab = ap.getAuditHistoryTab().getText();
+		Assert.assertEquals(validateAuditHistoryTab, "Audit History");
+		
+		//Navigate back to Active accounts list
 		ap.getPageBackBtn().click();
-
-		//Click on 'Active Accounts' drop-down view button
-		ap.getActiveAccDropDownBtn().click();
-
-		//Select 'Inactive Accounts' option
-		ap.getInactiveAccOptn().click();
-
-		//Click on 'C' link to sort accounts starts with 'C'
-		try {
-			ap.getCLetterFilterLink().click();
-
-			//Validate deactivated account
-			hp.getSearchInactiveAccountField().click();
-			hp.getSearchInactiveAccountField().sendKeys(accnameText);
-			hp.getstartsearch().click();
-			//Thread.sleep(10000);
-			Assert.assertTrue(ap.getValidateInactiveAccName().isDisplayed());
-		}
-		catch (StaleElementReferenceException exe) {
-			System.out.println(exe.getMessage());
-		}
-		catch (IllegalArgumentException ex)
-		{
-			System.out.println(ex.getMessage());
-		}
+		
 	}
-
 	@Test(priority=7)
 	public void TS007_VerifyParentAccountTest() throws InterruptedException
 	{
@@ -508,70 +485,46 @@ public class AccountPageTest extends base {
 		//Navigate back to Active accounts list
 		ap.getPageBackBtn().click();
 	}
-
+	
 	@Test(priority=10)
-	public void TS010_VerifyMediaSegmentationFieldTest() throws InterruptedException
-	{
-		//The purpose of this test case to verify:-
-		//CRM-T29- Media Segmentation drop-down field is visible on Account form only if Type equal to 'Media' is selected
+	public void TS010_VerifyBusinessRuleForPhoneNumberTest() throws InterruptedException {
 
-		hp = new CRMHomePage(driver);
-		ap = new CRMAccountsPage(driver);
+		//The purpose of this test case to verify :-
+		//T307: Select any existing account and click on Details Tab Functionality 
+
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
-
-		//Click on Accounts Tab at left menu.
+		hp = new CRMHomePage(driver);
 		hp.getAccountTab().click();
 
-		//Click on 'New' button to open new Account Form
+		ap = new CRMAccountsPage(driver);
+		Thread.sleep(10000);
+		//Click on 'New' button
 		ap.getAccountNewbtn().click();
-
-		//Scroll up the page till Address field
-		act = new Actions(driver);
-		act.moveToElement(ap.getAddress()).perform();
-
-		//Select account Type as 'Media' in Account information section
-		ap.getAccTypetxtbx().click();
-		ap.getAcctypeExpandbtn().click();
-		ap.getAccTypeMedia().click();
-		ap.getAddress().click();
-
-		//Verify that 'Media Segmentation' and 'Media Type' fields are displayed
-		List<WebElement> mediasegmentnlabel = ap.getMediaSegmentationFieldLabel();
-		Assert.assertTrue(mediasegmentnlabel.size()!= 0);
-
-		List<WebElement> mediatypelabel = ap.getMediaTypeFieldLabel();
-		Assert.assertTrue(mediatypelabel.size()!= 0);
-
-		//Click on 'Media Segmentation' drop down
-		ap.getMediaSegmentationDropdown().click();
-		//Select a value in Media Segmentation (Las Vegas Local)
-		ap.getMediaSegmentationName().click();
-
-		//Click on Media Type drop down
-		ap.getMediaTypeDropdown().click();
-		//Select any value in Media Type field
-		ap.getMediaTypeName().click();
-
-		//Update the account Type as 'Buyer' 
-		ap.getAccTypeSelectedValueTxtbx().click();
-		ap.getRemoveAccTypeMediaBtn().click();
-		ap.getAcctypeExpandbtn().click();
-		ap.getAccTypeBuyer().click();
-		ap.getNewAccountHeader().click();
-
-		//Verify that Media Segmentation and Media Type fields should be disappeared from the new account form
-		List<WebElement> mediasegmentnlabel1 = ap.getMediaSegmentationFieldLabel();
-		Assert.assertFalse(mediasegmentnlabel1.size()!= 0);
 		
-		List<WebElement> mediatypelabel1 = ap.getMediaTypeFieldLabel();
-		Assert.assertFalse(mediatypelabel1.size()!= 0);
+		ap.getAccountnametxtbx().click();
+		ap.getAccountnametxtbx().sendKeys(genData.generateRandomAlphaNumeric(10));
+		ap.getAccSaveBtn().click();
+		
+		ap.getNotificationExpandIcon().click();
+		ap.getNotificationExpandIcon().click();
+		ap.getAccountnametxtbx().sendKeys(Keys.TAB);
+		ap.getPhone().click();	
+		String totalwarningmessage= ap.getNotificationWrapperMsg().getText();
+		Assert.assertEquals(totalwarningmessage, "You have 7 notifications. Select to view.");
+		System.out.println("Warning message displayed.");
+		Thread.sleep(10000);
 
-		//Navigate back to Active accounts list
-
+		ap.getPhone().click();
+		ap.getPhone().sendKeys(genData.generateRandomNumber(10));
+		ap.getPhone().sendKeys(Keys.TAB);
+		ap.getAccSaveBtn().click();
+		String typewarningmessage=ap.getTypeNotificationWrapperMsg().getText();
+		Assert.assertEquals(typewarningmessage, "Type : Required fields must be filled in.");
+		System.out.println("Displayed only Type warning message displayed.");
 		ap.getPageBackBtn().click();
 		ap.getDiscardChangesBtn().click();
 	}
-	
+
 	@Test(priority=11)
 	public void TS011_VerifyAddNoteToAccountTest() throws InterruptedException
 	{
@@ -656,43 +609,9 @@ public class AccountPageTest extends base {
 		System.out.println("Post Deleted.");
 		ap.getPageBackBtn().click();
 	}
-
+		
 	@Test(priority=13)
-	public void TS013_VerifyAuditHistoryTabOnAccountTest() throws InterruptedException {
-
-		//The purpose of this test case to verify :-
-		//T300: Select any existing account and click on Audit History Tab Functionality 
-
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
-		hp = new CRMHomePage(driver);
-		hp.getAccountTab().click();
-
-		ap = new CRMAccountsPage(driver);
-		//Click on 'A' link to sort accounts starts with 'A'
-		ap.getCLetterFilterLink().click();
-		//Thread.sleep(4000);	
-
-		//Select the account name in list
-		ap.getAccountName().click();
-		ap.getAccNaviagteBtn().click();
-		//Thread.sleep(5000);
-		//click on Related Tab and select Activities option from list. 
-		ap.getRelatedTab().click();
-		ap.getAuditHistoryRelatedTab().click();
-		//Thread.sleep(5000);
-		Boolean displayAuditHistoryTab = ap.getAuditHistoryTab().isDisplayed();
-		System.out.println("Activities Tab Opened successfully:"+displayAuditHistoryTab);
-		
-		String validateAuditHistoryTab = ap.getAuditHistoryTab().getText();
-		Assert.assertEquals(validateAuditHistoryTab, "Audit History");
-		
-		//Navigate back to Active accounts list
-		ap.getPageBackBtn().click();
-		
-	}
-	
-	@Test(priority=14)
-	public void TS014_VerifyPhoneCallOnAccountTest() throws InterruptedException {
+	public void TS013_VerifyPhoneCallOnAccountTest() throws InterruptedException {
 
 		//The purpose of this test case to verify :-
 		//T85: Add Phone Call to an existing Account
@@ -741,11 +660,11 @@ public class AccountPageTest extends base {
 		}
 
 		//Navigate back to Active accounts list
-		ap.getAccPageBackBtn().click();
+		ap.getPageBackBtn().click();
 	}
 	
-	@Test(priority=15)
-	public void TS015_VerifyStateAndRegionInGridTest() throws InterruptedException {
+	@Test(priority=14)
+	public void TS014_VerifyStateAndRegionInGridTest() throws InterruptedException {
 
 		//The purpose of this test case to verify :-
 		//T166: Filter State and Region in grid
@@ -800,8 +719,8 @@ public class AccountPageTest extends base {
 		System.out.println("State matches expected criteria");	
 	}
 	
-	@Test(priority=16)
-	public void TS016_VerifyNamePhoneCityInGridTest() throws InterruptedException {
+	@Test(priority=15)
+	public void TS015_VerifyNamePhoneCityInGridTest() throws InterruptedException {
 
 		//The purpose of this test case to verify :-
 		//T289: Filter Account DBA Name, Phone and City in grid
@@ -887,8 +806,8 @@ public class AccountPageTest extends base {
 		ap.getclearfiltergrid().click();
 	}
 	
-	@Test(priority=17)
-	public void TS017_VerifySearchusingAccountNameandPhoneTest() throws InterruptedException
+	@Test(priority=16)
+	public void TS016_VerifySearchusingAccountNameandPhoneTest() throws InterruptedException
 	{
 		//The purpose of this test case to verify:-
 		//CRM-T46- CRM User is having ability to search Account entity using account name and phone
@@ -951,8 +870,8 @@ public class AccountPageTest extends base {
 		ap.getPageBackBtn().click();
 	}
 	
-	@Test(priority=18)
-	public void TS018_VerifyDuplicateAccountTest() throws InterruptedException
+	@Test(priority=27)
+	public void TS017_VerifyDuplicateAccountTest() throws InterruptedException
 	{
 		//The purpose of this test case to verify:-
 		//CRM-T58- Verify notification for duplicate account creation when same Account DBA Name and Phone
@@ -1076,72 +995,125 @@ public class AccountPageTest extends base {
 		hp.getClearSearch().click();
 	}
 	
-	@Test(priority=19)
-	public void TS019_VerifyExportToExcelTest() throws InterruptedException
+	@Test(priority=26)
+	public void TS018_VerifyDeactivateAccountTest() throws InterruptedException
 	{
 		//The purpose of this test case to verify:-
-		//CRM-T293- Verify Export To Excel functionality for Accounts
+		//TS40- Select any existing Account and deactivate it
+
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+		hp = new CRMHomePage(driver);
+		ap = new CRMAccountsPage(driver);
+
+		hp.getAccountTab().click();
+		hp.getSearchAccountField().click();
+		hp.getSearchAccountField().sendKeys(accnameText);
+		hp.getstartsearch().click();
+		//Thread.sleep(10000);
+
+		WebElement validateAccName = driver.findElement(By.xpath("//label[contains(text(),'"+accnameText+"')]"));
+		validateAccName.click();
+		ap.getAccNaviagteBtn().click();
+		//Thread.sleep(10000);
+		//Click on Deactivate button
+		ap.getDeactivateBtn().click();
+
+		//Click on 'Deactivate button of confirmation pop-up
+		ap.getDeactivateOkBtn().click();
+		Assert.assertTrue(ap.getActivateBtn().isDisplayed());
+
+		//Navigate back to Active accounts page
+		ap.getPageBackBtn().click();
+
+		//Click on 'Active Accounts' drop-down view button
+		ap.getActiveAccDropDownBtn().click();
+
+		//Select 'Inactive Accounts' option
+		ap.getInactiveAccOptn().click();
+
+		//Click on 'C' link to sort accounts starts with 'C'
+		try {
+			ap.getCLetterFilterLink().click();
+
+			//Validate deactivated account
+			hp.getSearchInactiveAccountField().click();
+			hp.getSearchInactiveAccountField().sendKeys(accnameText);
+			hp.getstartsearch().click();
+			//Thread.sleep(10000);
+			Assert.assertTrue(ap.getValidateInactiveAccName().isDisplayed());
+		}
+		catch (StaleElementReferenceException exe) {
+			System.out.println(exe.getMessage());
+		}
+		catch (IllegalArgumentException ex)
+		{
+			System.out.println(ex.getMessage());
+		}
+	}
+
+	@Test(priority=19)
+	public void TS019_VerifyUpdateAccountInformation() throws InterruptedException
+	{
+		//The purpose of this test case to verify:-
+		//CRM-T288- Verify that existing account information is updated properly
 
 		hp = new CRMHomePage(driver);
 		ap = new CRMAccountsPage(driver);
+		
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		//Click on Accounts Tab at left menu.
 		hp.getAccountTab().click();
 		
-		//Click three dots for Export option in header
-		ap.getclickoverflowbutton().click();
+		//Open an existing account
+		ap.getBLetterFilterLink().click();
+		ap.getAccountName().click();
+		ap.getAccNaviagteBtn().click();
 		
-		//Click Export To Excel option under it
-		ap.getclickexporttoexcelbutton().click();
+		//Update all the fields at Summary tab
+		String accountdbanamebeforeupdate = ap.getupdateaccountname().getAttribute("value");
+		System.out.println("AccountDBA name before update: "+accountdbanamebeforeupdate);
+		ap.getupdateaccountname().sendKeys(Keys.CONTROL + "a");
+		ap.getupdateaccountname().sendKeys(Keys.DELETE);
+		String AccountNameNew = genData.generateRandomAlphaNumeric(10);
+		ap.getupdateaccountname().sendKeys(AccountNameNew);
+		String accountdbaname = ap.getupdateaccountname().getAttribute("value");
+		System.out.println("AccountDBA name after update: "+accountdbaname);
 		
-		//Export file to online excel
-		ap.getopenexcelonline().click();
-		ap.getsaveexcelonline().click();
-		ap.getclosepopupexcelonline().click();   
+		ap.getPhone().sendKeys(Keys.CONTROL + "a");
+		ap.getPhone().sendKeys(Keys.DELETE);
+		ap.getclickextensiontextbox().click();
+		ap.getPhone().click();
+		String phoneafterupdate = genData.generateRandomNumber(10);
+		System.out.println("Phone after update: "+phoneafterupdate);
+		ap.getPhone().sendKeys(phoneafterupdate);
 		
-		//Click three dots for Export option in header
-		ap.getclickoverflowbutton().click();
+		//Scroll up the page till Address field
+		act = new Actions(driver);
+		act.moveToElement(ap.getAddress()).perform();
 				
-		//Click Export To Excel option under it
-		ap.getclickexporttoexcelbutton().click();
+		ap.getmovetotype().click();
+		ap.getdeletetype().click();
+		ap.getclicksearchddbutton().click();
+		ap.getselecttype().click();
+		ap.getclicksearchddbutton().click();
 		
-		//Export Excel to Static Worksheet
-		ap.getexporttostaticworksheet().click();
+		//Save updated account information
+		ap.getAccSaveCloseBtn().click();
 		
-		//Click three dots for Export option in header
-		ap.getclickoverflowbutton().click();
-				
-		//Click Export To Excel option under it
-		ap.getclickexporttoexcelbutton().click();
+		//Verification for updated account information
+		hp.getAccountTab().click();
+		hp.getSearchAccountField().click();
+		hp.getSearchAccountField().sendKeys(AccountNameNew);
+		hp.getstartsearch().click();
+		WebElement accountdbanameafterupdate = ap.getAccountNameSearchTable();
+		Assert.assertFalse(accountdbanameafterupdate.getText().contains(accountdbanamebeforeupdate));
 		
-		//Export Excel to Static Worksheet Page Only
-		ap.getexporttostaticworksheetpageonly().click();
-		
-		//Click three dots for Export option in header
-		ap.getclickoverflowbutton().click();
-				
-		//Click Export To Excel option under it
-		ap.getclickexporttoexcelbutton().click();
-		
-		//Export to Dynamic Worksheet
-		ap.getexporttodynamicworksheet().click();
-		ap.getselectcheckbox1().click();
-		ap.getselectcheckbox2().click();
-		ap.getexportworksheetpopup().click();
-		
-		//Click three dots for Export option in header
-		ap.getclickoverflowbutton().click();
-						
-		//Click Export To Excel option under it
-		ap.getclickexporttoexcelbutton().click();
-		
-		//Export to Dynamic Pivot Table
-		ap.getexporttodynamicpivottable().click();
-		ap.getselectcheckbox1().click();
-		ap.getselectcheckbox2().click();
-		ap.getexportworksheetpopup().click();
-	}
+		WebElement AccPhone = ap.getPhoneinSearchTable();
+		Assert.assertTrue(AccPhone.getText().contains(phoneafterupdate));
+		System.out.println("Account Information updated successfully");
+		hp.getClearSearch().click();
+	}	
 	
 	@Test(priority=20)
 	public void TS020_VerifyAddContactTest() throws InterruptedException
@@ -1292,10 +1264,142 @@ public class AccountPageTest extends base {
 		//Clear the search term
 		hp.getClearSearch().click();
 	}
-	
-	//Manual run is Failed
 	@Test(priority=22)
-	public void TS022_VerifyAssociatedContactsAccountStatusOfDeactivatedAccountTest() throws InterruptedException
+	public void TS022_VerifyMediaSegmentationFieldTest() throws InterruptedException
+	{
+		//The purpose of this test case to verify:-
+		//CRM-T29- Media Segmentation drop-down field is visible on Account form only if Type equal to 'Media' is selected
+
+		hp = new CRMHomePage(driver);
+		ap = new CRMAccountsPage(driver);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+
+		//Click on Accounts Tab at left menu.
+		hp.getAccountTab().click();
+
+		//Click on 'New' button to open new Account Form
+		ap.getAccountNewbtn().click();
+
+		//Scroll up the page till Address field
+		act = new Actions(driver);
+		act.moveToElement(ap.getAddress()).perform();
+
+		//Select account Type as 'Media' in Account information section
+		ap.getAccTypetxtbx().click();
+		ap.getAcctypeExpandbtn().click();
+		ap.getAccTypeMedia().click();
+		ap.getAddress().click();
+
+		//Verify that 'Media Segmentation' and 'Media Type' fields are displayed
+		List<WebElement> mediasegmentnlabel = ap.getMediaSegmentationFieldLabel();
+		Assert.assertTrue(mediasegmentnlabel.size()!= 0);
+
+		List<WebElement> mediatypelabel = ap.getMediaTypeFieldLabel();
+		Assert.assertTrue(mediatypelabel.size()!= 0);
+
+		//Click on 'Media Segmentation' drop down
+		ap.getMediaSegmentationDropdown().click();
+		//Select a value in Media Segmentation (Las Vegas Local)
+		ap.getMediaSegmentationName().click();
+
+		//Click on Media Type drop down
+		ap.getMediaTypeDropdown().click();
+		//Select any value in Media Type field
+		ap.getMediaTypeName().click();
+
+		//Update the account Type as 'Buyer' 
+		ap.getAccTypeSelectedValueTxtbx().click();
+		ap.getRemoveAccTypeMediaBtn().click();
+		ap.getAcctypeExpandbtn().click();
+		ap.getAccTypeBuyer().click();
+		ap.getNewAccountHeader().click();
+
+		//Verify that Media Segmentation and Media Type fields should be disappeared from the new account form
+		List<WebElement> mediasegmentnlabel1 = ap.getMediaSegmentationFieldLabel();
+		Assert.assertFalse(mediasegmentnlabel1.size()!= 0);
+		
+		List<WebElement> mediatypelabel1 = ap.getMediaTypeFieldLabel();
+		Assert.assertFalse(mediatypelabel1.size()!= 0);
+
+		//Navigate back to Active accounts list
+
+		ap.getPageBackBtn().click();
+		ap.getDiscardChangesBtn().click();
+	}
+	
+	@Test(priority=23)
+	public void TS023_VerifyExportToExcelTest() throws InterruptedException
+	{
+		//The purpose of this test case to verify:-
+		//CRM-T293- Verify Export To Excel functionality for Accounts
+
+		hp = new CRMHomePage(driver);
+		ap = new CRMAccountsPage(driver);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+		//Click on Accounts Tab at left menu.
+		hp.getAccountTab().click();
+		
+		//Click three dots for Export option in header
+		ap.getclickoverflowbutton().click();
+		
+		//Click Export To Excel option under it
+		ap.getclickexporttoexcelbutton().click();
+		
+		//Export file to online excel
+		ap.getopenexcelonline().click();
+		ap.getsaveexcelonline().click();
+		
+		Thread.sleep(5000);
+		ap.getclosepopupexcelonline().click();   
+		Thread.sleep(10000);
+		//Click three dots for Export option in header
+		ap.getclickoverflowbutton().click();
+				
+		//Click Export To Excel option under it
+		ap.getclickexporttoexcelbutton().click();
+		
+		//Export Excel to Static Worksheet
+		ap.getexporttostaticworksheet().click();
+		
+		//Click three dots for Export option in header
+		ap.getclickoverflowbutton().click();
+				
+		//Click Export To Excel option under it
+		ap.getclickexporttoexcelbutton().click();
+		
+		//Export Excel to Static Worksheet Page Only
+		ap.getexporttostaticworksheetpageonly().click();
+		
+		//Click three dots for Export option in header
+		//ap.getclickoverflowbutton().click();
+				
+		//Click Export To Excel dropdown arrow option under it
+		ap.getclickexporttoexcelbutton().click();
+		
+		//Export to Dynamic Worksheet
+		ap.getexporttodynamicworksheet().click();
+		ap.getselectcheckbox1().click();
+		ap.getselectcheckbox2().click();
+		ap.getexportworksheetpopup().click();
+		
+		//Click three dots for Export option in header
+		ap.getclickoverflowbutton().click();
+						
+		//Click Export To Excel option under it
+		ap.getclickexporttoexcelbutton().click();
+		
+		//Export to Dynamic Pivot Table
+		ap.getexporttodynamicpivottable().click();
+		ap.getselectcheckbox1().click();
+		ap.getselectcheckbox2().click();
+		ap.getexportworksheetpopup().click();
+	}
+
+			
+	//Manual Fail_Caught By Automation	
+	@Test(priority=24)
+	public void TS024_ManualFail_VerifyAssociatedContactsAccountStatusOfDeactivatedAccountTest() throws InterruptedException
 	{
 		//The purpose of this test case to verify:-
 		//CRM-T63- Verify if an account is deactivated with reason 'Out of Business', all 
@@ -1368,47 +1472,8 @@ public class AccountPageTest extends base {
 		ap.getPageBackBtn().click();
 	}
 	
-	@Test(priority=23)
-	public void TS023_VerifyBusinessRuleForPhoneNumberTest() throws InterruptedException {
-
-		//The purpose of this test case to verify :-
-		//T307: Select any existing account and click on Details Tab Functionality 
-
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
-		hp = new CRMHomePage(driver);
-		hp.getAccountTab().click();
-
-		ap = new CRMAccountsPage(driver);
-		Thread.sleep(10000);
-		//Click on 'New' button
-		ap.getAccountNewbtn().click();
-		
-		ap.getAccountnametxtbx().click();
-		ap.getAccountnametxtbx().sendKeys(genData.generateRandomAlphaNumeric(10));
-		ap.getAccSaveBtn().click();
-		
-		ap.getNotificationExpandIcon().click();
-		ap.getNotificationExpandIcon().click();
-		ap.getAccountnametxtbx().sendKeys(Keys.TAB);
-		ap.getPhone().click();	
-		String totalwarningmessage= ap.getNotificationWrapperMsg().getText();
-		Assert.assertEquals(totalwarningmessage, "You have 7 notifications. Select to view.");
-		System.out.println("Warning message displayed.");
-		Thread.sleep(10000);
-
-		ap.getPhone().click();
-		ap.getPhone().sendKeys(genData.generateRandomNumber(10));
-		ap.getPhone().sendKeys(Keys.TAB);
-		ap.getAccSaveBtn().click();
-		String typewarningmessage=ap.getTypeNotificationWrapperMsg().getText();
-		Assert.assertEquals(typewarningmessage, "Type : Required fields must be filled in.");
-		System.out.println("Displayed only Type warning message displayed.");
-		ap.getPageBackBtn().click();
-		ap.getDiscardChangesBtn().click();
-	}
-	
-	@Test(priority=24)
-	public void TS024_VerifyBusinessRuleForAddressTest() throws InterruptedException {
+	@Test(priority=25)
+	public void TS025_VerifyBusinessRuleForAddressTest() throws InterruptedException {
 
 		//The purpose of this test case to verify :-
 		//T308: Select any existing account and click on Details Tab Functionality 
@@ -1472,70 +1537,6 @@ public class AccountPageTest extends base {
 		String typewarningmessage=ap.getTypeNotificationWrapperMsg().getText();
 		Assert.assertEquals(typewarningmessage, "Type : Required fields must be filled in.");
 		System.out.println("Displayed only Type warning message displayed.");*/
-	}
-	
-	@Test(priority=25)
-	public void TS025_VerifyUpdateAccountInformation() throws InterruptedException
-	{
-		//The purpose of this test case to verify:-
-		//CRM-T288- Verify that existing account information is updated properly
-
-		hp = new CRMHomePage(driver);
-		ap = new CRMAccountsPage(driver);
-		
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-
-		//Click on Accounts Tab at left menu.
-		hp.getAccountTab().click();
-		
-		//Open an existing account
-		ap.getBLetterFilterLink().click();
-		ap.getAccountName().click();
-		ap.getAccNaviagteBtn().click();
-		
-		//Update all the fields at Summary tab
-		String accountdbanamebeforeupdate = ap.getupdateaccountname().getAttribute("value");
-		System.out.println("AccountDBA name before update: "+accountdbanamebeforeupdate);
-		ap.getupdateaccountname().sendKeys(Keys.CONTROL + "a");
-		ap.getupdateaccountname().sendKeys(Keys.DELETE);
-		String AccountNameNew = genData.generateRandomAlphaNumeric(10);
-		ap.getupdateaccountname().sendKeys(AccountNameNew);
-		String accountdbaname = ap.getupdateaccountname().getAttribute("value");
-		System.out.println("AccountDBA name after update: "+accountdbaname);
-		
-		ap.getPhone().sendKeys(Keys.CONTROL + "a");
-		ap.getPhone().sendKeys(Keys.DELETE);
-		ap.getclickextensiontextbox().click();
-		ap.getPhone().click();
-		String phoneafterupdate = genData.generateRandomNumber(10);
-		System.out.println("Phone after update: "+phoneafterupdate);
-		ap.getPhone().sendKeys(phoneafterupdate);
-		
-		//Scroll up the page till Address field
-		act = new Actions(driver);
-		act.moveToElement(ap.getAddress()).perform();
-				
-		ap.getmovetotype().click();
-		ap.getdeletetype().click();
-		ap.getclicksearchddbutton().click();
-		ap.getselecttype().click();
-		ap.getclicksearchddbutton().click();
-		
-		//Save updated account information
-		ap.getAccSaveCloseBtn().click();
-		
-		//Verification for updated account information
-		hp.getAccountTab().click();
-		hp.getSearchAccountField().click();
-		hp.getSearchAccountField().sendKeys(AccountNameNew);
-		hp.getstartsearch().click();
-		WebElement accountdbanameafterupdate = ap.getAccountNameSearchTable();
-		Assert.assertFalse(accountdbanameafterupdate.getText().contains(accountdbanamebeforeupdate));
-		
-		WebElement AccPhone = ap.getPhoneinSearchTable();
-		Assert.assertTrue(AccPhone.getText().contains(phoneafterupdate));
-		System.out.println("Account Information updated successfully");
-		hp.getClearSearch().click();
 	}
 
 	
