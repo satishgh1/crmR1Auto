@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>18/7/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>1/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Mar 03 12:21:43 IST 2021</td>
+<td>Started on:</td><td>Wed Mar 03 13:36:18 IST 2021</td>
 </tr>
-<tr><td>Total time:</td><td>914 seconds (914653 ms)</td>
+<tr><td>Total time:</td><td>148 seconds (148652 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,149 +76,15 @@ function toggleAllBoxes() {
 </tr>
 <tr>
 <td title='crmframework.crmAutomation.AccountPageTest.TS017_VerifyDuplicateAccountTest()'><b>TS017_VerifyDuplicateAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td><div><pre>org.openqa.selenium.WebDriverException: element click intercepted: Element &lt;span class=&quot;pa-br pa-at pa-ci pa-cj pa-ck pa-cl pa-v pa-ay pa-cm &quot;&gt;...&lt;/span&gt; is not clickable at point (72, 469). Other element would receive the click: &lt;div id=&quot;appProgressIndicatorContent&quot; aria-hidden=&quot;true&quot; data-id=&quot;appProgressIndicatorContent&quot; class=&quot;pa-lc pa-lb pa-io pa-as pa-au pa-b flexbox&quot;&gt;...&lt;/div&gt;
-  (Session info: chrome=88.0.4324.182)
+<td><div><pre>org.openqa.selenium.UnhandledAlertException: unexpected alert open: {Alert text : }
+  (Session info: chrome=88.0.4324.190): {Alert text : 
 Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
-System info: host: &apos;SATISHG-W10&apos;, ip: &apos;172.27.182.57&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_271&apos;
+System info: host: &apos;NILAMMA-W10&apos;, ip: &apos;192.168.68.2&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_161&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=88.0.4324.96 (68dba2d8a0b149a1d3afac56fa74648032bcf46b-refs/branch-heads/4324@{#1784}), userDataDir=C:\Users\satishg\AppData\Local\Temp\scoped_dir16140_399684484}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:54594}, acceptInsecureCerts=false, browserVersion=88.0.4324.182, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:extension:largeBlob=true, webauthn:virtualAuthenticators=true}]
-Session ID: da15599ba104ef1355454d53eb941132
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:150)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:115)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:45)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:637)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:272)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:82)
-	at crmframework.crmAutomation.AccountPageTest.TS017_VerifyDuplicateAccountTest(AccountPageTest.java:886)
-... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1078262677", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1078262677'><pre>org.openqa.selenium.WebDriverException: element click intercepted: Element &lt;span class=&quot;pa-br pa-at pa-ci pa-cj pa-ck pa-cl pa-v pa-ay pa-cm &quot;&gt;...&lt;/span&gt; is not clickable at point (72, 469). Other element would receive the click: &lt;div id=&quot;appProgressIndicatorContent&quot; aria-hidden=&quot;true&quot; data-id=&quot;appProgressIndicatorContent&quot; class=&quot;pa-lc pa-lb pa-io pa-as pa-au pa-b flexbox&quot;&gt;...&lt;/div&gt;
-  (Session info: chrome=88.0.4324.182)
-Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
-System info: host: &apos;SATISHG-W10&apos;, ip: &apos;172.27.182.57&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_271&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=88.0.4324.96 (68dba2d8a0b149a1d3afac56fa74648032bcf46b-refs/branch-heads/4324@{#1784}), userDataDir=C:\Users\satishg\AppData\Local\Temp\scoped_dir16140_399684484}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:54594}, acceptInsecureCerts=false, browserVersion=88.0.4324.182, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:extension:largeBlob=true, webauthn:virtualAuthenticators=true}]
-Session ID: da15599ba104ef1355454d53eb941132
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:150)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:115)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:45)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:637)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:272)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:82)
-	at crmframework.crmAutomation.AccountPageTest.TS017_VerifyDuplicateAccountTest(AccountPageTest.java:886)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
-	at org.testng.TestRunner.privateRun(TestRunner.java:767)
-	at org.testng.TestRunner.run(TestRunner.java:617)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1198)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1123)
-	at org.testng.TestNG.run(TestNG.java:1031)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div></td>
-<td>1</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
-<tr>
-<td title='crmframework.crmAutomation.AccountPageTest.TS018_VerifyDeactivateAccountTest()'><b>TS018_VerifyDeactivateAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td><div><pre>org.openqa.selenium.WebDriverException: element click intercepted: Element &lt;span class=&quot;pa-br pa-at pa-ci pa-cj pa-ck pa-cl pa-v pa-ay pa-cm &quot;&gt;...&lt;/span&gt; is not clickable at point (72, 469). Other element would receive the click: &lt;div id=&quot;appProgressIndicatorContent&quot; aria-hidden=&quot;true&quot; data-id=&quot;appProgressIndicatorContent&quot; class=&quot;pa-lc pa-lb pa-io pa-as pa-au pa-b flexbox&quot;&gt;...&lt;/div&gt;
-  (Session info: chrome=88.0.4324.182)
-Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
-System info: host: &apos;SATISHG-W10&apos;, ip: &apos;172.27.182.57&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_271&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=88.0.4324.96 (68dba2d8a0b149a1d3afac56fa74648032bcf46b-refs/branch-heads/4324@{#1784}), userDataDir=C:\Users\satishg\AppData\Local\Temp\scoped_dir16140_399684484}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:54594}, acceptInsecureCerts=false, browserVersion=88.0.4324.182, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:extension:largeBlob=true, webauthn:virtualAuthenticators=true}]
-Session ID: da15599ba104ef1355454d53eb941132
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:150)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:115)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:45)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:637)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:272)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:82)
-	at crmframework.crmAutomation.AccountPageTest.TS018_VerifyDeactivateAccountTest(AccountPageTest.java:1009)
-... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1717433286", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1717433286'><pre>org.openqa.selenium.WebDriverException: element click intercepted: Element &lt;span class=&quot;pa-br pa-at pa-ci pa-cj pa-ck pa-cl pa-v pa-ay pa-cm &quot;&gt;...&lt;/span&gt; is not clickable at point (72, 469). Other element would receive the click: &lt;div id=&quot;appProgressIndicatorContent&quot; aria-hidden=&quot;true&quot; data-id=&quot;appProgressIndicatorContent&quot; class=&quot;pa-lc pa-lb pa-io pa-as pa-au pa-b flexbox&quot;&gt;...&lt;/div&gt;
-  (Session info: chrome=88.0.4324.182)
-Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
-System info: host: &apos;SATISHG-W10&apos;, ip: &apos;172.27.182.57&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_271&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=88.0.4324.96 (68dba2d8a0b149a1d3afac56fa74648032bcf46b-refs/branch-heads/4324@{#1784}), userDataDir=C:\Users\satishg\AppData\Local\Temp\scoped_dir16140_399684484}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:54594}, acceptInsecureCerts=false, browserVersion=88.0.4324.182, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:extension:largeBlob=true, webauthn:virtualAuthenticators=true}]
-Session ID: da15599ba104ef1355454d53eb941132
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:150)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:115)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:45)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:637)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:272)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:82)
-	at crmframework.crmAutomation.AccountPageTest.TS018_VerifyDeactivateAccountTest(AccountPageTest.java:1009)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
-	at org.testng.TestRunner.privateRun(TestRunner.java:767)
-	at org.testng.TestRunner.run(TestRunner.java:617)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1198)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1123)
-	at org.testng.TestNG.run(TestNG.java:1031)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div></td>
-<td>1</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
-<tr>
-<td title='crmframework.crmAutomation.AccountPageTest.TS019_VerifyUpdateAccountInformation()'><b>TS019_VerifyUpdateAccountInformation</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[@data-id=&apos;cell-0-2&apos;]&quot;}
-  (Session info: chrome=88.0.4324.182)
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
-System info: host: &apos;SATISHG-W10&apos;, ip: &apos;172.27.182.57&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_271&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=88.0.4324.96 (68dba2d8a0b149a1d3afac56fa74648032bcf46b-refs/branch-heads/4324@{#1784}), userDataDir=C:\Users\satishg\AppData\Local\Temp\scoped_dir16140_399684484}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:54594}, acceptInsecureCerts=false, browserVersion=88.0.4324.182, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:extension:largeBlob=true, webauthn:virtualAuthenticators=true}]
-Session ID: da15599ba104ef1355454d53eb941132
-*** Element info: {Using=xpath, value=//div[@data-id=&apos;cell-0-2&apos;]}
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:150)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:115)
+Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=88.0.4324.96 (68dba2d8a0b149a1d3afac56fa74648032bcf46b-refs/branch-heads/4324@{#1784}), userDataDir=C:\Users\nilamma\AppData\Local\Temp\scoped_dir15316_1275547772}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:49703}, acceptInsecureCerts=false, browserVersion=88.0.4324.190, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:extension:largeBlob=true, webauthn:virtualAuthenticators=true}]
+Session ID: bb40874f8aa07e9a51e3659cc184679a
+*** Element info: {Using=xpath, value=//h2[contains(text(),&apos;Address&apos;)]}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:113)
 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:45)
 	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
 	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
@@ -227,24 +93,18 @@ Session ID: da15599ba104ef1355454d53eb941132
 	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:509)
 	at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:402)
-	at pageObjects.CRMAccountsPage.getAccountNameSearchTable(CRMAccountsPage.java:231)
-	at crmframework.crmAutomation.AccountPageTest.TS019_VerifyUpdateAccountInformation(AccountPageTest.java:1110)
-... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace751608431", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace751608431'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[@data-id=&apos;cell-0-2&apos;]&quot;}
-  (Session info: chrome=88.0.4324.182)
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+	at pageObjects.CRMAccountsPage.getAddress(CRMAccountsPage.java:240)
+	at crmframework.crmAutomation.AccountPageTest.TS017_VerifyDuplicateAccountTest(AccountPageTest.java:915)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1705072168", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1705072168'><pre>org.openqa.selenium.UnhandledAlertException: unexpected alert open: {Alert text : }
+  (Session info: chrome=88.0.4324.190): {Alert text : 
 Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
-System info: host: &apos;SATISHG-W10&apos;, ip: &apos;172.27.182.57&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_271&apos;
+System info: host: &apos;NILAMMA-W10&apos;, ip: &apos;192.168.68.2&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_161&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=88.0.4324.96 (68dba2d8a0b149a1d3afac56fa74648032bcf46b-refs/branch-heads/4324@{#1784}), userDataDir=C:\Users\satishg\AppData\Local\Temp\scoped_dir16140_399684484}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:54594}, acceptInsecureCerts=false, browserVersion=88.0.4324.182, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:extension:largeBlob=true, webauthn:virtualAuthenticators=true}]
-Session ID: da15599ba104ef1355454d53eb941132
-*** Element info: {Using=xpath, value=//div[@data-id=&apos;cell-0-2&apos;]}
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:150)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:115)
+Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=88.0.4324.96 (68dba2d8a0b149a1d3afac56fa74648032bcf46b-refs/branch-heads/4324@{#1784}), userDataDir=C:\Users\nilamma\AppData\Local\Temp\scoped_dir15316_1275547772}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:49703}, acceptInsecureCerts=false, browserVersion=88.0.4324.190, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:extension:largeBlob=true, webauthn:virtualAuthenticators=true}]
+Session ID: bb40874f8aa07e9a51e3659cc184679a
+*** Element info: {Using=xpath, value=//h2[contains(text(),&apos;Address&apos;)]}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:113)
 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:45)
 	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
 	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
@@ -253,8 +113,8 @@ Session ID: da15599ba104ef1355454d53eb941132
 	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:509)
 	at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:402)
-	at pageObjects.CRMAccountsPage.getAccountNameSearchTable(CRMAccountsPage.java:231)
-	at crmframework.crmAutomation.AccountPageTest.TS019_VerifyUpdateAccountInformation(AccountPageTest.java:1110)
+	at pageObjects.CRMAccountsPage.getAddress(CRMAccountsPage.java:240)
+	at crmframework.crmAutomation.AccountPageTest.TS017_VerifyDuplicateAccountTest(AccountPageTest.java:915)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -276,278 +136,12 @@ Session ID: da15599ba104ef1355454d53eb941132
 	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1198)
 	at org.testng.TestNG.runSuitesLocally(TestNG.java:1123)
 	at org.testng.TestNG.run(TestNG.java:1031)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
 </pre></div></td>
-<td>64</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
-<tr>
-<td title='crmframework.crmAutomation.AccountPageTest.TS021_VerifyUpdateContactsFromAccountFormTest()'><b>TS021_VerifyUpdateContactsFromAccountFormTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td><div><pre>org.openqa.selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document
-  (Session info: chrome=88.0.4324.182)
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
-Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
-System info: host: &apos;SATISHG-W10&apos;, ip: &apos;172.27.182.57&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_271&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=88.0.4324.96 (68dba2d8a0b149a1d3afac56fa74648032bcf46b-refs/branch-heads/4324@{#1784}), userDataDir=C:\Users\satishg\AppData\Local\Temp\scoped_dir16140_399684484}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:54594}, acceptInsecureCerts=false, browserVersion=88.0.4324.182, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:extension:largeBlob=true, webauthn:virtualAuthenticators=true}]
-Session ID: da15599ba104ef1355454d53eb941132
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:150)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:115)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:45)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:637)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:272)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:82)
-	at crmframework.crmAutomation.AccountPageTest.TS021_VerifyUpdateContactsFromAccountFormTest(AccountPageTest.java:1208)
-... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1648700617", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1648700617'><pre>org.openqa.selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document
-  (Session info: chrome=88.0.4324.182)
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
-Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
-System info: host: &apos;SATISHG-W10&apos;, ip: &apos;172.27.182.57&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_271&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=88.0.4324.96 (68dba2d8a0b149a1d3afac56fa74648032bcf46b-refs/branch-heads/4324@{#1784}), userDataDir=C:\Users\satishg\AppData\Local\Temp\scoped_dir16140_399684484}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:54594}, acceptInsecureCerts=false, browserVersion=88.0.4324.182, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:extension:largeBlob=true, webauthn:virtualAuthenticators=true}]
-Session ID: da15599ba104ef1355454d53eb941132
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:150)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:115)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:45)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:637)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:272)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:82)
-	at crmframework.crmAutomation.AccountPageTest.TS021_VerifyUpdateContactsFromAccountFormTest(AccountPageTest.java:1208)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
-	at org.testng.TestRunner.privateRun(TestRunner.java:767)
-	at org.testng.TestRunner.run(TestRunner.java:617)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1198)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1123)
-	at org.testng.TestNG.run(TestNG.java:1031)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div></td>
-<td>7</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
-<tr>
-<td title='crmframework.crmAutomation.AccountPageTest.TS023_VerifyExportToExcelTest()'><b>TS023_VerifyExportToExcelTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td><div><pre>org.openqa.selenium.WebDriverException: element click intercepted: Element &lt;span id=&quot;dialogButtonText_id-354b0de9-4dbd-4017-ba1b-96330a320739-2&quot; class=&quot;pa-cz pa-cl pa-m pa-cm pa-v pa-e pa-au &quot;&gt;...&lt;/span&gt; is not clickable at point (1141, 542). Other element would receive the click: &lt;div id=&quot;appProgressIndicatorContent&quot; aria-hidden=&quot;true&quot; data-id=&quot;appProgressIndicatorContent&quot; class=&quot;pa-lc pa-lb pa-io pa-as pa-au pa-b flexbox&quot;&gt;...&lt;/div&gt;
-  (Session info: chrome=88.0.4324.182)
-Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
-System info: host: &apos;SATISHG-W10&apos;, ip: &apos;172.27.182.57&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_271&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=88.0.4324.96 (68dba2d8a0b149a1d3afac56fa74648032bcf46b-refs/branch-heads/4324@{#1784}), userDataDir=C:\Users\satishg\AppData\Local\Temp\scoped_dir16140_399684484}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:54594}, acceptInsecureCerts=false, browserVersion=88.0.4324.182, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:extension:largeBlob=true, webauthn:virtualAuthenticators=true}]
-Session ID: da15599ba104ef1355454d53eb941132
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:150)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:115)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:45)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:637)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:272)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:82)
-	at crmframework.crmAutomation.AccountPageTest.TS023_VerifyExportToExcelTest(AccountPageTest.java:1354)
-... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1047934137", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1047934137'><pre>org.openqa.selenium.WebDriverException: element click intercepted: Element &lt;span id=&quot;dialogButtonText_id-354b0de9-4dbd-4017-ba1b-96330a320739-2&quot; class=&quot;pa-cz pa-cl pa-m pa-cm pa-v pa-e pa-au &quot;&gt;...&lt;/span&gt; is not clickable at point (1141, 542). Other element would receive the click: &lt;div id=&quot;appProgressIndicatorContent&quot; aria-hidden=&quot;true&quot; data-id=&quot;appProgressIndicatorContent&quot; class=&quot;pa-lc pa-lb pa-io pa-as pa-au pa-b flexbox&quot;&gt;...&lt;/div&gt;
-  (Session info: chrome=88.0.4324.182)
-Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
-System info: host: &apos;SATISHG-W10&apos;, ip: &apos;172.27.182.57&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_271&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=88.0.4324.96 (68dba2d8a0b149a1d3afac56fa74648032bcf46b-refs/branch-heads/4324@{#1784}), userDataDir=C:\Users\satishg\AppData\Local\Temp\scoped_dir16140_399684484}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:54594}, acceptInsecureCerts=false, browserVersion=88.0.4324.182, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:extension:largeBlob=true, webauthn:virtualAuthenticators=true}]
-Session ID: da15599ba104ef1355454d53eb941132
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:150)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:115)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:45)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:637)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:272)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:82)
-	at crmframework.crmAutomation.AccountPageTest.TS023_VerifyExportToExcelTest(AccountPageTest.java:1354)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
-	at org.testng.TestRunner.privateRun(TestRunner.java:767)
-	at org.testng.TestRunner.run(TestRunner.java:617)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1198)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1123)
-	at org.testng.TestNG.run(TestNG.java:1031)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div></td>
-<td>7</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
-<tr>
-<td title='crmframework.crmAutomation.AccountPageTest.TS024_ManualFail_VerifyAssociatedContactsAccountStatusOfDeactivatedAccountTest()'><b>TS024_ManualFail_VerifyAssociatedContactsAccountStatusOfDeactivatedAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td><div><pre>org.openqa.selenium.WebDriverException: element click intercepted: Element &lt;span class=&quot;pa-br pa-at pa-ci pa-cj pa-ck pa-cl pa-v pa-ay pa-cm &quot;&gt;...&lt;/span&gt; is not clickable at point (72, 469). Other element would receive the click: &lt;div id=&quot;appProgressIndicatorContent&quot; aria-hidden=&quot;true&quot; data-id=&quot;appProgressIndicatorContent&quot; class=&quot;pa-lc pa-lb pa-io pa-as pa-au pa-b flexbox&quot;&gt;...&lt;/div&gt;
-  (Session info: chrome=88.0.4324.182)
-Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
-System info: host: &apos;SATISHG-W10&apos;, ip: &apos;172.27.182.57&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_271&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=88.0.4324.96 (68dba2d8a0b149a1d3afac56fa74648032bcf46b-refs/branch-heads/4324@{#1784}), userDataDir=C:\Users\satishg\AppData\Local\Temp\scoped_dir16140_399684484}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:54594}, acceptInsecureCerts=false, browserVersion=88.0.4324.182, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:extension:largeBlob=true, webauthn:virtualAuthenticators=true}]
-Session ID: da15599ba104ef1355454d53eb941132
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:150)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:115)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:45)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:637)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:272)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:82)
-	at crmframework.crmAutomation.AccountPageTest.TS024_ManualFail_VerifyAssociatedContactsAccountStatusOfDeactivatedAccountTest(AccountPageTest.java:1413)
-... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace443713699", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace443713699'><pre>org.openqa.selenium.WebDriverException: element click intercepted: Element &lt;span class=&quot;pa-br pa-at pa-ci pa-cj pa-ck pa-cl pa-v pa-ay pa-cm &quot;&gt;...&lt;/span&gt; is not clickable at point (72, 469). Other element would receive the click: &lt;div id=&quot;appProgressIndicatorContent&quot; aria-hidden=&quot;true&quot; data-id=&quot;appProgressIndicatorContent&quot; class=&quot;pa-lc pa-lb pa-io pa-as pa-au pa-b flexbox&quot;&gt;...&lt;/div&gt;
-  (Session info: chrome=88.0.4324.182)
-Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
-System info: host: &apos;SATISHG-W10&apos;, ip: &apos;172.27.182.57&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_271&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=88.0.4324.96 (68dba2d8a0b149a1d3afac56fa74648032bcf46b-refs/branch-heads/4324@{#1784}), userDataDir=C:\Users\satishg\AppData\Local\Temp\scoped_dir16140_399684484}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:54594}, acceptInsecureCerts=false, browserVersion=88.0.4324.182, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:extension:largeBlob=true, webauthn:virtualAuthenticators=true}]
-Session ID: da15599ba104ef1355454d53eb941132
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:150)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:115)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:45)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:637)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:272)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:82)
-	at crmframework.crmAutomation.AccountPageTest.TS024_ManualFail_VerifyAssociatedContactsAccountStatusOfDeactivatedAccountTest(AccountPageTest.java:1413)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
-	at org.testng.TestRunner.privateRun(TestRunner.java:767)
-	at org.testng.TestRunner.run(TestRunner.java:617)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1198)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1123)
-	at org.testng.TestNG.run(TestNG.java:1031)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div></td>
-<td>1</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
-<tr>
-<td title='crmframework.crmAutomation.AccountPageTest.TS025_VerifyBusinessRuleForAddressTest()'><b>TS025_VerifyBusinessRuleForAddressTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td><div><pre>org.openqa.selenium.WebDriverException: element click intercepted: Element &lt;span class=&quot;pa-br pa-at pa-ci pa-cj pa-ck pa-cl pa-v pa-ay pa-cm &quot;&gt;...&lt;/span&gt; is not clickable at point (72, 469). Other element would receive the click: &lt;div id=&quot;appProgressIndicatorContent&quot; aria-hidden=&quot;true&quot; data-id=&quot;appProgressIndicatorContent&quot; class=&quot;pa-lc pa-lb pa-io pa-as pa-au pa-b flexbox&quot;&gt;...&lt;/div&gt;
-  (Session info: chrome=88.0.4324.182)
-Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
-System info: host: &apos;SATISHG-W10&apos;, ip: &apos;172.27.182.57&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_271&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=88.0.4324.96 (68dba2d8a0b149a1d3afac56fa74648032bcf46b-refs/branch-heads/4324@{#1784}), userDataDir=C:\Users\satishg\AppData\Local\Temp\scoped_dir16140_399684484}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:54594}, acceptInsecureCerts=false, browserVersion=88.0.4324.182, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:extension:largeBlob=true, webauthn:virtualAuthenticators=true}]
-Session ID: da15599ba104ef1355454d53eb941132
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:150)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:115)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:45)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:637)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:272)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:82)
-	at crmframework.crmAutomation.AccountPageTest.TS025_VerifyBusinessRuleForAddressTest(AccountPageTest.java:1483)
-... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1493042329", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1493042329'><pre>org.openqa.selenium.WebDriverException: element click intercepted: Element &lt;span class=&quot;pa-br pa-at pa-ci pa-cj pa-ck pa-cl pa-v pa-ay pa-cm &quot;&gt;...&lt;/span&gt; is not clickable at point (72, 469). Other element would receive the click: &lt;div id=&quot;appProgressIndicatorContent&quot; aria-hidden=&quot;true&quot; data-id=&quot;appProgressIndicatorContent&quot; class=&quot;pa-lc pa-lb pa-io pa-as pa-au pa-b flexbox&quot;&gt;...&lt;/div&gt;
-  (Session info: chrome=88.0.4324.182)
-Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
-System info: host: &apos;SATISHG-W10&apos;, ip: &apos;172.27.182.57&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_271&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=88.0.4324.96 (68dba2d8a0b149a1d3afac56fa74648032bcf46b-refs/branch-heads/4324@{#1784}), userDataDir=C:\Users\satishg\AppData\Local\Temp\scoped_dir16140_399684484}, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=ANY, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:54594}, acceptInsecureCerts=false, browserVersion=88.0.4324.182, browserName=chrome, javascriptEnabled=true, platformName=windows, setWindowRect=true, webauthn:extension:largeBlob=true, webauthn:virtualAuthenticators=true}]
-Session ID: da15599ba104ef1355454d53eb941132
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:150)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:115)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:45)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:637)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:272)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:82)
-	at crmframework.crmAutomation.AccountPageTest.TS025_VerifyBusinessRuleForAddressTest(AccountPageTest.java:1483)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
-	at org.testng.TestRunner.privateRun(TestRunner.java:767)
-	at org.testng.TestRunner.run(TestRunner.java:617)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1198)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1123)
-	at org.testng.TestNG.run(TestNG.java:1031)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div></td>
-<td>1</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
+<td>31</td>
+<td>crmframework.crmAutomation.AccountPageTest@3ffc5af1</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
@@ -559,93 +153,8 @@ Session ID: da15599ba104ef1355454d53eb941132
 <tr>
 <td title='crmframework.crmAutomation.AccountPageTest.TS001_VerifyHomePageTest()'><b>TS001_VerifyHomePageTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
 <td></td>
-<td>122</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
-<tr>
-<td title='crmframework.crmAutomation.AccountPageTest.TS002_VerifyCreateNewAccountTest()'><b>TS002_VerifyCreateNewAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td></td>
-<td>40</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
-<tr>
-<td title='crmframework.crmAutomation.AccountPageTest.TS003_VerifyAddTimelineToAccountTest()'><b>TS003_VerifyAddTimelineToAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td></td>
-<td>41</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
-<tr>
-<td title='crmframework.crmAutomation.AccountPageTest.TS004_VerifyAddMarketingRelationshipOwnerToAccountTest()'><b>TS004_VerifyAddMarketingRelationshipOwnerToAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td></td>
-<td>35</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
-<tr>
-<td title='crmframework.crmAutomation.AccountPageTest.TS005_VerifySearchAccountTest()'><b>TS005_VerifySearchAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td></td>
-<td>3</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
-<tr>
-<td title='crmframework.crmAutomation.AccountPageTest.TS006_VerifyAuditHistoryTabOnAccountTest()'><b>TS006_VerifyAuditHistoryTabOnAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td></td>
-<td>30</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
-<tr>
-<td title='crmframework.crmAutomation.AccountPageTest.TS007_VerifyParentAccountTest()'><b>TS007_VerifyParentAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td></td>
-<td>31</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
-<tr>
-<td title='crmframework.crmAutomation.AccountPageTest.TS008_VerifyAccountStatusToActivateAccountTest()'><b>TS008_VerifyAccountStatusToActivateAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td></td>
-<td>37</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
-<tr>
-<td title='crmframework.crmAutomation.AccountPageTest.TS009_VerifyAccountStatusToDeactivateAccountTest()'><b>TS009_VerifyAccountStatusToDeactivateAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td></td>
-<td>35</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
-<tr>
-<td title='crmframework.crmAutomation.AccountPageTest.TS010_VerifyBusinessRuleForPhoneNumberTest()'><b>TS010_VerifyBusinessRuleForPhoneNumberTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td></td>
-<td>36</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
-<tr>
-<td title='crmframework.crmAutomation.AccountPageTest.TS011_VerifyAddNoteToAccountTest()'><b>TS011_VerifyAddNoteToAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td></td>
-<td>62</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
-<tr>
-<td title='crmframework.crmAutomation.AccountPageTest.TS012_VerifyAddNewPostToAccountTest()'><b>TS012_VerifyAddNewPostToAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td></td>
-<td>37</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
-<tr>
-<td title='crmframework.crmAutomation.AccountPageTest.TS013_VerifyPhoneCallOnAccountTest()'><b>TS013_VerifyPhoneCallOnAccountTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td></td>
-<td>48</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
-<tr>
-<td title='crmframework.crmAutomation.AccountPageTest.TS014_VerifyStateAndRegionInGridTest()'><b>TS014_VerifyStateAndRegionInGridTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td></td>
-<td>36</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
-<tr>
-<td title='crmframework.crmAutomation.AccountPageTest.TS015_VerifyNamePhoneCityInGridTest()'><b>TS015_VerifyNamePhoneCityInGridTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td></td>
-<td>64</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
-<tr>
-<td title='crmframework.crmAutomation.AccountPageTest.TS016_VerifySearchusingAccountNameandPhoneTest()'><b>TS016_VerifySearchusingAccountNameandPhoneTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td></td>
-<td>27</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
-<tr>
-<td title='crmframework.crmAutomation.AccountPageTest.TS020_VerifyAddContactTest()'><b>TS020_VerifyAddContactTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td></td>
-<td>42</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
-<tr>
-<td title='crmframework.crmAutomation.AccountPageTest.TS022_VerifyMediaSegmentationFieldTest()'><b>TS022_VerifyMediaSegmentationFieldTest</b><br>Test class: crmframework.crmAutomation.AccountPageTest</td>
-<td></td>
-<td>88</td>
-<td>crmframework.crmAutomation.AccountPageTest@523884b2</td></tr>
+<td>112</td>
+<td>crmframework.crmAutomation.AccountPageTest@3ffc5af1</td></tr>
 </table><p>
 </body>
 </html>

@@ -699,6 +699,10 @@ public class AccountPageTest extends base {
 		}
 		System.out.println("Region matches expected criteria");
 		
+		//Clear filter
+		ap.getclickregiongridfunnel().click();
+		ap.getclearfiltergrid().click();
+		
 		//Click funnel for state column
 		ap.getclickaddressgridfunnel().click();
 		ap.getclickfunnelfilter().click();
@@ -706,7 +710,8 @@ public class AccountPageTest extends base {
 		//Select filter options
 		ap.getclickoperatordd().click();
 		ap.getselectoperator().click();
-		ap.getclickaddressvaluefield().sendKeys(prop.getProperty("gridstatefilter"));	
+		ap.getclickaddressvaluefield().sendKeys(prop.getProperty("gridstatefilter"));
+		ap.getclickapplybutton().click();
 		Thread.sleep(5000);
 		
 		//Verify state value selected on accounts grid
@@ -714,9 +719,14 @@ public class AccountPageTest extends base {
 		for (int i=0;i<7;i++)
 		{
 			statevaluesongrid = driver.findElement(By.xpath("//div[@data-id='cell-"+i+"-5']"));
-			Assert.assertTrue(statevaluesongrid.getText().contains(ap.getclickaddressvaluefield().getText()));
+			Assert.assertTrue(statevaluesongrid.getText().contains(prop.getProperty("gridstatefilter")));
 		}
 		System.out.println("State matches expected criteria");	
+		
+		//Clear selected filter
+		ap.getclickaddressgridfunnel().click();
+		ap.getclearfiltergrid().click();
+		
 	}
 	
 	@Test(priority=15)

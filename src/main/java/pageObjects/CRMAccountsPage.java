@@ -684,7 +684,7 @@ public class CRMAccountsPage {
 		return driver.findElement(clickfunnelfilter);
 	}
 
-	public WebElement getclickoperatordd() {
+	public WebElement getclickoperatordd() throws InterruptedException {
 		wait = new WebDriverWait (driver,20);
 		wait.until(ExpectedConditions.elementToBeClickable(clickoperatordd));
 		return driver.findElement(clickoperatordd);
@@ -908,8 +908,9 @@ public class CRMAccountsPage {
 		return driver.findElement(contactssectionemailfieldlabel);
 	}
 	
-	public WebElement getContactsSectionContactName()
+	public WebElement getContactsSectionContactName() throws InterruptedException
 	{
+		Thread.sleep(4000);
 		return driver.findElement(contactssectioncontactname);
 	}
 	
