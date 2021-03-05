@@ -191,9 +191,8 @@ public class CRMAccountsPage {
 	By listgridcolumn2 = By.xpath("//div[@data-id = 'AssociatedLists_container']/div[1]/div[4]/div[1]/div[1]/div[5]/div[1]/div[1]/div[3]");
 	By listgridcolumn3 = By.xpath("//div[@data-id = 'AssociatedLists_container']/div[1]/div[4]/div[1]/div[1]/div[5]/div[1]/div[1]/div[4]");
 	By nolist = By.xpath("//div[@class = 'cc-grid-noRecords-Container']");
-	By list = By.xpath("//div[@id = 'DataSetHostContainer_dataSetRoot_AssociatedLists']/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/a[1]");
-	By listmember = By.xpath("//div[@aria-label = 'Active List Members']/div[2]/div[3]/a[1]");
-	//By parentaccfromlist = By.xpath("//span[@id='id-276390f9-8bbf-4452-8f24-636b0ccaee2c-62-parentaccountid6-parentaccountid.fieldControl-name0_0_0']");
+	By list = By.xpath("//ul[@aria-label= 'Active Account Sub Grid']/li[1]");
+	By listmember = By.xpath("//div[@aria-label = 'Active List Members']");
 	By openexcelonline = By.xpath("//button[@aria-label = 'Open in Excel Online']");
 	By exporttostaticworksheet = By.xpath("//button[@aria-label = 'Static Worksheet']/span/span[2]");
 	By exporttostaticworksheetpageonly = By.xpath("//span[contains(text(),'Static Worksheet (Page only)')]");
@@ -204,7 +203,12 @@ public class CRMAccountsPage {
 	By accrefreshbtn = By.xpath("//button[@aria-label='Refresh']");
 	By duplicaterecordspopupcancelbtn = By.xpath("//button[@aria-label = 'Cancel']");
 	By phonecallduedatecurrent = By.xpath("//div[@aria-label = 'Calendar']/div[1]/div[2]/div[2]/div[2]/table[1]/tbody[1]/tr[3]/td[3]/button[1]");
-	
+	By selectedlistname = By.xpath("//div[@data-id='xxc_list.fieldControl-LookupResultsDropdown_xxc_list_selected_tag_text']");
+	By listmemremovedlabel = By.xpath("//span[@title='Last List Member Removed']");
+	By memberslabel = By.xpath("//h2[contains(text(),'Members')]");
+	By taskbtnontimeline = By.xpath("//div[text() = 'Task']");
+	By tasksubjecttxtbx = By.xpath("//input[@aria-label='Subject']");
+	By tasksavenclosebtn = By.xpath("//button[@data-id='quickCreateSaveAndCloseBtn']");
 	
 	
 	public CRMAccountsPage(WebDriver driver) {
@@ -223,7 +227,7 @@ public class CRMAccountsPage {
 	
 	public WebElement getAccountNewbtn() throws InterruptedException
 	{
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		return driver.findElement(accountnewbtn);
 	}
 	public WebElement getAccountNameSearchTable() throws InterruptedException
@@ -1219,10 +1223,45 @@ public class CRMAccountsPage {
 		return driver.findElement(listmember);
 	}
 	
-//	public WebElement getParentAccFromList()
-//	{
-//		return driver.findElement(parentaccfromlist);
-//	}
+	public WebElement getSelectedListName()
+	{
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(selectedlistname));
+		return driver.findElement(selectedlistname);
+	}
+	
+	public WebElement getListMemRemovedLabel()
+	{
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(listmemremovedlabel));
+		return driver.findElement(listmemremovedlabel);
+	}
+	
+	public WebElement getMembersLabel()
+	{
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(memberslabel));
+		return driver.findElement(memberslabel);
+	}
+	
+	public WebElement getTaskBtnOnTimeline()
+	{
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(taskbtnontimeline));
+		return driver.findElement(taskbtnontimeline);
+	}
+	
+	public WebElement getTaskSujecttxbx() throws InterruptedException
+	{
+		Thread.sleep(5000);
+		return driver.findElement(tasksubjecttxtbx);
+	}
+	
+	public WebElement getTaskSavenClosebtn()
+	{
+		return driver.findElement(tasksavenclosebtn);
+	}
+
 }
 
 	

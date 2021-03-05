@@ -3,6 +3,7 @@ package crmframework.crmAutomation;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -53,7 +54,44 @@ public class OtherTest extends base{
 	}
 	
 	@Test(priority=1)
-	public void TS001_VerifyAddIncentiveToAccountTest() throws InterruptedException {
+	public void TS001_VerifyHomePageTest() throws IOException, InterruptedException {
+
+		//The purpose of this test case to verify:-
+		//TS1- Login to CRM Application and  Select published Apps (Demand Driver Management)
+
+		driver.get(prop.getProperty("url")); //CRM App
+		driver.manage().window().maximize();
+		lap = new CRMLandingPage(driver);
+		//lap.getLogin().sendKeys(prop.getProperty("username"));
+		lap.getLogin().sendKeys(System.getenv("username"));
+		lap.getnext().click();
+
+		lp= new CRMLoginPage(driver);
+		lp.getpwd().click();
+
+		lp.getpwd().sendKeys(System.getenv("password"));
+		//lp.getpwd().sendKeys(prop.getProperty("password"));
+		Thread.sleep(15000);
+		lp.getsignin().click();
+		//Wait to enter the verification code from Mobile
+		Thread.sleep(30000);
+		lp.getVerify().click();
+		lp.getdontshowcheckbox().click();
+		lp.getsigninYes().click();
+		//to wait on Published App Landing page
+		Thread.sleep(15000);
+		driver.switchTo().frame("AppLandingPage");
+		alp = new AppLandingPage(driver);
+		//select Demand Driver application on Landing Page
+		alp.getddm().click();
+
+		hp = new CRMHomePage(driver);
+		hp.getHometitle().isDisplayed();
+		System.out.println("Login to CRM successfully");
+	}
+	
+	@Test(priority=3)
+	public void TS003_VerifyAddIncentiveToAccountTest() throws InterruptedException {
 
 		//The purpose of this test case to verify:-
 		//TS4-Select any existing Account and add Incentive
@@ -186,8 +224,8 @@ public class OtherTest extends base{
 		//Thread.sleep(3000);
 	}
 
-	@Test(priority=3)
-	public void TS003_VerifyRelatedTabOnAccountTest() throws InterruptedException {
+	@Test(priority=4)
+	public void TS004_VerifyRelatedTabOnAccountTest() throws InterruptedException {
 
 		//The purpose of this test case to verify :-
 		//Select any existing account and Verify Related Tab Functionality 
@@ -358,6 +396,103 @@ public class OtherTest extends base{
 		String typewarningmessage=ap.getTypeNotificationWrapperMsg().getText();
 		Assert.assertEquals(typewarningmessage, "Type : Required fields must be filled in.");
 		System.out.println("Displayed only Type warning message displayed.");*/
+	}
+	
+	@Test(priority=26)
+	public void TS026_VerifyAssociatedListsSectionTest() throws InterruptedException
+	{
+		//The purpose of this test case to verify:-
+		//CRM-T288- Verify lists are available or not for an Account
+
+		hp = new CRMHomePage(driver);
+		ap = new CRMAccountsPage(driver);
+		
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+		//Click on Accounts Tab at left menu.
+		hp.getAccountTab().click();
+		
+		//Open an existing account
+		ap.getsearchaccounttextbox().sendKeys(prop.getProperty("listaccount"));
+		ap.getclicksearchbutton().click();
+		hp.getSearchResultAcc().click();
+		ap.getAccNaviagteBtn().click();
+		
+		//Scroll to Associated Lists section
+		WebElement contacts = ap.getscrolltocontacts();
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("arguments[0].scrollIntoView(true);",contacts);
+		
+		WebElement associatedlists = ap.getscrolltoassociatedlists();
+		JavascriptExecutor jse1 = (JavascriptExecutor)driver;
+		jse1.executeScript("arguments[0].scrollIntoView(true);",associatedlists);
+		
+		// Verify if Lists are available in Lists section
+		WebElement NoList = ap.getnolist();
+		Assert.assertFalse(NoList.getText().equalsIgnoreCase(""));
+		System.out.println("List is available for the account");
+		
+		// Verify for List Members
+		WebElement List = ap.getlist();
+		List.click();
+		
+		ap.getSelectedListName().click();
+		
+		//Scroll till Members section	
+		WebElement listmemremovedlabel = ap.getListMemRemovedLabel();	
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].scrollIntoView(true);",listmemremovedlabel);
+		Thread.sleep(3000);
+		
+		WebElement memberslabel = ap.getMembersLabel();	
+		JavascriptExecutor jse3 = (JavascriptExecutor)driver;
+		jse3.executeScript("arguments[0].scrollIntoView(true);",memberslabel);
+		Thread.sleep(5000);
+		
+		WebElement ListMember = ap.getlistmember();
+		Assert.assertFalse(ListMember.getText().equalsIgnoreCase(""));
+		System.out.println("List memeber is available");
+		ap.getPageBackBtn().click();
+		ap.getPageBackBtn().click();
+	}
+	
+	@Test(priority=27)
+	public void TS027_VerifyAddNewTaskFromTimelineToAccountTest() throws InterruptedException
+	{
+		//The purpose of this test case to verify that:-
+		//TS296- User is able to add a new Task from Timeline section on account form
+
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+		hp = new CRMHomePage(driver);
+		hp.getAccountTab().click();
+
+		ap = new CRMAccountsPage(driver);
+		//Click on 'A' link to sort accounts starts with 'A'
+		ap.getCLetterFilterLink().click();	
+
+		//Select the account name in list
+		ap.getAccountName().click();
+		ap.getAccNaviagteBtn().click();
+
+		//Click on create a timeline button
+		ap.getAddTimelineBtn().click();
+		ap.getTaskBtnOnTimeline().click();
+
+		ap.getTaskSujecttxbx().click();
+		String subtext = "Cyb_TestTask";
+		ap.getTaskSujecttxbx().sendKeys(subtext);
+
+		ap.getTaskSavenClosebtn().click();
+
+		//Verify that added Task is reflected correctly
+		WebElement task = driver.findElement(By.xpath("//*[text()='"+subtext+"']"));
+		Assert.assertEquals(task.getText(), subtext);
+
+		//Verify that expected Success message displayed
+		Assert.assertEquals("Your changes were saved.", ap.getSuccessMsg().getText());
+
+		//Navigate back to Active accounts list
+		ap.getPageBackBtn().click();
 	}
 	@AfterTest
 	public void closeDriver()
