@@ -398,7 +398,7 @@ public class OtherTest extends base{
 		System.out.println("Displayed only Type warning message displayed.");*/
 	}
 	
-	@Test(priority=5)
+	@Test(priority=26)
 	public void TS026_VerifyAssociatedListsSectionTest() throws InterruptedException
 	{
 		//The purpose of this test case to verify:-
@@ -456,7 +456,7 @@ public class OtherTest extends base{
 		ap.getPageBackBtn().click();
 	}
 	
-	@Test(priority=6)
+	@Test(priority=27)
 	public void TS027_VerifyAddNewTaskFromTimelineToAccountTest() throws InterruptedException
 	{
 		//The purpose of this test case to verify that:-
