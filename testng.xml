@@ -6,7 +6,13 @@
 	</listners>
 	<test thread-count="5" name="Test">
 		<classes>
-			<class name="crmframework.crmAutomation.AccountPageTest" />
+			<!-- <class name="crmframework.crmAutomation.AccountPageTest" /> -->
+			<class name="crmframework.crmAutomation.OtherTest" />
+			<methods>
+				<include name="TS001_VerifyHomePageTest"/>
+				<include name="TS026_VerifyAssociatedListsSectionTest"/>
+          		<include name="TS027_VerifyAddNewTaskFromTimelineToAccountTest"/>
+			</methods>
 		</classes>
-	</test> <!-- Test -->
-</suite> <!-- Suite -->
+	</test>
+</suite>
