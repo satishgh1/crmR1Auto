@@ -42,7 +42,7 @@ public class ContactPageTest extends base{
 	}
 
 	@Test(priority=1)
-	public void verifyCrmHomePage() throws IOException, InterruptedException {
+	public void TS001_VerifyHomePageTest() throws IOException, InterruptedException {
 
 		//The purpose of this test case to verify:-
 		//TS1- Login to CRM Application and  Select published Apps (Demand Driver Management)
@@ -77,7 +77,7 @@ public class ContactPageTest extends base{
 	}
 
 	@Test(priority=2)
-	public void verifyCreateNewContact() throws InterruptedException
+	public void TS002_VerifyCreateNewAccountTest() throws InterruptedException
 	{
 		//The purpose of this test case to verify:-
 		//CRM-T27- Create New Contact for a new buyer
