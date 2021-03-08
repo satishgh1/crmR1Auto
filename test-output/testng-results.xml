@@ -1,32 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="3" passed="3">
+<testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="234537" started-at="2021-03-05T09:48:17Z" finished-at="2021-03-05T09:52:12Z">
+  <suite name="Suite" duration-ms="162671" started-at="2021-03-08T07:11:33Z" finished-at="2021-03-08T07:14:16Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="234537" started-at="2021-03-05T09:48:17Z" finished-at="2021-03-05T09:52:12Z">
+    <test name="Test" duration-ms="162671" started-at="2021-03-08T07:11:33Z" finished-at="2021-03-08T07:14:16Z">
       <class name="crmframework.crmAutomation.OtherTest">
-        <test-method status="PASS" signature="initialize()[pri:0, instance:crmframework.crmAutomation.OtherTest@61832929]" name="initialize" is-config="true" duration-ms="12374" started-at="2021-03-05T15:18:17Z" finished-at="2021-03-05T15:18:30Z">
+        <test-method status="PASS" signature="initialize()[pri:0, instance:crmframework.crmAutomation.OtherTest@523884b2]" name="initialize" is-config="true" duration-ms="5237" started-at="2021-03-08T12:41:33Z" finished-at="2021-03-08T12:41:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initialize -->
-        <test-method status="PASS" signature="TS001_VerifyHomePageTest()[pri:0, instance:crmframework.crmAutomation.OtherTest@61832929]" name="TS001_VerifyHomePageTest" duration-ms="117043" started-at="2021-03-05T15:18:30Z" finished-at="2021-03-05T15:20:27Z">
+        <test-method status="PASS" signature="TS001_VerifyHomePageTest()[pri:0, instance:crmframework.crmAutomation.OtherTest@523884b2]" name="TS001_VerifyHomePageTest" duration-ms="111508" started-at="2021-03-08T12:41:38Z" finished-at="2021-03-08T12:43:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TS001_VerifyHomePageTest -->
-        <test-method status="PASS" signature="TS026_VerifyAssociatedListsSectionTest()[pri:0, instance:crmframework.crmAutomation.OtherTest@61832929]" name="TS026_VerifyAssociatedListsSectionTest" duration-ms="56003" started-at="2021-03-05T15:20:27Z" finished-at="2021-03-05T15:21:23Z">
+        <test-method status="PASS" signature="TS025_VerifyBusinessRuleForAddressTest()[pri:0, instance:crmframework.crmAutomation.OtherTest@523884b2]" name="TS025_VerifyBusinessRuleForAddressTest" duration-ms="45869" started-at="2021-03-08T12:43:30Z" finished-at="2021-03-08T12:44:16Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TS026_VerifyAssociatedListsSectionTest -->
-        <test-method status="PASS" signature="TS027_VerifyAddNewTaskFromTimelineToAccountTest()[pri:0, instance:crmframework.crmAutomation.OtherTest@61832929]" name="TS027_VerifyAddNewTaskFromTimelineToAccountTest" duration-ms="46399" started-at="2021-03-05T15:21:23Z" finished-at="2021-03-05T15:22:09Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- TS027_VerifyAddNewTaskFromTimelineToAccountTest -->
-        <test-method status="PASS" signature="closeDriver()[pri:0, instance:crmframework.crmAutomation.OtherTest@61832929]" name="closeDriver" is-config="true" duration-ms="2549" started-at="2021-03-05T15:22:09Z" finished-at="2021-03-05T15:22:12Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closeDriver -->
+        </test-method> <!-- TS025_VerifyBusinessRuleForAddressTest -->
       </class> <!-- crmframework.crmAutomation.OtherTest -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->

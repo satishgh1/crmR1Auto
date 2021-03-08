@@ -10,8 +10,7 @@
 			<class name="crmframework.crmAutomation.OtherTest" />
 			<methods>
 				<include name="TS001_VerifyHomePageTest"/>
-				<include name="TS026_VerifyAssociatedListsSectionTest"/>
-          		<include name="TS027_VerifyAddNewTaskFromTimelineToAccountTest"/>
+				<include name="TS025_VerifyBusinessRuleForAddressTest"/>
 			</methods>
 		</classes>
 	</test>
