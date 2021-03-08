@@ -45,6 +45,7 @@ public class OtherTest extends base{
 	CRMAddMarketingRelationshipOwner amro;
 	Actions act;
 	CRMContactPage cp;
+	JavascriptExecutor jse;
 	
 	@BeforeTest
 	public void initialize() throws IOException
@@ -350,26 +351,25 @@ public class OtherTest extends base{
 		String totalwarningmessage= ap.getNotificationWrapperMsg().getText();
 		Assert.assertEquals(totalwarningmessage, "You have 7 notifications. Select to view.");
 		System.out.println("Warning message displayed.");
-		Thread.sleep(10000);
+		Thread.sleep(5000);
 		ap.getAddress().click();
 
-		//Scroll down on the page
-//		act.keyDown(Keys.CONTROL).sendKeys(Keys.DOWN).perform();
-//		act.keyDown(Keys.CONTROL).sendKeys(Keys.DOWN).release().perform();
-		
-		WebElement enteranotelabel = ap.getStreet1();
-		JavascriptExecutor jse = (JavascriptExecutor)driver;
-		jse.executeScript("arguments[0].scrollIntoView(true);",enteranotelabel);
+		//Scroll down on the page		
+		WebElement acctypelabel = ap.getAccTypeLabel();
+		jse = (JavascriptExecutor)driver;
+		jse.executeScript("arguments[0].scrollIntoView(true);",acctypelabel);
 
-		//Enter Street1 address
-		//ap.getStreet1().click();
-		
 		//Enter Street1 address
 		ap.getStreet1().sendKeys(prop.getProperty("street1"));
 	
 		//Enter City
 		ap.getCity().click();
 		ap.getCity().sendKeys(prop.getProperty("city"));
+		
+		//Scroll down on the page		
+		WebElement accstreet3label = ap.getAccStreet3Label();
+		jse = (JavascriptExecutor)driver;
+		jse.executeScript("arguments[0].scrollIntoView(true);",accstreet3label);
 
 		//Enter state
 		ap.getState().click();
@@ -384,18 +384,12 @@ public class OtherTest extends base{
 		ap.getCountrydrpbtn().click();
 		ap.getCountryName().click();
 		ap.getAccSaveBtn().click();
+		
 		String typewarningmessage=ap.getTypeNotificationWrapperMsg().getText();
 		Assert.assertEquals(typewarningmessage, "Type : Required fields must be filled in.");
 		System.out.println("Displayed only Type warning message displayed.");
 		ap.getPageBackBtn().click();
-
-/*		ap.getPhone().click();
-		ap.getPhone().sendKeys(genData.generateRandomNumber(10));
-		ap.getPhone().sendKeys(Keys.TAB);
-		ap.getAccSaveBtn().click();
-		String typewarningmessage=ap.getTypeNotificationWrapperMsg().getText();
-		Assert.assertEquals(typewarningmessage, "Type : Required fields must be filled in.");
-		System.out.println("Displayed only Type warning message displayed.");*/
+		ap.getDiscardChangesBtn().click();
 	}
 	
 	@Test(priority=26)
@@ -494,10 +488,11 @@ public class OtherTest extends base{
 		//Navigate back to Active accounts list
 		ap.getPageBackBtn().click();
 	}
-	@AfterTest
+	
+	/*@AfterTest
 	public void closeDriver()
 	{
 		driver.close();
-	}
+	}*/
 
 }

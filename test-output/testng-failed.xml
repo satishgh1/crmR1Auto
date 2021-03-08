@@ -3,33 +3,12 @@
 <suite name="Failed suite [Suite]">
   <test name="Test(failed)">
     <classes>
-      <class name="crmframework.crmAutomation.AccountPageTest">
+      <class name="crmframework.crmAutomation.OtherTest">
         <methods>
-          <include name="TS006_VerifyAuditHistoryTabOnAccountTest"/>
-          <include name="TS017_VerifyDuplicateAccountTest"/>
-          <include name="TS024_ManualFail_VerifyAssociatedContactsAccountStatusOfDeactivatedAccountTest"/>
-          <include name="TS010_VerifyBusinessRuleForPhoneNumberTest"/>
-          <include name="TS020_VerifyAddContactTest"/>
-          <include name="TS022_VerifyMediaSegmentationFieldTest"/>
-          <include name="TS009_VerifyAccountStatusToDeactivateAccountTest"/>
-          <include name="TS015_VerifyNamePhoneCityInGridTest"/>
-          <include name="TS004_VerifyAddMarketingRelationshipOwnerToAccountTest"/>
-          <include name="TS012_VerifyAddNewPostToAccountTest"/>
-          <include name="TS003_VerifyAddTimelineToAccountTest"/>
-          <include name="TS013_VerifyPhoneCallOnAccountTest"/>
-          <include name="TS021_VerifyUpdateContactsFromAccountFormTest"/>
+          <include name="TS025_VerifyBusinessRuleForAddressTest"/>
           <include name="initialize"/>
-          <include name="TS014_VerifyStateAndRegionInGridTest"/>
-          <include name="TS019_VerifyUpdateAccountInformation"/>
-          <include name="TS016_VerifySearchusingAccountNameandPhoneTest"/>
-          <include name="TS018_VerifyDeactivateAccountTest"/>
-          <include name="TS011_VerifyAddNoteToAccountTest"/>
-          <include name="TS008_VerifyAccountStatusToActivateAccountTest"/>
-          <include name="closeDriver"/>
-          <include name="TS007_VerifyParentAccountTest"/>
-          <include name="TS005_VerifySearchAccountTest"/>
         </methods>
-      </class> <!-- crmframework.crmAutomation.AccountPageTest -->
+      </class> <!-- crmframework.crmAutomation.OtherTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

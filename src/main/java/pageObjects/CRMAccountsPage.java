@@ -67,7 +67,7 @@ public class CRMAccountsPage {
 	By accstatusoutofbusiness = By.xpath("//option[contains(text(),'Out of Business')]");
 	By deactivatepopupdeactivatebtn = By.xpath("//button[@data-id='ok_id']");
 	By statusreasonoutofbusinessinheader = By.xpath("//div[@title='Out of Business']");
-	By backbtn = By.xpath("//button[@aria-label=\"Press Enter to go back.\"]");
+	By backbtn = By.xpath("//button[@aria-label='Press Enter to go back.']");
 	By acctypemedia = By.xpath("//div[contains(text(),'Media')]");
 	By mediasegmentationfieldlabel = By.xpath("//label[contains(text(),'Media Segmentation')]");
 	By mediatypefieldlabel = By.xpath("//label[contains(text(),'Media Type')]");
@@ -209,7 +209,8 @@ public class CRMAccountsPage {
 	By taskbtnontimeline = By.xpath("//div[text() = 'Task']");
 	By tasksubjecttxtbx = By.xpath("//input[@aria-label='Subject']");
 	By tasksavenclosebtn = By.xpath("//button[@data-id='quickCreateSaveAndCloseBtn']");
-	
+	By acctypelabel = By.xpath("//label[contains(text(),'Type')]");
+	By accstreet3label = By.xpath("//label[contains(text(),'Street 3')]");
 	
 	public CRMAccountsPage(WebDriver driver) {
 
@@ -1261,7 +1262,16 @@ public class CRMAccountsPage {
 	{
 		return driver.findElement(tasksavenclosebtn);
 	}
-
+	
+	public WebElement getAccTypeLabel()
+	{
+		return driver.findElement(acctypelabel);
+	}
+	
+	public WebElement getAccStreet3Label()
+	{
+		return driver.findElement(accstreet3label);
+	}
 }
 
 	
