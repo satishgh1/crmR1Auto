@@ -1,8 +1,11 @@
 package crmframework.crmAutomation;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -26,6 +29,8 @@ public class ContactPageTest extends base{
 
 	public WebDriverWait wait;
 	public GenerateData genData;
+	public String newcontactname;
+	public String outofbusiness;
 	CRMLandingPage lap;
 	CRMLoginPage lp;
 	AppLandingPage alp;
@@ -77,7 +82,7 @@ public class ContactPageTest extends base{
 	}
 
 	@Test(priority=2)
-	public void TS002_VerifyCreateNewAccountTest() throws InterruptedException
+	public void TS002_VerifyCreateNewContactTest() throws InterruptedException
 	{
 		//The purpose of this test case to verify:-
 		//CRM-T27- Create New Contact for a new buyer
@@ -147,30 +152,100 @@ public class ContactPageTest extends base{
 		cp.getsavecontact().click();
 
 		//Save the contact name in string variable
-		String contactnameinheader = cp.getContactNameinHeader().getText();
-		System.out.println("Contact Name: "+contactnameinheader);
+		newcontactname = cp.getContactNameinHeader().getText();
+		System.out.println("Contact Name: "+newcontactname);
 		//Navigate back to Active contacts page
 		ap.getPageBackBtn().click();
 
 		//On the contacts grid view page, search for the contact using contact name
 		hp.getSearchContactField().click();
-		hp.getSearchContactField().sendKeys(contactnameinheader);
+		hp.getSearchContactField().sendKeys(newcontactname);
 		hp.getstartsearch().click();
 
 		String searchresultscontactname = hp.getSearchResultContactFullName().getText();
-		System.out.println("Contact full name: " +searchresultscontactname);
-		Assert.assertTrue(searchresultscontactname.contains(contactnameinheader));
+		System.out.println("New Contact full name: " +searchresultscontactname);
+		Assert.assertTrue(searchresultscontactname.contains(newcontactname));
 		System.out.println("New Contact is created successfully");
 		//Clear the search term
 		hp.getClearSearch().click();
 	}
 
-
-
-	@AfterTest
-	public void closeDriver()
+	@Test(priority=3)
+	public void TS003_VerifyToDeactivateBuyerContactTest() throws InterruptedException
 	{
-		driver.close();
+		//The purpose of this test case to verify:-
+		//TS28- Select any existing Buyer Contact and deactivate it
+
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+		hp = new CRMHomePage(driver);
+		ap = new CRMAccountsPage(driver);
+		cp = new CRMContactPage(driver);
+
+		hp.getContactsTab().click();
+		hp.getSearchContactField().click();
+		hp.getSearchContactField().sendKeys(newcontactname);
+		hp.getstartsearch().click();
+	
+		WebElement validateContactName = driver.findElement(By.xpath("//label[contains(text(),'"+newcontactname+"')]"));
+		validateContactName.click();
+		ap.getAccNaviagteBtn().click();
+
+		//Click on Deactivate button
+		cp.getDeactivateBtn().click();
+
+		//Select 'Contact Status: Out of Business' in the confirm Contact Deactivation pop-up
+		ap.getActivatePopupStatusField().click();
+		WebElement outofbusinessstatus = cp.getContactStatusOutofBusiness();
+		outofbusiness = cp.getContactStatusOutofBusiness().getText();
+		System.out.println("Contact Status: " + outofbusiness);
+		outofbusinessstatus.click();
+		
+		//Click on 'Deactivate button of confirmation pop-up
+		cp.getDeactivateOkBtn().click();
+		
+		//Verify that Contact is deactivated and selected contact status reason is displayed at the right side of the header.
+		WebElement statusreasonforinactivecontactinheader = cp.getContactStatusResonForInactiveAcc();
+		System.out.println("Account Status Reason: " + (statusreasonforinactivecontactinheader.getText()));
+		Assert.assertTrue(statusreasonforinactivecontactinheader.getText().contains(outofbusiness));
+		
+		//Verify that Top ribbon 'Deactivate' option changes to 'Activate'
+		Assert.assertTrue(ap.getActivateBtn().isDisplayed());
+
+		//Navigate back to Active contacts page
+		ap.getPageBackBtn().click();
+
+		//Click on 'Active Contacts' drop-down view button
+		cp.getActiveContactDropDownBtn().click();
+
+		//Select 'Inactive Contacts' option
+		cp.getInactiveContactOptn().click();
+
+		//Click on 'Q' link to sort contacts starts with 'Q'
+		try {
+			cp.getQLetterFilterLink().click();
+
+			//Validate deactivated account
+			hp.getSearchInactiveContactField().click();
+			hp.getSearchInactiveContactField().sendKeys(newcontactname);
+			hp.getstartsearch().click();
+			System.out.println(cp.getValidateInactiveContactName().getText());
+			Assert.assertTrue(cp.getValidateInactiveContactName().isDisplayed());
+			System.out.println("Newly created contact is deactivated successfully");
+			hp.getClearSearch().click();
+		}
+		catch (StaleElementReferenceException exe) {
+			System.out.println(exe.getMessage());
+		}
+		catch (IllegalArgumentException ex)
+		{
+			System.out.println(ex.getMessage());
+		}
 	}
+
+//	@AfterTest
+//	public void closeDriver()
+//	{
+//		driver.close();
+//	}
 
 }
