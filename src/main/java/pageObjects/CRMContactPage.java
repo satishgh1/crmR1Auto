@@ -48,6 +48,15 @@ public class CRMContactPage {
 	By countrytxtbx = By.xpath("//input[@aria-label='Country']");
 	By cntryexpandbtn = By.xpath("//button[@aria-label='Toggle Dropdown']");
 	By countryname = By.xpath("//body/div[@id='_dropdown']/div[3]");
+	By validateInactiveContact = By.xpath("//div[@data-id='cell-0-2']");
+	By inactivecontactsoptn = By.xpath("//*[text()='Inactive Contacts']");
+	By contactdropdownbtn = By.xpath("//span[@class='symbolFont ChevronDownMed-symbol  ']");
+	By deactivatebtn = By.xpath("//button[@aria-label='Deactivate']");
+	By deactivateokbtn = By.xpath("//button[@data-id='ok_id']");
+	By qletterfilterlink = By.xpath("//a[@id='Q_link']");
+	By contactstatusoutofbusiness = By.xpath("//option[contains(text(),'Out of Business')]");
+	By statusreasonoutofbusinessinheader = By.xpath("//div[@title='Out of Business']");
+	By contactstatusreason = By.xpath("//div[@data-lp-id='MscrmControls.FieldControls.PicklistStatusControl|header_statuscode.fieldControl|contact']");
 	
 	public CRMContactPage(WebDriver driver) {
 
@@ -260,5 +269,46 @@ public WebElement getContactSavenCloseBtn() {
 		wait = new WebDriverWait (driver,20);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(contactsectionmenubtn));
 		return driver.findElement(contactsectionmenubtn);
+	}
+	
+	public WebElement getValidateInactiveContactName() throws InterruptedException {
+		Thread.sleep(6000);
+		return driver.findElement(validateInactiveContact);
+	}
+	
+	public WebElement getInactiveContactOptn() {
+		return driver.findElement(inactivecontactsoptn);
+	}
+	
+	public WebElement getActiveContactDropDownBtn() {
+		return driver.findElement(contactdropdownbtn);
+	}
+	
+	public WebElement getDeactivateBtn() {
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(deactivatebtn));
+		return driver.findElement(deactivatebtn);
+	}
+	
+	public WebElement getDeactivateOkBtn() {
+		return driver.findElement(deactivateokbtn);
+	}
+	
+	public WebElement getQLetterFilterLink() throws InterruptedException {
+		
+		Thread.sleep(10000);
+		return driver.findElement(qletterfilterlink);
+	}
+	
+	public WebElement getContactStatusOutofBusiness() {
+
+		return driver.findElement(contactstatusoutofbusiness);
+	}
+	
+	public WebElement getContactStatusResonForInactiveAcc() {
+
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(statusreasonoutofbusinessinheader));
+		return driver.findElement(contactstatusreason);
 	}
 }

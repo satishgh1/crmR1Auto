@@ -7,10 +7,12 @@
 	<test thread-count="5" name="Test">
 		<classes>
 			<!-- <class name="crmframework.crmAutomation.AccountPageTest" /> -->
-			<class name="crmframework.crmAutomation.OtherTest" />
+			<!-- <class name="crmframework.crmAutomation.OtherTest" /> -->
+			<class name="crmframework.crmAutomation.ContactPageTest" />
 			<methods>
-				<include name="TS001_VerifyHomePageTest"/>
-				<include name="TS025_VerifyBusinessRuleForAddressTest"/>
+				<include name="TS001_VerifyHomePageTest" />
+				<include name="TS002_VerifyCreateNewContactTest" />
+				<include name="TS003_VerifyToDeactivateBuyerContactTest" />
 			</methods>
 		</classes>
 	</test>
