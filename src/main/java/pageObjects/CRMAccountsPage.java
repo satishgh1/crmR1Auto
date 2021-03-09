@@ -196,8 +196,8 @@ public class CRMAccountsPage {
 	By openexcelonline = By.xpath("//button[@aria-label = 'Open in Excel Online']");
 	By exporttostaticworksheet = By.xpath("//button[@aria-label = 'Static Worksheet']/span/span[2]");
 	By exporttostaticworksheetpageonly = By.xpath("//span[contains(text(),'Static Worksheet (Page only)')]");
-	By exporttodynamicworksheet = By.xpath("//span[contains(text(),'Dynamic Worksheet')]");
-	By exporttodynamicpivottable = By.xpath("//span[contains(text(),'Dynamic PivotTable')]");
+	By exporttodynamicworksheet = By.xpath("//button[@data-id = 'account|NoRelationship|HomePageGrid|Mscrm.HomepageGrid.account.DynamicWorkesheet']");
+	By exporttodynamicpivottable = By.xpath("//button[@data-id = 'account|NoRelationship|HomePageGrid|Mscrm.HomepageGrid.account.DynamicPivotTable']");
 	By closepopupexcelonline = By.xpath("//button[@data-id='dialogCloseIconButton']/span[1]");
 	By phoneCallTimelineSubject= By.xpath("//div[@id='TL_Group_key_3']//div[1]/div[1]/div/div[2]/div[2]/label[1]");
 	By accrefreshbtn = By.xpath("//button[@aria-label='Refresh']");
@@ -815,85 +815,99 @@ public class CRMAccountsPage {
 	{
 		return driver.findElement(duplicaterecordspopupignorensavebtn);
 	}
-	
-	public WebElement getclickoverflowbutton() {
-		
+	public WebElement getclickoverflowbutton() throws InterruptedException {
+		wait = new WebDriverWait (driver,20);
+		wait.until(ExpectedConditions.elementToBeClickable(hletterfilterlink));
+		Thread.sleep(5000);
 		return driver.findElement(clickoverflowbutton);
 	}
 	
-	public WebElement getclickexporttoexcelbutton() {
-		
+	public WebElement getclickexporttoexcelbutton() throws InterruptedException {
+		wait = new WebDriverWait (driver,10);
+		wait.until(ExpectedConditions.elementToBeClickable(hletterfilterlink));
+		Thread.sleep(5000);
 		return driver.findElement(clickexporttoexcelbutton);
 	}
 
-	public WebElement getopenexcelonline() {
-		
+	public WebElement getopenexcelonline() throws InterruptedException {
+		Thread.sleep(5000);
 		return driver.findElement(openexcelonline);
 	}
 
-	public WebElement getsaveexcelonline() 
+	public WebElement getsaveexcelonline() throws InterruptedException 
 	{
 		wait = new WebDriverWait (driver,15);
 		wait.until(ExpectedConditions.elementToBeClickable(saveexcelonline));
+		Thread.sleep(10000);
 		return driver.findElement(saveexcelonline);
 	}
 
-	public WebElement getclosepopupexcelonline() 
+	public WebElement getclosepopupexcelonline() throws InterruptedException 
 	{
 		wait = new WebDriverWait (driver,15);
 		wait.until(ExpectedConditions.elementToBeClickable(closepopupexcelonline));
+		Thread.sleep(10000);
 		return driver.findElement(closepopupexcelonline);
 	}
 
-	public WebElement getexporttostaticworksheet() 
+	public WebElement getexporttostaticworksheet() throws InterruptedException 
 	{
 		wait = new WebDriverWait (driver,15);
 		wait.until(ExpectedConditions.elementToBeClickable(exporttostaticworksheet));
+		Thread.sleep(5000);
 		return driver.findElement(exporttostaticworksheet);
 	}
 
-	public WebElement getexporttostaticworksheetpageonly() 
+	public WebElement getexporttostaticworksheetpageonly() throws InterruptedException 
 	{
 		wait = new WebDriverWait (driver,15);
 		wait.until(ExpectedConditions.elementToBeClickable(exporttostaticworksheetpageonly));
+		Thread.sleep(5000);
 		return driver.findElement(exporttostaticworksheetpageonly);
 	}
 
-	public WebElement getexporttodynamicworksheet() 
+	public WebElement getexporttodynamicworksheet() throws InterruptedException 
 	{
 		wait = new WebDriverWait (driver,15);
 		wait.until(ExpectedConditions.elementToBeClickable(exporttodynamicworksheet));
+		Thread.sleep(10000);
 		return driver.findElement(exporttodynamicworksheet);
 	}
 
-	public WebElement getselectcheckbox1() 
+	public WebElement getselectcheckbox1() throws InterruptedException 
 	{
 		wait = new WebDriverWait (driver,15);
 		wait.until(ExpectedConditions.elementToBeClickable(selectcheckbox1));
+		Thread.sleep(10000);
 		return driver.findElement(selectcheckbox1);
 	}
 
-	public WebElement getselectcheckbox2() 
+	public WebElement getselectcheckbox2() throws InterruptedException 
 	{
 		wait = new WebDriverWait (driver,15);
 		wait.until(ExpectedConditions.elementToBeClickable(selectcheckbox2));
+		Thread.sleep(5000);
 		return driver.findElement(selectcheckbox2);
 	}
 
-	public WebElement getexportworksheetpopup() 
+	public WebElement getexportworksheetpopup() throws InterruptedException 
 	{
 		wait = new WebDriverWait (driver,15);
 		wait.until(ExpectedConditions.elementToBeClickable(exportworksheetpopup));
+		Thread.sleep(5000);
 		return driver.findElement(exportworksheetpopup);
 	}
 
-	public WebElement getexporttodynamicpivottable() 
+	public WebElement getexporttodynamicpivottable() throws InterruptedException 
 	{
 		wait = new WebDriverWait (driver,15);
 		wait.until(ExpectedConditions.elementToBeClickable(exporttodynamicpivottable));
+		Thread.sleep(5000);
 		return driver.findElement(exporttodynamicpivottable);
 	}
-	public WebElement getContactsSectionLabel()
+
+	
+		public WebElement getContactsSectionLabel()
 	{
 		return driver.findElement(contactssectionlabel);
 	}
