@@ -1,6 +1,8 @@
 package crmframework.crmAutomation;
 
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -269,6 +271,10 @@ public class OtherTest extends base{
 		//Click on Accounts Tab at left menu.
 		hp.getAccountTab().click();
 		
+		// Search Accounts with Cyb as starting of Account DBA Name to reduce data
+		ap.getsearchaccounttextbox().sendKeys(prop.getProperty("name"));
+		ap.getclicksearchbutton().click();
+		
 		//Click three dots for Export option in header
 		ap.getclickoverflowbutton().click();
 		
@@ -277,11 +283,17 @@ public class OtherTest extends base{
 		
 		//Export file to online excel
 		ap.getopenexcelonline().click();
-		//ap.getsaveexcelonline().click();
-		
-		Thread.sleep(5000);
+		ap.getsaveexcelonline().click();
 		ap.getclosepopupexcelonline().click();   
-		Thread.sleep(10000);
+		
+		
+		// Switch to Previous tab after track progress
+		Set<String> windows = driver.getWindowHandles();
+		Iterator<String>it = windows.iterator();
+		String parentId = it.next();
+		String childId = it.next();
+		driver.switchTo().window(parentId);
+		
 		//Click three dots for Export option in header
 		ap.getclickoverflowbutton().click();
 				
@@ -301,7 +313,7 @@ public class OtherTest extends base{
 		ap.getexporttostaticworksheetpageonly().click();
 		
 		//Click three dots for Export option in header
-		//ap.getclickoverflowbutton().click();
+		ap.getclickoverflowbutton().click();
 				
 		//Click Export To Excel dropdown arrow option under it
 		ap.getclickexporttoexcelbutton().click();
