@@ -58,6 +58,11 @@ public class CRMContactPage {
 	By statusreasonoutofbusinessinheader = By.xpath("//div[@title='Out of Business']");
 	By contactstatusreason = By.xpath("//div[@data-lp-id='MscrmControls.FieldControls.PicklistStatusControl|header_statuscode.fieldControl|contact']");
 	
+	By selectexistingcontact = By.xpath("//div[@aria-label = 'Editable Grid']/div[1]/div[1]/div[1]/div[2]/div");
+	By scrollrightongrid = By.xpath("//div[@aria-label = 'Editable Grid']/div[1]/div[1]/div[1]/div[4]/div[10]");
+	By openexistingcontact = By.xpath("//div[@aria-label = 'Editable Grid']/div[1]/div[1]/div[1]/div[2]/div[10]/div[1]/button[1]");
+	
+	
 	public CRMContactPage(WebDriver driver) {
 
 		this.driver = driver;
@@ -311,4 +316,27 @@ public WebElement getContactSavenCloseBtn() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(statusreasonoutofbusinessinheader));
 		return driver.findElement(contactstatusreason);
 	}
+	
+	public WebElement getscrollrightongrid() {
+		
+		wait = new WebDriverWait (driver,15);
+		wait.until(ExpectedConditions.elementToBeClickable(scrollrightongrid));
+		return driver.findElement(scrollrightongrid);
+	}
+	
+	public WebElement getselectexistingcontact() {
+		
+		wait = new WebDriverWait (driver,15);
+		wait.until(ExpectedConditions.elementToBeClickable(selectexistingcontact));
+		return driver.findElement(selectexistingcontact);
+	}
+	
+	public WebElement getopenexistingcontact() {
+		
+		wait = new WebDriverWait (driver,15);
+		wait.until(ExpectedConditions.elementToBeClickable(openexistingcontact));
+		return driver.findElement(openexistingcontact);
+	}
+	
+	
 }

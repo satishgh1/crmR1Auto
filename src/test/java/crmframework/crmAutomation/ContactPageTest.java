@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -17,6 +18,7 @@ import org.testng.annotations.Test;
 
 import pageObjects.AppLandingPage;
 import pageObjects.CRMAccountsPage;
+import pageObjects.CRMAddMarketingRelationshipOwner;
 import pageObjects.CRMContactPage;
 import pageObjects.CRMHomePage;
 import pageObjects.CRMLandingPage;
@@ -38,7 +40,8 @@ public class ContactPageTest extends base{
 	CRMAccountsPage ap;
 	Actions act;
 	CRMContactPage cp;
-
+	CRMAddMarketingRelationshipOwner amro;
+	
 	@BeforeTest
 	public void initialize() throws IOException
 	{
@@ -240,6 +243,55 @@ public class ContactPageTest extends base{
 		{
 			System.out.println(ex.getMessage());
 		}
+	}
+	
+	@Test(priority=4)
+	public void TS004_VerifyMarketingRelationshipOwnerContactTest() throws InterruptedException
+	{
+		//The purpose of this test case to verify:-
+		//TS28- Select any existing Buyer Contact and deactivate it
+
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+		hp = new CRMHomePage(driver);
+		ap = new CRMAccountsPage(driver);
+		cp = new CRMContactPage(driver);
+		
+
+		//Open Contacts page and open existing contact
+		hp.getContactsTab().click();
+		cp.getselectexistingcontact().click();
+		cp.getscrollrightongrid().sendKeys(Keys.ARROW_RIGHT);
+		cp.getopenexistingcontact().click();
+		
+		amro = new CRMAddMarketingRelationshipOwner(driver);
+		
+		//Click Arrow for Marketing Relationship Owner
+		
+		amro.gethdbtn().click();
+		
+		//Click on Marketing Relationship Owner field search icon  to select a user from lookup
+		amro.getmarlookupsearch().click();
+
+		//Select a user entity from the Marketing Relationship Owner lookup
+		WebElement marowner = amro.getOwner();
+		String ownertxt =marowner.getText();
+		System.out.println(ownertxt);
+		marowner.click();
+
+		// Save selected marketing relationship owner
+		cp.getsavecontact().click();	
+
+		//Scroll down the page till Address field
+		act = new Actions(driver);
+		act.moveToElement(ap.getAddress()).perform();
+		
+		//Verify Marketing Relationship Owner lookup value in Account Information section in the Summary tab
+		WebElement verifyOwner = amro.getconmarverify();
+		Assert.assertTrue(verifyOwner.getText().contains(ownertxt));
+		System.out.println("Marketing Relationship Owner is added successfully");
+		
+		//Navigate back to Active accounts list
+		ap.getPageBackBtn().click();
 	}
 
 //	@AfterTest
